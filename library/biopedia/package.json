@@ -1,0 +1,11 @@
+{
+  "name": "@library/biopedia",
+  "version": "1.0.0",
+  "description": "Biography",
+  "main": "index.ts",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "NQQT",
+  "license": "ISC"
+}

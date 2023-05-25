@@ -1,0 +1,11 @@
+{
+  "name": "@library/presource",
+  "version": "1.0.0",
+  "description": "Javascript Utilities",
+  "main": "index.ts",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "NQQT",
+  "license": "ISC"
+}

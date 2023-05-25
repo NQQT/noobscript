@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES5",
+    "jsx": "react",
+    "baseUrl": "./",
+    "skipLibCheck": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "outDir": "./dist"
+  },
+  "include": ["../../library/presource"],
+  "exclude": ["node_modules", "../../**/*.test.ts", "../../**/*.test.tsx"]
+}

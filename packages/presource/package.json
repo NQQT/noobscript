@@ -1,0 +1,27 @@
+{
+  "name": "presource",
+  "version": "1.8.14",
+  "author": "NQQT",
+  "license": "ISC",
+  "description": "Resource for building javascript based applications",
+  "main": "dist",
+  "module": "lib",
+  "keywords": [
+    "library",
+    "wrapper",
+    "database",
+    "javascript"
+  ],
+  "files": [
+    "dist",
+    "lib"
+  ],
+  "scripts": {
+    "test": "jest --config jestconfig.json",
+    "build": "npm run build:cjs && npm run build:esm",
+    "build:cjs": "tsc",
+    "build:esm": "tsc --module esnext --target es5 --moduleResolution node --outDir ./lib",
+    "prepare": "npm run build",
+    "deploy": "npm version patch && npm publish --registry https://registry.npmjs.org/"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "@library/react",
+  "version": "1.0.0",
+  "description": "React Utilities",
+  "main": "index.ts",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "NQQT",
+  "license": "ISC"
+}

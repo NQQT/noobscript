@@ -1,0 +1,11 @@
+{
+  "name": "@library/userfiction",
+  "version": "1.0.0",
+  "description": "Gaming Utilities",
+  "main": "index.ts",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "NQQT",
+  "license": "ISC"
+}

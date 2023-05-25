@@ -1,0 +1,32 @@
+{
+  "name": "underload",
+  "version": "1.7.2",
+  "author": "Underload",
+  "license": "ISC",
+  "description": "Useful tools for various library and frameworks",
+  "main": "dist/underload.js",
+  "module": "lib/underload.js",
+  "keywords": [
+    "underload",
+    "library",
+    "wrapper",
+    "react",
+    "graphql"
+  ],
+  "files": [
+    "dist",
+    "lib"
+  ],
+  "scripts": {
+    "test": "jest --config jestconfig.json",
+    "build": "npm run build:cjs && npm run build:esm",
+    "build:cjs": "tsc && tsc-alias",
+    "build:esm": "tsc --p tsconfig.esm.json && tsc-alias -p tsconfig.esm.json",
+    "prepare": "npm run build",
+    "deploy": "npm version patch && npm publish --registry https://registry.npmjs.org/"
+  },
+  "directories": {
+    "dist": "dist",
+    "lib": "lib"
+  }
+}

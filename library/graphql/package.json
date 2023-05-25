@@ -1,0 +1,11 @@
+{
+  "name": "@library/graphql",
+  "version": "1.0.0",
+  "description": "Graph QL Library",
+  "main": "index.ts",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "NQQT",
+  "license": "ISC"
+}

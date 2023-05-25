@@ -1,0 +1,11 @@
+{
+  "name": "@library/storybook",
+  "version": "1.0.0",
+  "description": "Storybook Utilities",
+  "main": "index.ts",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "NQQT",
+  "license": "ISC"
+}
