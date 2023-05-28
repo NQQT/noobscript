@@ -54,7 +54,7 @@ type Returned<T extends ExtendList<T>> = {
 
 type Structure = <T extends ExtendList<T>>(methods?: T) => WrapperFunction<T>;
 
-/** A wrapper around an array, extending functionality */
+/** A Wrapper around an array, extending functionality */
 export const arrayWrapper: Structure = (callbacks: any = {}) => {
   /** Returning the Wrapper Function */
   const wrapper = (element: any[], config = {}) => {
@@ -95,7 +95,7 @@ export const arrayWrapper: Structure = (callbacks: any = {}) => {
 
         const extendedCallback = callbacks[k];
         if (extendedCallback) {
-          // Return a wrapper function for extended callback
+          // Return a Wrapper function for extended callback
           return (...args: any[]) => {
             const value = extendedCallback({ ...params, args });
             if (!isInvalid(value)) return value;
@@ -111,6 +111,6 @@ export const arrayWrapper: Structure = (callbacks: any = {}) => {
     // Returning the proxy function
     return instance;
   };
-  // Returning the wrapper function
+  // Returning the Wrapper function
   return wrapper;
 };

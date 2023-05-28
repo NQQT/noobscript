@@ -6,8 +6,7 @@
  */
 
 import { TRUE } from '../constants/primitive';
-import { isUndefined } from '../is/undefined';
-import { isObject } from '../is/object';
+import { isObject, isUndefined } from '../is';
 import { objectProxy } from './proxy';
 import { objectAlias } from './alias';
 

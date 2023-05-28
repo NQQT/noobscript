@@ -10,7 +10,7 @@ describe('Testing Tree reference hook within context', () => {
   test('Checking Basic usage of reference hook', () => {
     // The Record is stored here
     const record = {};
-    // Creating a wrapper to test the react hook
+    // Creating a Wrapper to test the react hook
     const wrapper = ({ children }: any) => <ContextProvider value={record}>{children}</ContextProvider>;
     // The number of rendered been recorded
     let renderedCount = 0;
@@ -43,7 +43,7 @@ describe('Testing Tree reference hook within context', () => {
   test('Using reference hook with selective fields', () => {
     // The Record is stored here
     const record = {};
-    // Creating a wrapper to test the react hook
+    // Creating a Wrapper to test the react hook
     const wrapper = ({ children }: any) => <ContextProvider value={record}>{children}</ContextProvider>;
 
     // Using Selective Field reduce server load and re-rendering

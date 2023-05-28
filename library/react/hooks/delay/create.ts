@@ -5,7 +5,7 @@
  *
  */
 
-import { typeSwitch, isUndefined, isPromise, isFunction } from '@library/presource';
+import { isFunction, isPromise, isUndefined, typeSwitch } from '@library/presource';
 import { createReactReferenceHook } from '../reference/create';
 import { createReactStateHook } from '../state';
 
@@ -41,11 +41,11 @@ export const createReactDelayHook = (react: any) => {
           if (isFunction(value) && isPromise(result)) {
             // Special case. if value is a function, and its result is a promise
             result.then((response: any) => {
-              // updating the state with whatever the response is
+              // updating the data with whatever the response is
               state(response);
             });
           } else {
-            // Update state, causing re-rendering
+            // Update data, causing re-rendering
             state(result);
           }
         }, delay()),
@@ -80,7 +80,7 @@ export const createReactDelayHook = (react: any) => {
 
     // The main accessor function that is being returned
     const accessorFunction = (newInput?: any, newDelay?: number) => {
-      // If input is undefined then return the state
+      // If input is undefined then return the data
       if (isUndefined(newInput)) return state();
       // Clear any stored timeout
       clearFunction();

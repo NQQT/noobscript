@@ -6,21 +6,13 @@
  *
  */
 
-import { isEqual } from '../is/equal';
-import { isFunction } from '../is/function';
-import { objectObserve } from '../object/observe';
-import { objectExtract } from '../object/extract';
-import { objectAlias } from '../object/alias';
-import { typeSwitch } from '../type/switch';
-import { objectEach } from '../object/each';
-import { objectFlatten } from '../object/flatten';
-import { objectProxy } from '../object';
+import { isEqual, isFunction } from '../is';
+import { objectAlias, objectEach, objectExtract, objectFlatten, objectObserve, objectProxy } from '../object';
+import { typeSwitch } from '../type';
 
 type List<T> = { [key: string]: Entry<T> };
 type Entry<T> = { [key in keyof T]: Entry<T[key]> };
-type Handler<T> = {
-  (): T;
-};
+type Handler<T> = () => T;
 type DataList = <T extends {}>(list: { [key: string]: any }, structure: T) => Handler<T> & List<T>;
 
 export const dataList: DataList = (list: any, structure) => {

@@ -1,7 +1,7 @@
 import { describe, test, expect } from '@jest/globals';
 import { arrayWrapper } from '..';
 
-describe('Remove functionality of array wrapper', () => {
+describe('Remove functionality of array Wrapper', () => {
   const sample = ['apple', 'banana', true, false, 0, 1, 2, null, undefined];
   const $array = arrayWrapper();
 

@@ -1,7 +1,7 @@
 import { describe, test, expect } from '@jest/globals';
 import { arrayWrapper } from '..';
 
-describe('Count function of array wrapper', () => {
+describe('Count function of array Wrapper', () => {
   const example = ['apple', 'banana', 'cat', 'dog', true, true, undefined, 1, 2, 3, 4, 5, 6, 7];
   const $array = arrayWrapper();
 

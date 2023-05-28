@@ -1,9 +1,9 @@
-import { isUndefined, isBoolean, isEqual } from '@library/presource';
+import { isBoolean, isEqual, isUndefined } from '@library/presource';
 import { createReactStateHook } from '../state';
 
 // For Creating all Toggle Hooks
 export const createReactToggleHook = (react: any) => {
-  // Construct a use state to use
+  // Construct a use data to use
   const useState = createReactStateHook(react);
 
   // The Basic Use Toggle Function

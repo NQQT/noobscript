@@ -2,7 +2,7 @@ import { isUndefined } from '@library/presource';
 
 /** Replacement for native useState of React */
 export const createReactStateHook = (react: any) => {
-  // Basic use state function
+  // Basic use data function
   return (initialValue?: any) => {
     // Use native react to get the "get" and "set"
     const [stateValue, setState] = react.useState(initialValue);

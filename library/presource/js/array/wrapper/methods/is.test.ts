@@ -1,8 +1,8 @@
 import { describe, test, expect } from '@jest/globals';
 import { arrayWrapper } from '..';
 
-describe('is check function for array wrapper', () => {
-  // Creating an array wrapper function
+describe('is check function for array Wrapper', () => {
+  // Creating an array Wrapper function
   const $array = arrayWrapper();
 
   test('is array empty check', () => {

@@ -1,13 +1,13 @@
-import react from "react";
-import { renderHook, act } from "@testing-library/react-hooks";
-import { describe, test, expect } from "@jest/globals";
-import { createReactToggleHook } from ".";
+import react from 'react';
+import { act, renderHook } from '@testing-library/react-hooks';
+import { describe, expect, test } from '@jest/globals';
+import { createReactToggleHook } from '.';
 
-describe("Testing useToggle Hook", () => {
+describe('Testing useToggle Hook', () => {
   // Creating the useToggle hook
   const useToggle = createReactToggleHook(react);
 
-  test("Basic usage of useToggle", () => {
+  test('Basic usage of useToggle', () => {
     // The Number of time the component rendered
     let renderedCount = 0;
 
@@ -38,7 +38,7 @@ describe("Testing useToggle Hook", () => {
 
     // The result remains true
     expect(result.current()).toBeTruthy();
-    // The render count should be 2, as state has not been changed!
+    // The render count should be 2, as data has not been changed!
     expect(renderedCount).toBe(2);
 
     // And this is more efficient than using useState only

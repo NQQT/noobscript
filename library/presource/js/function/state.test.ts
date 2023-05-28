@@ -1,4 +1,4 @@
-import { describe, expect, test, jest } from '@jest/globals';
+import { describe, expect, test } from '@jest/globals';
 import { functionState } from './state';
 
 describe('function Group format', () => {
@@ -78,8 +78,8 @@ describe('function Group format', () => {
     expect(scoreboard).toStrictEqual({ students: 42 });
   });
 
-  test('Custom sub state', () => {
-    // Creating a new function state
+  test('Custom sub data', () => {
+    // Creating a new function data
     const state = functionState();
 
     const strength = state(0);
@@ -102,20 +102,20 @@ describe('function Group format', () => {
     expect(attack()).toBe(20);
   });
 
-  // test('Async state', () => {
+  // test('Async data', () => {
   //   // Creating a Function State
-  //   const state = functionState();
+  //   const data = functionState();
 
   //   // Cats and dogs
-  //   const cats = state(10);
-  //   const dogs = state(10);
+  //   const cats = data(10);
+  //   const dogs = data(10);
 
-  //   const pets = state(async () => {
+  //   const pets = data(async () => {
   //     // Returning the cats and dogs
   //     return cats() + dogs();
   //   });
 
-  //   const owners = state(async () => {
+  //   const owners = data(async () => {
   //     // Await for the count
   //     const count = await pets();
   //     expect(count).toBe(20);

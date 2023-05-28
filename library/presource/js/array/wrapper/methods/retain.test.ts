@@ -2,7 +2,7 @@ import { describe, test, expect } from '@jest/globals';
 import { arrayWrapper } from '..';
 import { isEqual } from '../../../is/equal';
 
-describe('Filter function of array wrapper', () => {
+describe('Filter function of array Wrapper', () => {
   const sample = ['apple', 'banana', 'cat', 'dog', 1, 2, 3, 4, null, undefined, true, false];
   const $array = arrayWrapper();
 

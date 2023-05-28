@@ -41,7 +41,7 @@ export const functionState = (setting: Setting = {}): Wrapper => {
       values[index] = value;
       // Triggering Callback
       chained[index].forEach((callback: any) => {
-        // Triggering the state updater by index
+        // Triggering the data updater by index
         state[callback]?.();
       });
     }
@@ -93,7 +93,7 @@ export const functionState = (setting: Setting = {}): Wrapper => {
         values[index] = v;
         // Return a callback function
         return (value?: any) => {
-          // If value is undefined, return the state value
+          // If value is undefined, return the data value
           if (isUndefined(value)) return values[index];
           // Simply return the value
           return value;
