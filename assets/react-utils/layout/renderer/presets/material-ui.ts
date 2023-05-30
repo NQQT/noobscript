@@ -7,7 +7,7 @@ import {
   rendererHelpersComponentPropertyBooleanOptions as booleanOptions,
   rendererHelpersComponentPropertySelectOptions as selectOptions,
   TypeLayoutRendererComponentList,
-} from 'assets';
+} from '..';
 
 export const rendererPresetMaterialUIComponents: TypeLayoutRendererComponentList = {
   Button: {
