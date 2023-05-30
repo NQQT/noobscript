@@ -1,12 +1,12 @@
-import react from "react";
-import { renderHook, act } from "@testing-library/react-hooks";
-import { describe, test, expect, jest } from "@jest/globals";
-import { createReactPromiseHook } from "./create";
+import react from 'react';
+import { act, renderHook } from '@testing-library/react-hooks';
+import { describe, expect, jest, test } from '@jest/globals';
+import { createReactPromiseHook } from './create';
 
-describe("usePromise hook", () => {
+describe('usePromise hook', () => {
   // Make sure to fake the timer
 
-  test("normal function with usePromise", () => {
+  test('normal function with usePromise', () => {
     // Create a use promise
     const usePromise = createReactPromiseHook(react);
     // Use fake timer
@@ -25,13 +25,13 @@ describe("usePromise hook", () => {
       jest.runAllTimers();
     });
 
-    // Only one render
+    // Only one renderer
     expect(counter).toBe(2);
     // Expecting the value 1 to be returned
     expect(result.current()).toBe(1);
   });
 
-  test("async function with usePromise", async () => {
+  test('async function with usePromise', async () => {
     // Creating a usePromise hook
     const usePromise = createReactPromiseHook(react);
     // Run All Timer

@@ -38,7 +38,7 @@ describe('Testing useToggle Hook', () => {
 
     // The result remains true
     expect(result.current()).toBeTruthy();
-    // The render count should be 2, as data has not been changed!
+    // The renderer count should be 2, as data has not been changed!
     expect(renderedCount).toBe(2);
 
     // And this is more efficient than using useState only

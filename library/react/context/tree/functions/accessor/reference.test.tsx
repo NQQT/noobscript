@@ -1,6 +1,6 @@
 import React from 'react';
-import { renderHook, act } from '@testing-library/react-hooks';
-import { describe, test, expect } from '@jest/globals';
+import { act, renderHook } from '@testing-library/react-hooks';
+import { describe, expect, test } from '@jest/globals';
 import { createReactContextTree } from '../..';
 
 describe('Testing Tree reference hook within context', () => {
@@ -15,7 +15,7 @@ describe('Testing Tree reference hook within context', () => {
     // The number of rendered been recorded
     let renderedCount = 0;
 
-    // Getting the result back from the render hook
+    // Getting the result back from the renderer hook
     const { result } = renderHook(
       () => {
         // Increase Rendered Count by 1

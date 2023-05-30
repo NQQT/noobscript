@@ -1,6 +1,6 @@
 import React from 'react';
-import { render, act } from '@testing-library/react';
-import { describe, test, expect } from '@jest/globals';
+import { act, render } from '@testing-library/react';
+import { describe, expect, test } from '@jest/globals';
 import { createReactContextTree } from '../..';
 
 describe('Testing Tree reactive hook within context', () => {
@@ -120,7 +120,7 @@ describe('Testing Tree reactive hook within context', () => {
       animals({ cat: 'banana', dog: 'apple' });
     });
 
-    // Checking render count
+    // Checking renderer count
     expect(animalCount).toBe(4);
     expect(catCount).toBe(3);
     expect(dogCount).toBe(3);
@@ -135,7 +135,7 @@ describe('Testing Tree reactive hook within context', () => {
       animals({ cat: 'apple' });
     });
 
-    // Checking render count
+    // Checking renderer count
     expect(animalCount).toBe(5);
     expect(catCount).toBe(4);
     expect(dogCount).toBe(3); // This should not have changed as no data has been sent

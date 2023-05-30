@@ -8,7 +8,7 @@ export const presetRenderValue = (value: string) => {
   return isNaN(numberValue) ? value : valueAsNumber(numberValue);
 };
 
-// If value is a number, render through number
+// If value is a number, renderer through number
 const valueAsNumber = (value: number) => {
   // Return the Rem Value
   return value * 0.5 + DEFAULT_UNIT;
