@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES5",
+    "baseUrl": "./",
+    "allowJs": true,
+    "checkJs": false,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "removeComments": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "strict": true,
+    "outDir": "./dist"
+  }
+}
