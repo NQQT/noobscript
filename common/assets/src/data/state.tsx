@@ -1,4 +1,4 @@
-import { objectObserve, objectUpdate } from '@library/presource';
+import { isEqual, objectObserve, objectUpdate } from '@library/presource';
 import { useState } from 'react';
 
 type ReactiveValueType = <T>(values: T) => T & (() => T);
@@ -23,7 +23,7 @@ export const createDataState: ReactiveValueType = (unproxiedData) => {
   // Creating Proxy to modify actual unproxiedData
   const proxy: any = objectObserve(useData, ({ paths, method }) => {
     // Force forceRefresh data
-    if (method === 'set') {
+    if (isEqual(method, 'set')) {
       forceRefresh();
     }
   });
