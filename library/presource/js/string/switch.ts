@@ -8,7 +8,7 @@ type Argument<T> = {
   default: (value: any) => any;
 } & { [key in keyof T]: (value: any) => any };
 type Callback<T> = (args: Argument<T>) => any;
-type Cases<T> = { [key in keyof T]: any | Callback<T> };
+type Cases<T> = { [key in keyof T]: any | Callback<T> } & { default?: any | Callback<T> };
 type Structure = <T>(value: number | string, cases: Cases<T>) => any;
 
 const getParams: Structure = (value, cases) => {

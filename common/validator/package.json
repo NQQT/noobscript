@@ -1,7 +1,7 @@
 {
-  "name": "@common/assets",
+  "name": "@common/validator",
   "version": "1.0.0",
-  "description": "Commonly shared assets between all apps",
+  "description": "For validating item",
   "main": "index.ts",
   "scripts": {
     "start": "webpack serve --mode=development --open --hot",

@@ -9,14 +9,7 @@
     "declaration": true,
     "esModuleInterop": true,
     "strict": true,
-    "outDir": "./lib",
-    "lib": [
-      "decorators",
-      "dom",
-      "es5",
-      "scripthost",
-      "es2015.collection"
-    ]
+    "outDir": "./lib"
   },
   "exclude": ["node_modules", "**/*.test.ts", "**/dist/*", "**/lib/*"]
 }

@@ -1,7 +1,7 @@
 {
-  "name": "@common/assets",
+  "name": "@common/logger",
   "version": "1.0.0",
-  "description": "Commonly shared assets between all apps",
+  "description": "For logging and output details data",
   "main": "index.ts",
   "scripts": {
     "start": "webpack serve --mode=development --open --hot",
