@@ -1,8 +1,9 @@
-import { isEqual, isUndefined } from '../is';
-import { objectEach } from '../object';
-import { setCreate } from '../set';
-import { stringSwitch } from '../string';
-import { typeSwitch } from '../type';
+import { isEqual } from '../is/equal';
+import { isUndefined } from '../is/undefined';
+import { objectEach } from '../object/each';
+import { setCreate } from '../set/create';
+import { stringSwitch } from '../string/switch';
+import { typeSwitch } from '../type/switch';
 import { functionProxy } from './proxy';
 
 // The setting for the function group

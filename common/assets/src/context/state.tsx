@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useReducer } from 'react';
-import { objectMerge } from '@library/presource';
+import { objectMerge } from '@library/presource/js/object/merge';
 
 type NestedObjectType = { [key: string]: any };
 type ContextProviderType<T> = React.FC<{ value?: Partial<T>; children: React.ReactNode }>;

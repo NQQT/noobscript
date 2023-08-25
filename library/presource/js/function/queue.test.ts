@@ -1,10 +1,10 @@
-import { describe, expect, test, jest } from '@jest/globals';
+import { describe, expect, jest, test } from '@jest/globals';
 import { functionQueue } from './queue';
 
 describe('Testing Function Queue', () => {
   // Simulating Fake Time
   jest.useFakeTimers();
-  test('Checking if it is loading', () => {
+  test('Checking if it is loading correctly', () => {
     // Creating a Function Queue
     const queue = functionQueue();
     const result: any = [];
@@ -17,7 +17,7 @@ describe('Testing Function Queue', () => {
     expect(result).toStrictEqual([1]);
   });
 
-  test('Queue functions in series', () => {
+  test('Queue functions in series calls', () => {
     // Creating a new queue
     const queue = functionQueue();
     const result: any = [];

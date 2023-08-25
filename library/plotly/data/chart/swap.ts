@@ -1,4 +1,4 @@
-import { objectEach } from '@library/presource';
+import { objectEach } from '@library/presource/js/object/each';
 
 /** The Data Structure */
 export type InputChartDataStructure = {

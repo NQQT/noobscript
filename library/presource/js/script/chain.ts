@@ -5,10 +5,10 @@
  */
 
 import { NULL } from '../constants/primitive';
-import { functionQueue } from '../function';
-import { objectMap } from '../object';
-import { objectUpdate } from '../object';
-import { createPromise } from '../promise';
+import { functionQueue } from '../function/queue';
+import { objectMap } from '../object/map';
+import { objectUpdate } from '../object/update';
+import { createPromise } from '../promise/create';
 
 // Callback is recursive. It will always return the Relay
 type CallbackTrigger<T extends {}> = (...input: any[]) => RelayObject<T>;

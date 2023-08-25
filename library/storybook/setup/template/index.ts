@@ -5,7 +5,8 @@ import {
   within as storybookWithin,
 } from '@storybook/testing-library';
 import { expect as storybookExpect } from '@storybook/jest';
-import { arrayEach, typeSwitch } from '@library/presource';
+import { arrayEach } from '@library/presource/js/array/each';
+import { typeSwitch } from '@library/presource/js/type/switch';
 
 /** To Set up a Storybook Template */
 export const storybookSetupTemplate = (Template: Story) => {

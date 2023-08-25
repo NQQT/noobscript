@@ -1,4 +1,4 @@
-import { describe, expect, test, jest } from '@jest/globals';
+import { describe, expect, jest, test } from '@jest/globals';
 import { functionDelay } from './delay';
 
 describe('Delaying Function', () => {
@@ -14,11 +14,4 @@ describe('Delaying Function', () => {
     });
     jest.runOnlyPendingTimers();
   });
-
-  //   test("Function Delayed Within",()=>{
-  //       expect.assertions(2);
-  //       functionDelay(()=>{
-  //           expect(true);
-  //       })
-  //   })
 });

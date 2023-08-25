@@ -1,8 +1,8 @@
-import { arrayEach } from '../array';
+import { arrayEach } from '../array/each';
 import { FALSE, TRUE } from '../constants/primitive';
 import { EMPTY } from '../constants/string';
-import { objectEach } from '../object';
-import { typeSwitch } from '../type';
+import { objectEach } from '../object/each';
+import { typeSwitch } from '../type/switch';
 import { isEqual } from './equal';
 
 /** Checking if value is empty or not */

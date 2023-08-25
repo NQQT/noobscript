@@ -1,5 +1,4 @@
-import { describe, test, expect } from '@jest/globals';
-import { objectConstant } from '../../js/object';
+import { describe, expect, test } from '@jest/globals';
 import { LombokGettersDecorator } from '../lombok/getters';
 import { classConstructor } from './constructor';
 

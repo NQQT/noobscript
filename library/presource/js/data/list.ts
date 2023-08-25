@@ -2,13 +2,19 @@
  *
  * Data List. Observe changes to a list structure
  *
- * Enforcing
+ * This is especially useful for producing a list of different keys, but same internal structures.
  *
  */
 
-import { isEqual, isFunction } from '../is';
-import { objectAlias, objectEach, objectExtract, objectFlatten, objectObserve, objectProxy } from '../object';
-import { typeSwitch } from '../type';
+import { isEqual } from '../is/equal';
+import { isFunction } from '../is/function';
+import { objectAlias } from '../object/alias';
+import { objectEach } from '../object/each';
+import { objectExtract } from '../object/extract';
+import { objectFlatten } from '../object/flatten';
+import { objectObserve } from '../object/observe';
+import { objectProxy } from '../object/proxy';
+import { typeSwitch } from '../type/switch';
 
 type List<T> = { [key: string]: Entry<T> };
 type Entry<T> = { [key in keyof T]: Entry<T[key]> };
@@ -85,7 +91,7 @@ export const dataList: DataList = (list: any, structure) => {
 
   /** Proxy Function that Returned */
   const proxy = objectProxy(handlerFunction, {
-    // On Get, return the observe data
+    // On Get, return the observed data
     get: ({ k }) => observedData[k],
     set: ({ k, v }) => {
       // Updating the Observe Data with value

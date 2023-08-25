@@ -17,9 +17,15 @@ type Data = {
 
 // The That Pass into Callback
 type Callback = (data: Data) => any;
+type ReturnFunction = {
+  (...input: any[]): ReturnFunction;
+  [key: any]: ReturnFunction;
+};
+
+type FunctionChain = (callback: Callback) => ReturnFunction;
 
 /** Function chaining,  */
-export const functionChain = (callback: Callback) => {
+export const functionChain: FunctionChain = (callback) => {
   // The Chain Memory
   let chain: string[] = [];
   // The Initial Index
@@ -36,8 +42,9 @@ export const functionChain = (callback: Callback) => {
     key = NULL;
   };
 
+  // Building the Chain Function from the Function Proxy
   const chainFunction = functionProxy((data) => {
-    // Checking the configure
+    // Checking the configurations
     return stringSwitch(data.method, {
       // if method is called
       call: () => {
@@ -90,5 +97,8 @@ export const functionChain = (callback: Callback) => {
   });
 
   // Returnin the Chain Function
-  return chainFunction;
+  return chainFunction as {
+    (...input: any[]): any;
+    [key: any]: any;
+  };
 };

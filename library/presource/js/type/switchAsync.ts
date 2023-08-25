@@ -9,7 +9,7 @@ import { isStringEmpty } from '../is/string';
 import { typeName } from './name';
 import { objectEach } from '../object/each';
 import { objectHasKey } from '../object/has';
-import { stringUpperCase } from '../string';
+import { stringUpperCase } from '../string/upper';
 import { isFunction } from '../is/function';
 
 export type TypeSwitchAsync = <T>(unknown: T, cases: Cases<T>) => Promise<any>;

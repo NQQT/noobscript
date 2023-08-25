@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { isEqual } from '../../../js';
+import { isEqual } from '../../../js/is/equal';
 import { experimentalPropertyDecorator } from './property';
 
 describe('Experimental Property Decorator', () => {

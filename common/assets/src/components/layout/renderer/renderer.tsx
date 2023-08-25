@@ -1,6 +1,6 @@
 import { TypeLayoutRenderer, TypeLayoutRendererComponent } from './renderer.types';
 import React, { useState } from 'react';
-import { objectObserve } from '@library/presource';
+import { objectObserve } from '@library/presource/js/object/observe';
 
 /**
  * For constructing the layout component

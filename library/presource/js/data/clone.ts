@@ -9,6 +9,7 @@ export const dataClone: Structure = (data) => {
   return typeSwitch(data, {
     // If Array. Remapping with Data Clone
     array: ({ v }) => v.map((value) => dataClone(value)),
+    // If object. Scan through each and read each object
     object: ({ v }) => {
       const result: any = {};
       objectEach(v, (obj) => {
@@ -18,6 +19,7 @@ export const dataClone: Structure = (data) => {
       // Returning the REsult
       return result;
     },
+    // By Default. Return itself.
     default: ({ v }) => v,
   });
 };

@@ -1,5 +1,7 @@
-import { describe, test, expect } from '@jest/globals';
-import { arrayEach, objectConstant, stringCapitalize } from '../../../js';
+import { describe, test } from '@jest/globals';
+import { arrayEach } from '../../../js/array/each';
+import { objectConstant } from '../../../js/object/constant';
+import { stringCapitalize } from '../../../js/string/capitalize';
 import { experimentalClassDecorator } from './class';
 
 describe('Experimental Class Decorator', () => {

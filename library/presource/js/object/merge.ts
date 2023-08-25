@@ -1,6 +1,6 @@
-import { arrayEach } from '../array';
-import { isObject } from '../is';
-import { typeSwitch } from '../type';
+import { arrayEach } from '../array/each';
+import { isObject } from '../is/object';
+import { typeSwitch } from '../type/switch';
 import { objectEach } from './each';
 
 /**

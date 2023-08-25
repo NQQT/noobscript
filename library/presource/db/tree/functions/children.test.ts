@@ -1,4 +1,4 @@
-import { describe, test, expect } from '@jest/globals';
+import { describe, expect, test } from '@jest/globals';
 import { treeDatabase } from '..';
 
 describe('TreeDatabase - Children Functionality', () => {
@@ -15,7 +15,7 @@ describe('TreeDatabase - Children Functionality', () => {
     // Selecting Child at Index 3
     expect(database.children(3).data()).toBe('child4');
 
-    // Child at 6th index doesn't exists. Hence Undefined
+    // Child at 6th index doesn't exist. Hence Undefined
     expect(database.children(5).data()).toBeUndefined();
     // The Length has been Changed
     expect(database.children().length).toBe(6);

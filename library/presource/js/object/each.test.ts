@@ -1,7 +1,6 @@
-import { describe, test, expect } from '@jest/globals';
-import { objectEachAsync } from '.';
+import { describe, expect, test } from '@jest/globals';
+import { objectEach, objectEachAsync } from './each';
 import { scriptPause } from '../script/pause';
-import { objectEach } from './each';
 
 describe('Object Each', () => {
   const example = {

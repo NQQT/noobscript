@@ -1,4 +1,5 @@
-import { isUndefined, stringSwitch } from '../../../js';
+import { isUndefined } from '../../../js/is/undefined';
+import { stringSwitch } from '../../../js/string/switch';
 
 type Arguments = {
   key: string;

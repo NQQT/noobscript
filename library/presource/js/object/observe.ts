@@ -6,7 +6,8 @@
  */
 
 import { TRUE } from '../constants/primitive';
-import { isObject, isUndefined } from '../is';
+import { isObject } from '../is/object';
+import { isUndefined } from '../is/undefined';
 import { objectProxy } from './proxy';
 import { objectAlias } from './alias';
 
@@ -66,7 +67,6 @@ export const objectObserve: ObjectObserve = (item, callback, chain = { depth: 0,
           p: 'path',
         }),
       );
-
       // Return another proxied object for recursion
       return isObject(nested) ? objectObserve(nested, callback, { depth: depth + 1, path }) : nested;
     },

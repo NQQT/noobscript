@@ -1,7 +1,8 @@
 /** Switch Cases, but based on string */
 
-import { objectHasKey, objectMap } from '../object';
-import { isFunction } from '../is';
+import { objectHasKey } from '../object/has';
+import { objectMap } from '../object/map';
+import { isFunction } from '../is/function';
 
 type Argument<T> = {
   value: string;
@@ -9,7 +10,7 @@ type Argument<T> = {
 } & { [key in keyof T]: (value: any) => any };
 type Callback<T> = (args: Argument<T>) => any;
 type Cases<T> = { [key in keyof T]: any | Callback<T> } & { default?: any | Callback<T> };
-type Structure = <T>(value: number | string, cases: Cases<T>) => any;
+type Structure = <T extends { [key: string]: any }>(value: number | string, cases: Cases<T>) => any;
 
 const getParams: Structure = (value, cases) => {
   // Setting up Advance Parameters

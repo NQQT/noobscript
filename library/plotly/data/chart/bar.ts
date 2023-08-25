@@ -1,5 +1,7 @@
-import { objectEach, objectValues, objectKeys } from '@library/presource';
 import { InputChartDataStructure } from './swap';
+import { objectEach } from '@library/presource/js/object/each';
+import { objectValues } from '@library/presource/js/object/values';
+import { objectKeys } from '@library/presource/js/object/keys';
 
 export type BarChartDataStructure = {
   type: string;

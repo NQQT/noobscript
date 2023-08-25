@@ -8,7 +8,7 @@ import { objectMerge } from '../../js/object/merge';
 import { objectUpdate } from '../../js/object/update';
 import { typeSwitch } from '../../js/type/switch';
 import { MapperArguments, MapperCallbackList, Structure } from './assets/interface';
-import { objectKeys } from '../../js';
+import { objectKeys } from '../../js/object/keys';
 
 /**
  *

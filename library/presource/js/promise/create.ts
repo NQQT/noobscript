@@ -1,4 +1,4 @@
-import { instanceCreate } from '../instance';
+import { instanceCreate } from '../instance/create';
 import { promiseConstant } from './constant';
 
 /** Creating a New Promise */

@@ -1,4 +1,6 @@
-import { arrayEach, isValid, objectProxy } from '../../../js';
+import { arrayEach } from '../../../js/array/each';
+import { isValid } from '../../../js/is/valid';
+import { objectProxy } from '../../../js/object/proxy';
 import { accessParameterDecoratorRegistry } from './access';
 
 type Arguments = {

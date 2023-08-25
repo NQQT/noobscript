@@ -1,7 +1,7 @@
 {
-  "name": "@library/biopedia",
+  "name": "@library/ceyron",
   "version": "1.0.0",
-  "description": "Biography",
+  "description": "Ceyron is an engine for Choose Your Own Adventure",
   "main": "index.ts",
   "scripts": {
     "test": "jest"

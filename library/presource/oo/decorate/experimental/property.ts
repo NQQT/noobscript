@@ -1,4 +1,8 @@
-import { arrayEach, isUndefined, objectConstant, objectProxy, stringSwitch } from '../../../js';
+import { arrayEach } from '../../../js/array/each';
+import { isUndefined } from '../../../js/is/undefined';
+import { objectConstant } from '../../../js/object/constant';
+import { objectProxy } from '../../../js/object/proxy';
+import { stringSwitch } from '../../../js/string/switch';
 import { accessPropertyDecoratorRegistry, accessPropertyDecoratorStore } from './access';
 
 type Arguments = {

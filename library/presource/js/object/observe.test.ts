@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { dataClone } from '../data';
+import { dataClone } from '../data/clone';
 import { objectObserve } from './observe';
 
 describe('Object Observe', () => {

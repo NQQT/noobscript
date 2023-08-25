@@ -1,5 +1,8 @@
-import { isEqual, objectObserve, objectUpdate } from '@library/presource';
+import { isEqual } from '@library/presource/js/is/equal';
 import { useEffect, useState } from 'react';
+import { objectUpdate } from '@library/presource/js/object/update';
+import { objectObserve } from '@library/presource/js/object/observe';
+import { functionDelay } from '@library/presource/js/function/delay';
 
 type ReactiveValueType = <T>(values: T) => T & (() => T);
 
@@ -38,7 +41,10 @@ export const createDataState: ReactiveValueType = (unproxiedData) => {
     // Force forceRefresh data
     if (isEqual(method, 'set')) {
       // Forcing everything to be refreshed
-      list.forEach((refresh) => refresh());
+      functionDelay(() => {
+        // Use delay so that items are rendered first before triggered by this
+        list.forEach((refresh) => refresh());
+      });
     }
   });
 

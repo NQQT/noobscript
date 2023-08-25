@@ -4,7 +4,7 @@ import { isBoolean } from '../../../is/boolean';
 import { isNumber } from '../../../is/number';
 import { isObject } from '../../../is/object';
 import { isString } from '../../../is/string';
-import { typeSwitch } from '../../../type';
+import { typeSwitch } from '../../../type/switch';
 import { isValid } from '../../../is/valid';
 import { isNull } from '../../../is/null';
 import { isUndefined } from '../../../is/undefined';

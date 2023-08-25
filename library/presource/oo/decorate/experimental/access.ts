@@ -5,7 +5,7 @@
  *
  */
 
-import { objectConstant } from '../../../js';
+import { objectConstant } from '../../../js/object/constant';
 
 // Function to access decorator data. Instance is required
 export const accessDecoratorData = (instance: any) => {

@@ -1,5 +1,5 @@
-import { functionDelay } from '../function';
-import { createPromise } from '../promise';
+import { functionDelay } from '../function/delay';
+import { createPromise } from '../promise/create';
 
 /** Wait for something to happen */
 export const scriptPause = (time: number) => {
