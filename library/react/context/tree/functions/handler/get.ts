@@ -1,5 +1,6 @@
-import { arrayEach, isEqual } from '@library/presource';
 import { accessorReferenceFunction } from '../accessor/reference';
+import { arrayEach } from '@library/presource/js/array/each';
+import { isEqual } from '@library/presource/js/is/equal';
 
 type Arguments = {
   id: string;
@@ -21,6 +22,6 @@ export const handlerGetFunction: Structure = ({ root, id, field }) => {
     if (isEqual(data.name, id)) return data.context;
   });
 
-  // Context must exists for the reference function be returned. Else. return null
+  // Context must exist for the reference function be returned. Else. return null
   return context ? accessorReferenceFunction({ context, field }) : () => null;
 };

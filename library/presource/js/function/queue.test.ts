@@ -1,10 +1,11 @@
-import { describe, expect, jest, test } from '@jest/globals';
+import { describe, expect, jest } from '@jest/globals';
 import { functionQueue } from './queue';
 
-describe('Testing Function Queue', () => {
-  // Simulating Fake Time
+describe('How to use Function Queue - ability to queue function in a list', () => {
+  // We will need to simulate some fate timer first.
   jest.useFakeTimers();
-  test('Checking if it is loading correctly', () => {
+
+  it('can be used to queue a function, running it later', () => {
     // Creating a Function Queue
     const queue = functionQueue();
     const result: any = [];
@@ -17,7 +18,7 @@ describe('Testing Function Queue', () => {
     expect(result).toStrictEqual([1]);
   });
 
-  test('Queue functions in series calls', () => {
+  it('should be able to queue function in a series', () => {
     // Creating a new queue
     const queue = functionQueue();
     const result: any = [];
@@ -38,14 +39,18 @@ describe('Testing Function Queue', () => {
     expect(result).toStrictEqual([1, 2, 3]);
   });
 
-  test('Queue funtions in nested series', () => {
+  it('should be able to queue a function in a nested series', () => {
+    // Let's create a queue list
     const queue = functionQueue();
-    const result: any = [];
+    // this is for testing the result at the end.
+    const result: number[] = [];
 
+    // Let's queue an item
     queue(() => {
+      // Adding first item
       result.push(1);
 
-      // Add some children
+      // Add some children, and we should expect these children to be executed first.
       queue(() => {
         result.push(1.1);
       });
@@ -54,6 +59,7 @@ describe('Testing Function Queue', () => {
       });
     });
 
+    // Alternatively, you can use the provided queue function for appending new calls into the queue
     queue(({ queue }) => {
       result.push(2);
       // Using pass down queue handler should also work
@@ -71,23 +77,32 @@ describe('Testing Function Queue', () => {
     expect(result).toStrictEqual([1, 1.1, 1.2, 2, 2.1, 2.2]);
   });
 
-  test('On complete trigger', () => {
+  it('should able to execute listeners correctly', () => {
+    // This is for updating the result
     const result: string[] = [];
+    // Building a queue  list with add on logics.
     const queue = functionQueue({
       complete: () => {
         result.push('done');
       },
     });
 
+    // Adding an apple to the queue list
     queue(() => {
       result.push('apple');
     });
 
+    // Adding a banana to the queue list
     queue(() => {
       result.push('banana');
     });
 
+    // This is to execute everything.
     jest.runAllTimers();
+    // And we expect the result to be as such
     expect(result).toStrictEqual(['apple', 'banana', 'done']);
+
+    // Now, you can queue items faster than the script executing them.
+    // That is the beauty of this function.
   });
 });

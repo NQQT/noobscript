@@ -1,9 +1,12 @@
-import { setConstant, instanceCreate, objectFilter, treeDatabase, isUndefined } from '@library/presource';
-
 import { resolveDataFunction } from './functions/resolver/data';
 import { useAccessorReactiveFunction } from './functions/accessor/reactive';
 import { accessorReferenceFunction } from './functions/accessor/reference';
 import { handlerGetFunction } from './functions/handler/get';
+import { instanceCreate } from '@library/presource/js/instance/create';
+import { setConstant } from '@library/presource/js/set/constant';
+import { treeDatabase } from '@library/presource/db';
+import { objectFilter } from '@library/presource/js/object/filter';
+import { isUndefined } from '@library/presource/js/is/undefined';
 
 /** For Creating Tree Context */
 export const createReactContextTree = (react: any) => {

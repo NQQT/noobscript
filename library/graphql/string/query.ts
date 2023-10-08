@@ -1,6 +1,8 @@
-import { objectEach, objectKeys, typeSwitch } from '@library/presource';
 import { createGraphQLRequestString } from './request';
 import { createGraphQLVariableString } from './variable';
+import { typeSwitch } from '@library/presource/js/type/switch';
+import { objectEach } from '@library/presource/js/object/each';
+import { objectKeys } from '@library/presource/js/object/keys';
 
 type Query = { [key: string]: any };
 

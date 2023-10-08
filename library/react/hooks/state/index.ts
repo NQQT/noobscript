@@ -1,6 +1,6 @@
-import { isUndefined } from '@library/presource';
-
 /** Replacement for native useState of React */
+import { isUndefined } from '@library/presource/js/is/undefined';
+
 export const createReactStateHook = (react: any) => {
   // Basic use data function
   return (initialValue?: any) => {

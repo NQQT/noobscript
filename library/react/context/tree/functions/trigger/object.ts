@@ -1,6 +1,9 @@
-import { instanceCreate, isInvalid, objectHasKey, setConstant } from '@library/presource';
-
 // Allowing Function to be Triggered
+import { isInvalid } from '@library/presource/js/is/invalid';
+import { objectHasKey } from '@library/presource/js/object/has';
+import { instanceCreate } from '@library/presource/js/instance/create';
+import { setConstant } from '@library/presource/js/set/constant';
+
 export const triggerObjectFunction = (context: any, field?: string) => {
   // If field Id is invalid, then return the observer trigger
   if (isInvalid(field)) return context.observer;

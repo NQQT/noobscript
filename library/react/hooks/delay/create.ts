@@ -5,9 +5,12 @@
  *
  */
 
-import { isFunction, isPromise, isUndefined, typeSwitch } from '@library/presource';
-import { createReactReferenceHook } from '../reference/create';
+import { createReactReferenceHook } from '../reference';
 import { createReactStateHook } from '../state';
+import { isUndefined } from '@library/presource/js/is/undefined';
+import { isPromise } from '@library/presource/js/is/promise';
+import { isFunction } from '@library/presource/js/is/function';
+import { typeSwitch } from '@library/presource/js/type/switch';
 
 /** This is for creating a delay hook */
 export const createReactDelayHook = (react: any) => {

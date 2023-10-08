@@ -24,7 +24,6 @@ export const inventoryMethodGet = (inventory: InventoryControlType, id: string):
     // If list doesn't contain that id, then try and add it.
     list[id] = {
       id,
-      amount: 0,
     };
   }
   return itemModifier(list[id]);
@@ -34,17 +33,17 @@ const itemModifier = (item: InventoryItemType) => {
   // Return the modifier object for future consumption
   return {
     amount: (input: any) => {
-      // If input is not defined, then return the item amount
-      if (isUndefined(input)) return item.amount;
+      // If input is not defined, then return the item amount (or 0 if it does not exist)
+      if (isUndefined(input)) return item.amount?.current || 0;
 
       typeSwitch(input, {
         number: ({ value }) => {
-          // If number is passed then update that number
-          item.amount = value;
+          // updating the amount number
+          item.amount = { ...item.amount, current: value };
         },
         function: () => {
           // If a function is passed, then process the function as it is, by passing the current value
-          item.amount = input(item.amount);
+          item.amount = { ...item.amount, current: input(item.amount?.current || 0) };
         },
       });
 

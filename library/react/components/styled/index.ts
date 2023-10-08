@@ -1,4 +1,5 @@
-import { objectEach, objectStyled, objectMapMediaMinMax, objectMapAttribute } from '@library/presource';
+import { objectEach } from '@library/presource/js/object/each';
+import { objectMapAttribute, objectMapMediaMinMax, objectStyled } from '@library/presource/cs';
 
 type Arguments = {
   value: any;

@@ -1,12 +1,12 @@
-import { describe, expect, test } from '@jest/globals';
+import { describe, expect } from '@jest/globals';
 import { functionState } from './state';
 
-describe('function Group format', () => {
-  test('Basic Reactivity Test', () => {
+describe('Funtion State Test - Design for Reactivity', () => {
+  it('can be used reactively', () => {
     // Creating a new function group
     const state = functionState();
 
-    // Setting The Initial State
+    // Setting The Initial State. Each item will get an amount of 0.
     const apple = state(0);
     const banana = state(0);
 
@@ -24,7 +24,7 @@ describe('function Group format', () => {
 
       // Expecting the Total to be
       expect(total).toBe(totalFruits);
-      // Should return something
+      // Should return something to the body. So fruit is the sum of apple and banana.
       return total;
     });
 
@@ -51,17 +51,19 @@ describe('function Group format', () => {
     // Expecting Fruits to be triggered
   });
 
-  test('Updating an external object such as scoreboard', () => {
-    // Creating a score board
+  it('can be used to update an external object like a scoreboard of sort', () => {
+    // Let's create a score board of sort
     const scoreboard: any = {};
+    // Building a new state function.
     const state = functionState();
 
-    // Number of student taking classes
+    // Number of student taking classes. Let all put them as 0 for now.
     const english = state(0);
     const math = state(0);
     const chemistry = state(0);
     const physic = state(0);
 
+    // Creating a linking state.
     state(() => {
       // Updating the Scoreboard with number of students
       scoreboard.students = english() + math() + chemistry() + physic();
@@ -69,16 +71,18 @@ describe('function Group format', () => {
 
     // Initial Scoreboard
     expect(scoreboard).toStrictEqual({ students: 0 });
-    // 12 student taking english
+    // 12 student is now taking english.
     english(12);
+    // Expecting scoreboard to have 12 students in total.
     expect(scoreboard).toStrictEqual({ students: 12 });
-    // Adding more students
+    // Adding more students taking classes
     math(10);
     chemistry(20);
+    // Expecting score board be updated.
     expect(scoreboard).toStrictEqual({ students: 42 });
   });
 
-  test('Custom sub data', () => {
+  it('can be used as custom sub state', () => {
     // Creating a new function data
     const state = functionState();
 

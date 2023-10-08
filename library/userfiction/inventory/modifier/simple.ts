@@ -25,7 +25,7 @@ export const simple: Simple = (data) => {
       // Scan through the data, binding to a new inventory data
       objectEach(value, ({ k, v }: any) => {
         // Constructing the data
-        inventoryData.list[k] = { id: k, amount: v || 0 };
+        inventoryData.list[k] = { id: k, amount: { current: v || 0 } };
       });
       // Returning the simple inventory data list
       return inventory(inventoryData);

@@ -1,4 +1,7 @@
-import { jsonConstant, objectEach, stringSwitch, typeSwitch } from '@library/presource';
+import { objectEach } from '@library/presource/js/object/each';
+import { typeSwitch } from '@library/presource/js/type/switch';
+import { stringSwitch } from '@library/presource/js/string/switch';
+import { jsonConstant } from '@library/presource/js/json/constant';
 
 type Data = { [key: string]: any };
 type Structure = (data: Data) => string;

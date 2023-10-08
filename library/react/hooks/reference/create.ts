@@ -1,6 +1,6 @@
-import { isUndefined } from '@library/presource';
-
 /** Extended Replacement for useRef via React. */
+import { isUndefined } from '@library/presource/js/is/undefined';
+
 export const createReactReferenceHook = (react: any) => {
   // Basic use Reference hook
   return (initialValue?: any) => {

@@ -1,4 +1,6 @@
-import { objectEach, typeSwitch, objectKeys } from '@library/presource';
+import { objectEach } from '@library/presource/js/object/each';
+import { typeSwitch } from '@library/presource/js/type/switch';
+import { objectKeys } from '@library/presource/js/object/keys';
 
 type Data = { [key: string]: Data };
 type Structure = (data: Data) => string;

@@ -1,5 +1,7 @@
-import { isBoolean, isEqual, isUndefined } from '@library/presource';
 import { createReactStateHook } from '../state';
+import { isUndefined } from '@library/presource/js/is/undefined';
+import { isBoolean } from '@library/presource/js/is/boolean';
+import { isEqual } from '@library/presource/js/is/equal';
 
 // For Creating all Toggle Hooks
 export const createReactToggleHook = (react: any) => {

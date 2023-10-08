@@ -1,6 +1,8 @@
-import { isEqual, isInvalid, objectStringify } from '@library/presource';
 import { triggerObjectFunction } from '../trigger/object';
 import { accessorReferenceFunction } from './reference';
+import { objectStringify } from '@library/presource/js/object/stringify';
+import { isInvalid } from '@library/presource/js/is/invalid';
+import { isEqual } from '@library/presource/js/is/equal';
 
 export const useAccessorReactiveFunction = (data: { react: any; context: any; field?: string }) => {
   // Exporting information

@@ -1,6 +1,10 @@
-import { isInvalid, typeSwitch, isUndefined, objectKeys, objectUpdate } from '@library/presource';
 import { triggerListenerFunction } from '../trigger/listener';
 import { triggerObserverFunction } from '../trigger/observer';
+import { isUndefined } from '@library/presource/js/is/undefined';
+import { isInvalid } from '@library/presource/js/is/invalid';
+import { typeSwitch } from '@library/presource/js/type/switch';
+import { objectUpdate } from '@library/presource/js/object/update';
+import { objectKeys } from '@library/presource/js/object/keys';
 
 // This will only access by reference only. There is no reactivity
 export const accessorReferenceFunction = (data: { context: any; field?: string }) => {
@@ -33,7 +37,7 @@ export const accessorReferenceFunction = (data: { context: any; field?: string }
         // Updating the database with new values
         objectUpdate(database, value);
         // Trigger the Listener and Observer
-        triggerListenerFunction(context, objectKeys(value));
+        triggerListenerFunction(context, objectKeys(value) as string[]);
         triggerObserverFunction(context);
         return true;
       },

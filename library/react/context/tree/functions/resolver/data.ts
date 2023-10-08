@@ -3,8 +3,12 @@
  * This function is used to resolve a context
  *
  */
-
-import { typeSwitch, arrayEach, isInvalid, isNumber, isEqual, treeDatabase } from '@library/presource';
+import { typeSwitch } from '@library/presource/js/type/switch';
+import { isNumber } from '@library/presource/js/is/number';
+import { arrayEach } from '@library/presource/js/array/each';
+import { isInvalid } from '@library/presource/js/is/invalid';
+import { isEqual } from '@library/presource/js/is/equal';
+import { treeDatabase } from '@library/presource/db';
 
 export const resolveDataFunction = (info: { parameters: any[]; tree: ReturnType<typeof treeDatabase> }) => {
   // Extracting information
@@ -37,7 +41,7 @@ export const resolveDataFunction = (info: { parameters: any[]; tree: ReturnType<
             N(value.layer);
           }
         },
-        // Jump Case. This allow jumpoing to a named node or layer (if there is any)
+        // Jump Case. This allows jumpoing to a named node or layer (if there is any)
         string: (data) => {
           // Get the Tree Database
           const root = tree.root();

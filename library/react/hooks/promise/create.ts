@@ -1,5 +1,9 @@
-import { isFunction, isInvalid, isPromise, isUndefined, functionDelay } from '@library/presource';
 import { createReactStateHook } from '../state';
+import { isInvalid } from '@library/presource/js/is/invalid';
+import { isPromise } from '@library/presource/js/is/promise';
+import { isFunction } from '@library/presource/js/is/function';
+import { isUndefined } from '@library/presource/js/is/undefined';
+import { functionDelay } from '@library/presource/js/function/delay';
 
 // Design to create a promise hook
 export const createReactPromiseHook = (react: any) => {
