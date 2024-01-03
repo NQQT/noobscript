@@ -1,6 +1,5 @@
 import react from 'react';
-import { act, renderHook } from '@testing-library/react-hooks';
-import { describe, expect, jest, test } from '@jest/globals';
+import { act, renderHook } from '@testing-library/react';
 import { createReactPromiseHook } from './create';
 
 describe('usePromise hook', () => {

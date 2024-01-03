@@ -1,13 +1,12 @@
-import react from "react";
-import { renderHook, act } from "@testing-library/react-hooks";
-import { describe, test, expect } from "@jest/globals";
-import { createReactReferenceHook } from "./create";
+import react from 'react';
+import { act, renderHook } from '@testing-library/react';
+import { createReactReferenceHook } from './create';
 
-describe("Testing custom reference function", () => {
+describe('Testing custom reference function', () => {
   // Creating an instance of useReference
   const useReference = createReactReferenceHook(react);
 
-  test("Basic reference hook", () => {
+  test('Basic reference hook', () => {
     // This will keep record of how many times the rendered hook has been rendered
     let renderedCount = 0;
     // Rendering the Hook

@@ -1,6 +1,5 @@
 import React from 'react';
-import { act, renderHook } from '@testing-library/react-hooks';
-import { describe, expect, test } from '@jest/globals';
+import { act, renderHook } from '@testing-library/react';
 import { createReactContextTree } from '../..';
 
 describe('Testing Tree reference hook within context', () => {

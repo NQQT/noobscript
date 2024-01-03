@@ -1,4 +1,6 @@
-import { isUndefined, objectFilter, typeSwitch } from '@library/presource';
+import { typeSwitch } from '@library/presource/js/type/switch';
+import { isUndefined } from '@library/presource/js/is/undefined';
+import { objectFilter } from '@library/presource/js/object/filter';
 import { createReactContextTree } from '..';
 
 /** Extending Context Tree */

@@ -1,6 +1,8 @@
 /** Note that this is mainly used for grid column and row */
 
-import { typeSwitch, arrayCreate, isEqual } from '@library/presource';
+import { isEqual } from '@library/presource/js/is/equal';
+import { arrayCreate } from '@library/presource/js/array/create';
+import { typeSwitch } from '@library/presource/js/type/switch';
 import { FillerFunction } from '../type';
 
 export const styledPresetGridTemplate: FillerFunction = ({ v, t }) => ({

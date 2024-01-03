@@ -1,19 +1,18 @@
-import react from "react";
-import { renderHook, act } from "@testing-library/react-hooks";
-import { describe, test, expect, jest } from "@jest/globals";
-import { createReactDelayHook } from "./create";
+import react from 'react';
+import { act, renderHook } from '@testing-library/react';
+import { createReactDelayHook } from './create';
 
-describe("delayHook test", () => {
+describe('delayHook test', () => {
   // Creating a useDelayHook with the native react
   const useDelayHook = createReactDelayHook(react);
 
-  test("Testing basic delaying concept", () => {
+  test('Testing basic delaying concept', () => {
     // Using fake timer
     jest.useFakeTimers();
     let counter = 0;
     const { result } = renderHook(() => {
       counter++;
-      return useDelayHook(() => "delayed", 10);
+      return useDelayHook(() => 'delayed', 10);
     });
 
     // Counter has been rendered
@@ -25,15 +24,15 @@ describe("delayHook test", () => {
       jest.runAllTimers();
     });
     expect(counter).toBe(2);
-    expect(result.current()).toBe("delayed");
+    expect(result.current()).toBe('delayed');
   });
 
-  test("Overwriting a delay before it is triggered", () => {
+  test('Overwriting a delay before it is triggered', () => {
     jest.useFakeTimers();
     let counter = 0;
     const { result } = renderHook(() => {
       counter++;
-      return useDelayHook(() => "delayed", 10);
+      return useDelayHook(() => 'delayed', 10);
     });
     // Counter has been rendered
     expect(counter).toBe(1);
@@ -41,15 +40,15 @@ describe("delayHook test", () => {
     expect(result.current()).toBeUndefined();
     act(() => {
       // Overwriting the delayed
-      result.current(() => "waiting");
+      result.current(() => 'waiting');
       jest.runAllTimers();
     });
 
     expect(counter).toBe(2);
-    expect(result.current()).toBe("waiting");
+    expect(result.current()).toBe('waiting');
   });
 
-  test("As a debounce hook", () => {
+  test('As a debounce hook', () => {
     jest.useFakeTimers();
     let counter = 0;
     const { result } = renderHook(() => {
@@ -82,12 +81,12 @@ describe("delayHook test", () => {
     expect(result.current()).toBe(4);
   });
 
-  test("Can also accept async function if needed", async () => {
+  test('Can also accept async function if needed', async () => {
     jest.useFakeTimers();
     let counter = 0;
     const { result } = renderHook(() => {
       counter++;
-      return useDelayHook(() => "delayed", 10);
+      return useDelayHook(() => 'delayed', 10);
     });
     // Counter has been rendered
     expect(counter).toBe(1);
@@ -95,11 +94,11 @@ describe("delayHook test", () => {
     expect(result.current()).toBeUndefined();
     await act(async () => {
       // Overwriting the delayed
-      result.current(async () => "awaiting");
+      result.current(async () => 'awaiting');
       jest.runAllTimers();
     });
 
     expect(counter).toBe(2);
-    expect(result.current()).toBe("awaiting");
+    expect(result.current()).toBe('awaiting');
   });
 });

@@ -1,4 +1,7 @@
-import { arrayEach, instanceCreate, setConstant, stringIncludes } from '@library/presource';
+import { arrayEach } from '@library/presource/js/array/each';
+import { instanceCreate } from '@library/presource/js/instance/create';
+import { setConstant } from '@library/presource/js/set/constant';
+import { stringIncludes } from '@library/presource/js/string/includes';
 import { FillerFunction } from '../type';
 
 /** Preset filler for Grid Flow */
