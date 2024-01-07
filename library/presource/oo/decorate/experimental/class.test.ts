@@ -1,4 +1,3 @@
-import { describe, test } from '@jest/globals';
 import { arrayEach } from '../../../js/array/each';
 import { objectConstant } from '../../../js/object/constant';
 import { stringCapitalize } from '../../../js/string/capitalize';

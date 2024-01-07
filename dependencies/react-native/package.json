@@ -1,0 +1,25 @@
+{
+  "name": "@dependencies/react-native",
+  "version": "1.0.0",
+  "description": "React Native Dependencies",
+  "main": "index.ts",
+  "scripts": {
+    "start": "webpack serve --mode=development --open --hot",
+    "build": "webpack --mode=production",
+    "storybook": "storybook dev -p 6006",
+    "storybook:build": "storybook build",
+    "storybook:deploy": "storybook-to-ghpages",
+    "test": "npm run lint && npm jest",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json"
+  },
+  "keywords": [],
+  "author": "",
+  "dependencies": {
+    "native-base": "^3.4.28",
+    "react-native": "0.73.1",
+    "react-native-web": "~0.19.10",
+    "react-native-webview": "^13.6.4"
+  },
+  "license": "ISC"
+}

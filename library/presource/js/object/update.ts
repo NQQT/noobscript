@@ -7,4 +7,5 @@ export const objectUpdate = (object: any, update: any) => {
     // Update or overwriting values
     object[k] = v;
   });
+  return object;
 };

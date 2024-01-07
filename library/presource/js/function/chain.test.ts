@@ -50,6 +50,7 @@ describe('Testing Chain Function - the ability to endlessly chain function calls
 
     reset();
     chain().is().very().very().awesome();
+
     expect(chainRecord).toStrictEqual(['is', 'very', 'very', 'awesome']);
     chain().is().great();
     expect(chainRecord).toStrictEqual(['is', 'very', 'very', 'awesome', 'is', 'great']);

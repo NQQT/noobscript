@@ -19,7 +19,7 @@ type Data = {
 type Callback = (data: Data) => any;
 type ReturnFunction = {
   (...input: any[]): ReturnFunction;
-  [key: any]: ReturnFunction;
+  [key: string]: ReturnFunction;
 };
 
 type FunctionChain = (callback: Callback) => ReturnFunction;
@@ -97,8 +97,5 @@ export const functionChain: FunctionChain = (callback) => {
   });
 
   // Returnin the Chain Function
-  return chainFunction as {
-    (...input: any[]): any;
-    [key: any]: any;
-  };
+  return chainFunction as ReturnFunction;
 };
