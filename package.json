@@ -4,7 +4,8 @@
   "main": "index.js",
   "private": true,
   "workspaces": [
-    "app/*",
+    "app/cyoa/*",
+    "app/resume/*",
     "common/*",
     "dependencies/*",
     "library/*"
