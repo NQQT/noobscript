@@ -2,11 +2,12 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/app/DawnOfADemonLord" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/app/cyoax.github.io" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/app/design" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/app/last-light" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/app/story-gpt" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/app/story-gpt-native" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/app/cyoa/DawnOfADemonLord" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/app/cyoa/cyoax.github.io" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/app/cyoa/design" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/app/cyoa/last-light" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/app/cyoa/story-gpt" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/app/cyoa/story-gpt-native" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/app/resume/basic" vcs="Git" />
   </component>
 </project>
