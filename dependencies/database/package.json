@@ -1,0 +1,22 @@
+{
+  "name": "@dependencies/database",
+  "version": "1.0.0",
+  "description": "Localise and external database in front end",
+  "main": "index.ts",
+  "scripts": {
+    "start": "webpack serve --mode=development --open --hot",
+    "build": "webpack --mode=production",
+    "storybook": "storybook dev -p 6006",
+    "storybook:build": "storybook build",
+    "storybook:deploy": "storybook-to-ghpages",
+    "test": "npm run lint && npm jest",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json"
+  },
+  "keywords": [],
+  "author": "",
+  "dependencies": {
+    "exceljs": "^4.4.0"
+  },
+  "license": "ISC"
+}
