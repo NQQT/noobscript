@@ -1,4 +1,4 @@
-import { instanceCreate } from '../instance/create';
+import { instanceCreate } from '../instance';
 import { mapConstant } from './constant';
 
 /** For Creating a New Map Instance */

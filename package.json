@@ -4,12 +4,10 @@
   "main": "index.js",
   "private": true,
   "workspaces": [
-    "app/cyoa/*",
-    "app/resume/*",
     "common/*",
     "dependencies/*",
-    "keys/*",
-    "library/*"
+    "library/*",
+    "presource/*"
   ],
   "scripts": {
     "test": "jest",
