@@ -1,4 +1,4 @@
-import { functionPipe } from './pipe';
+import { functionPipe } from '@presource/core';
 
 describe('Function piping test', () => {
   test('it should be able to pipe values down', () => {

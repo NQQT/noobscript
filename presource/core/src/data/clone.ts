@@ -1,5 +1,5 @@
-import { objectEach } from '../object/each';
-import { typeSwitch } from '../type/switch';
+import { objectEach } from '../object';
+import { typeSwitch } from '../type';
 
 /** Designed for Deep Data Cloning */
 

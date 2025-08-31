@@ -1,4 +1,4 @@
-import { functionCurry } from './curry';
+import { functionCurry } from '@presource/core';
 
 describe('Testing Curry Function - the ability to construct curry function easily', () => {
   it('should be able to curry functions', () => {

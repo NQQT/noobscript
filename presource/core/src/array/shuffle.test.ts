@@ -1,5 +1,5 @@
-import { describe, test, expect } from '@jest/globals';
-import { arrayShuffle } from './shuffle';
+import { describe, expect, test } from '@jest/globals';
+import { arrayShuffle } from '@presource/core';
 
 describe('Testing array shuffling', () => {
   test('Array has been shuffled', () => {

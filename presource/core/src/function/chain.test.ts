@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { functionChain } from './chain';
+import { functionChain } from '@presource/core';
 
 describe('Testing Chain Function - the ability to endlessly chain function calls', () => {
   test('Basic chaining triggers', () => {

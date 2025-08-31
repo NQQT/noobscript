@@ -1,6 +1,6 @@
 import { typeSwitch } from '../type/switch';
 import { objectStringify } from '../object/stringify';
-import { NULL, UNDEFINED } from '../constants/string';
+import { NULL_STRING, UNDEFINED_STRING } from '../constants/string';
 import { arrayStringify } from '../array/stringify';
 import { stringSwitch } from '../string/switch';
 
@@ -17,8 +17,8 @@ export const toString = (...input: any[]): string => {
         // If Object. Stringify the object
         object: () => objectStringify(unknown),
         array: () => arrayStringify(unknown),
-        null: () => NULL,
-        undefined: () => UNDEFINED,
+        null: () => NULL_STRING,
+        undefined: () => UNDEFINED_STRING,
         // Unable to Convert for whatever reason
         default: () => unknown.toString(),
       });

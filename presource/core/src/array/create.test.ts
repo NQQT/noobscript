@@ -1,5 +1,5 @@
-import { describe, test, expect } from '@jest/globals';
-import { arrayCreate } from './create';
+import { describe, expect, test } from '@jest/globals';
+import { arrayCreate } from '@presource/core';
 
 describe('Basic arrayCreate Usage', () => {
   test('Creating an array with various inputs', () => {

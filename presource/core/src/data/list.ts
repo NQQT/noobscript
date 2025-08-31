@@ -6,15 +6,9 @@
  *
  */
 
-import { isEqual } from '../is/equal';
-import { isFunction } from '../is/function';
-import { objectAlias } from '../object/alias';
-import { objectEach } from '../object/each';
-import { objectExtract } from '../object/extract';
-import { objectFlatten } from '../object/flatten';
-import { objectObserve } from '../object/observe';
-import { objectProxy } from '../object/proxy';
-import { typeSwitch } from '../type/switch';
+import { isEqual, isFunction } from '../is';
+import { objectAlias, objectEach, objectExtract, objectFlatten, objectObserve, objectProxy } from '../object';
+import { typeSwitch } from '../type';
 
 type List<T> = { [key: string]: Entry<T> };
 type Entry<T> = { [key in keyof T]: Entry<T[key]> };

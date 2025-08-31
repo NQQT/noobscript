@@ -1,5 +1,5 @@
 import { describe, expect } from '@jest/globals';
-import { functionState } from './state';
+import { functionState } from '@presource/core';
 
 describe('Funtion State Test - Design for Reactivity', () => {
   it('can be used reactively', () => {

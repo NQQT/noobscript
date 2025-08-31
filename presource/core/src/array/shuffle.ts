@@ -1,4 +1,4 @@
-import { MATH } from '../constants/object';
+import { MATH } from '../constants';
 
 // The Type object
 export type ArrayShuffle = <T>(original: T[]) => T[];

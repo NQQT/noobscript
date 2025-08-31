@@ -1,7 +1,5 @@
-import { describe, test, expect } from '@jest/globals';
-import { scriptPause } from '../script/pause';
-import { arrayCreate } from './create';
-import { arrayEach, arrayEachAsync } from './each';
+import { describe, expect, test } from '@jest/globals';
+import { arrayCreate, arrayEach, arrayEachAsync, scriptPause } from '@presource/core';
 
 describe('Basic Usage of arrayEach', () => {
   test('Loop through every value and add together', () => {

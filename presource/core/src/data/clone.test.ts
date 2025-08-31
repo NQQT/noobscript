@@ -1,5 +1,5 @@
-import { describe, test, expect } from '@jest/globals';
-import { dataClone } from './clone';
+import { describe, expect, test } from '@jest/globals';
+import { dataClone } from '@presource/core';
 
 describe('Data cloning', () => {
   test('Cloning primitive datas', () => {

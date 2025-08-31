@@ -1,5 +1,5 @@
 import { describe, expect, jest } from '@jest/globals';
-import { functionQueue } from './queue';
+import { functionQueue } from '@presource/core';
 
 describe('How to use Function Queue - ability to queue function in a list', () => {
   // We will need to simulate some fate timer first.

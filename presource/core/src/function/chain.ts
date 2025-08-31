@@ -1,7 +1,6 @@
-import { NULL } from '../constants/primitive';
-import { isEqual } from '../is/equal';
-import { isNull } from '../is/null';
-import { stringSwitch } from '../string/switch';
+import { NULL } from '../constants';
+import { isEqual, isNull } from '../is';
+import { stringSwitch } from '../string';
 import { functionProxy } from './proxy';
 
 type Data = {

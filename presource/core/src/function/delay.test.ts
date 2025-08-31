@@ -1,5 +1,5 @@
 import { describe, expect, jest, test } from '@jest/globals';
-import { functionDelay } from './delay';
+import { functionDelay } from '@presource/core';
 
 describe('Delaying Function', () => {
   // Using Jest fake timer

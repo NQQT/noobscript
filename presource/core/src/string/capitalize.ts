@@ -1,11 +1,11 @@
-import { SPACE } from '../constants/string';
+import { SPACE_STRING } from '../constants/string';
 
 /** Capitalize first letter of every word
  * Note that this does not fix the word itself
  */
 export const stringCapitalize = (value: string, letter = 0) => {
   // Get an array of String
-  const array = value.split(SPACE).map((entry) => {
+  const array = value.split(SPACE_STRING).map((entry) => {
     if (!entry) return entry;
     const length = entry.length;
     // If letter is less than 0. Calculate in Reverse
@@ -13,5 +13,5 @@ export const stringCapitalize = (value: string, letter = 0) => {
     return entry.slice(0, letter) + entry.charAt(letter).toUpperCase() + entry.slice(letter + 1);
   });
   // return the array of string
-  return array.join(SPACE);
+  return array.join(SPACE_STRING);
 };

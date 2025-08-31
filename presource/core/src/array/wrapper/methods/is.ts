@@ -6,7 +6,7 @@
 
 import { Params } from '..';
 import { FALSE, TRUE } from '../../../constants/primitive';
-import { UNDEFINED } from '../../../constants/string';
+import { UNDEFINED_STRING } from '../../../constants/string';
 import { isEqual } from '../../../is/equal';
 import { stringSwitch } from '../../../string/switch';
 import { typeSwitch } from '../../../type/switch';
@@ -27,7 +27,7 @@ export const isFunction: IsFunction = (params, request) => {
         invalid: ({ valid }: any) => !valid,
         // Whether array is filled correctly or not
         // Meaning it must not be empty and it must not have undefined as a value
-        filled: ({ empty }: any) => !empty() && isEqual(instance.count(UNDEFINED), 0),
+        filled: ({ empty }: any) => !empty() && isEqual(instance.count(UNDEFINED_STRING), 0),
         // By default. Return as false
         default: () => FALSE,
       }),

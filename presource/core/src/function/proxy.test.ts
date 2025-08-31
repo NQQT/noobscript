@@ -1,6 +1,5 @@
-import { describe, expect, test, jest } from '@jest/globals';
-import { functionProxy } from './proxy';
-import { stringSwitch } from '../string/switch';
+import { describe, expect, test } from '@jest/globals';
+import { functionProxy, stringSwitch } from '@presource/core';
 
 describe('Testing Proxy Function', () => {
   let expectedCurrentKey: any = null;

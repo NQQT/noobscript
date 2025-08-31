@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { dataList } from './list';
+import { dataList } from '@presource/core';
 
 describe('Data List', () => {
   test('Simple List object creation and property access', () => {

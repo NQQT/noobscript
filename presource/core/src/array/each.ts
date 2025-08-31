@@ -1,6 +1,6 @@
-import { isUndefined } from '../is/undefined';
-import { UNDEFINED } from '../constants/primitive';
-import { objectAlias } from '../object/alias';
+import { isUndefined } from '../is';
+import { UNDEFINED } from '../constants';
+import { objectAlias } from '../object';
 
 type Argument<T> = {
   index: number;

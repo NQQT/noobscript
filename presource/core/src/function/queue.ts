@@ -1,8 +1,7 @@
 import { functionDelay } from './delay';
-import { isPromise } from '../is/promise';
-import { isUndefined } from '../is/undefined';
-import { FALSE, TRUE } from '../constants/primitive';
-import { objectUpdate } from '../object/update';
+import { isPromise, isUndefined } from '../is';
+import { FALSE, TRUE } from '../constants';
+import { objectUpdate } from '../object';
 
 type ListenerHandler = {
   // Trigger on every time a function is executed

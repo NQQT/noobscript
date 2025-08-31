@@ -1,6 +1,6 @@
 import { arrayEach } from '../array/each';
 import { FALSE, TRUE } from '../constants/primitive';
-import { EMPTY } from '../constants/string';
+import { EMPTY_STRING } from '../constants/string';
 import { objectEach } from '../object/each';
 import { typeSwitch } from '../type/switch';
 import { isEqual } from './equal';
@@ -11,7 +11,7 @@ export const isEmpty = (input: any) =>
     // For number, only check whether input is a NaN value
     number: () => isNaN(input),
     // For String. Checking empty String
-    string: () => isEqual(input.trim(), EMPTY),
+    string: () => isEqual(input.trim(), EMPTY_STRING),
     array: () => isEmptyArray(input),
     object: () => isEmptyObject(input),
     // By Default. Return True

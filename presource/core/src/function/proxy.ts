@@ -1,9 +1,9 @@
 /** A way to proxify a function */
 
-import { FALSE, NULL, TRUE } from '../constants/primitive';
-import { instanceCreate } from '../instance/create';
-import { isArray } from '../is/array';
-import { proxyConstant } from '../proxy/constant';
+import { FALSE, NULL, TRUE } from '../constants';
+import { instanceCreate } from '../instance';
+import { isArray } from '../is';
+import { proxyConstant } from '../proxy';
 
 // The callback arguments
 type Arguments = {

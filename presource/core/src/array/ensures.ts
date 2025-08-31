@@ -1,4 +1,4 @@
-import { typeSwitch } from '../type/switch';
+import { typeSwitch } from '../type';
 
 /** Ensuring something is an array regardless of whatever it is */
 export const arrayEnsures = (unknown?: any): any[] =>
