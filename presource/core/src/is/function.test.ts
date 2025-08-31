@@ -1,5 +1,5 @@
-import { describe, test, expect } from '@jest/globals';
-import { isFunction, isFunctionAsync } from './function';
+import { describe, expect, test } from '@jest/globals';
+import { isFunction } from '@presource/core';
 
 // For Checking Standard Function
 describe('Checking value is a Function type', () => {

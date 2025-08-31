@@ -1,5 +1,5 @@
-import { describe, test, expect } from '@jest/globals';
-import { isPromise } from './promise';
+import { describe, expect, test } from '@jest/globals';
+import { isPromise } from '@presource/core';
 
 describe('isPromise', () => {
   test('Basic promise check', () => {

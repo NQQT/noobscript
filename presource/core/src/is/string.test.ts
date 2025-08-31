@@ -1,5 +1,5 @@
-import { describe, test, expect } from '@jest/globals';
-import { isString } from './string';
+import { describe, expect, test } from '@jest/globals';
+import { isString } from '@presource/core';
 
 describe('Basic isString Test', () => {
   test('Primitive is a string or not', () => {

@@ -1,5 +1,5 @@
-import { describe, test, expect } from '@jest/globals';
-import { isObject } from './object';
+import { describe, expect, test } from '@jest/globals';
+import { isObject } from '@presource/core';
 
 describe('isObject Check', () => {
   test('Checking basic variables as object', () => {

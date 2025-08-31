@@ -1,5 +1,5 @@
-import { describe, test, expect } from '@jest/globals';
-import { isEqual } from './equal';
+import { describe, expect, test } from '@jest/globals';
+import { isEqual } from '@presource/core';
 
 describe('Checking Equality', () => {
   test('primitive should be equal to each other', () => {

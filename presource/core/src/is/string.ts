@@ -1,6 +1,6 @@
 import { isEqual } from './equal';
-import { stringConstant } from '../string/constant';
-import { typeConstructor } from '../type/constructor';
+import { stringConstant } from '../string';
+import { typeConstructor } from '../type';
 
 // Checking if variable is a string or not
 export const isString = (unknown: any): unknown is string => isEqual(typeConstructor(unknown), stringConstant());

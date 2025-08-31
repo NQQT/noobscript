@@ -1,5 +1,5 @@
 import { isEqual } from './equal';
-import { typeName } from '../type/name';
+import { typeName } from '../type';
 
 // The name of the function
 const nameFunctionSync = 'function';

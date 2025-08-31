@@ -1,5 +1,5 @@
-import { objectConstant } from '../object/constant';
-import { typeConstructor } from '../type/constructor';
+import { objectConstant } from '../object';
+import { typeConstructor } from '../type';
 import { isEqual } from './equal';
 
 /** Checking whether value is an array or not */

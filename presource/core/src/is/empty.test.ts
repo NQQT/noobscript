@@ -1,5 +1,5 @@
-import { describe, test, expect } from '@jest/globals';
-import { isEmpty, isEmptyArray, isEmptyObject } from './empty';
+import { describe, expect, test } from '@jest/globals';
+import { isEmpty, isEmptyArray, isEmptyObject } from '@presource/core';
 
 describe('isEmpty', () => {
   test('Testing isEmptyArray', () => {

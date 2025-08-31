@@ -1,5 +1,5 @@
-import { describe, test, expect } from '@jest/globals';
-import { isBoolean } from './boolean';
+import { describe, expect, test } from '@jest/globals';
+import { isBoolean } from '@presource/core';
 
 describe('Checking value is a Boolean Type', () => {
   test('boolean values should return true', () => {

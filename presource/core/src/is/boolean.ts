@@ -1,7 +1,7 @@
 import { isEqual } from './equal';
-import { booleanConstant } from '../boolean/constant';
-import { typeConstructor } from '../type/constructor';
-import { TRUE, FALSE } from '../constants/primitive';
+import { booleanConstant } from '../boolean';
+import { typeConstructor } from '../type';
+import { FALSE, TRUE } from '../constants';
 
 /** Checking if value is a boolean */
 export const isBoolean = (unknown: any): unknown is boolean => isEqual(typeConstructor(unknown), booleanConstant());
