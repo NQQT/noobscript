@@ -1,4 +1,4 @@
-import { UNDEFINED } from '../constants/primitive';
+import { UNDEFINED } from '../constants';
 import { isUndefined } from '../is';
 
 // Setting up the Type Arguments

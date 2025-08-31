@@ -1,6 +1,5 @@
-import { describe, test, expect } from '@jest/globals';
-import { UNDEFINED } from '../constants/primitive';
-import { jsonUpdate } from './update';
+import { describe, expect, test } from '@jest/globals';
+import { jsonUpdate, UNDEFINED } from '@presource/core';
 
 describe('Basic jsonMerge Test', () => {
   test('Merging and Overwriting Simple Data', () => {

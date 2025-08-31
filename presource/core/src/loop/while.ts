@@ -1,5 +1,5 @@
 import { isUndefined } from '../is';
-import { UNDEFINED } from '../constants/primitive';
+import { UNDEFINED } from '../constants';
 
 type Argument = {
   // Standard Arguments

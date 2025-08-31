@@ -1,5 +1,5 @@
-import { describe, test, expect } from '@jest/globals';
-import { loopWhile } from './while';
+import { describe, expect, test } from '@jest/globals';
+import { loopWhile } from '@presource/core';
 
 describe('While Loop (Basic)', () => {
   // Basic While Looping

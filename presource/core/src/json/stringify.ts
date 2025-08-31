@@ -1,5 +1,5 @@
-import { objectStringify } from '../object/stringify';
-import { typeSwitch } from '../type/switch';
+import { objectStringify } from '../object';
+import { typeSwitch } from '../type';
 import { jsonConstant } from './constant';
 
 /** Stringify Object with Json Stringify */

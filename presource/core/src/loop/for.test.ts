@@ -1,5 +1,5 @@
-import { describe, test, expect } from '@jest/globals';
-import { loopFor, loopForAsync } from './for';
+import { describe, expect, test } from '@jest/globals';
+import { loopFor, loopForAsync } from '@presource/core';
 
 // These are basic cases loopFor
 describe('For Loop (Basic)', () => {

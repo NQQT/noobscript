@@ -1,10 +1,7 @@
-import { objectEach } from '../object/each';
-import { arrayEach } from '../array/each';
-import { isEqual } from '../is/equal';
-import { typeSwitch } from '../type/switch';
-import { typeName } from '../type/name';
-import { isArray } from '../is/array';
-import { isObject } from '../is/object';
+import { objectEach } from '../object';
+import { arrayEach } from '../array';
+import { isArray, isEqual, isObject } from '../is';
+import { typeName, typeSwitch } from '../type';
 
 /** For Merging Two Json Object Together */
 export const jsonUpdate = (primaryObject: any, secondaryObject: any) => {
