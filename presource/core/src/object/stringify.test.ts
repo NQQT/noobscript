@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { objectStringify } from './stringify';
+import { objectStringify } from '@presource/core';
 
 // Testing Object Registry
 describe('Object Stringify', () => {

@@ -1,7 +1,5 @@
-import { isEqual } from '../is/equal';
-import { isObject } from '../is/object';
-import { isUndefined } from '../is/undefined';
-import { toString } from '../to/string';
+import { isEqual, isObject, isUndefined } from '../is';
+import { toString } from '../to';
 import { objectAlias } from './alias';
 import { objectEach, objectEachAliasKey } from './each';
 

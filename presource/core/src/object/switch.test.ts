@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { objectSwitch } from './switch';
+import { objectSwitch } from '@presource/core';
 
 describe('Object Switch Functionality', () => {
   test('Basic Switch Route', () => {

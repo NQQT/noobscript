@@ -1,5 +1,5 @@
-import { describe, test, expect } from '@jest/globals';
-import { objectUnflatten } from './unflatten';
+import { describe, expect, test } from '@jest/globals';
+import { objectUnflatten } from '@presource/core';
 
 describe('objectUnflatten', () => {
   test('Unflattening objects that already unflattened', () => {

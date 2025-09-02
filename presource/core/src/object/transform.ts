@@ -1,7 +1,5 @@
-import { isEqual } from '../is/equal';
-import { isObject } from '../is/object';
-import { isUndefined } from '../is/undefined';
-import { typeSwitch } from '../type/switch';
+import { isEqual, isObject, isUndefined } from '../is';
+import { typeSwitch } from '../type';
 import { objectEach } from './each';
 import { objectHasKey } from './has';
 import { objectKeys } from './keys';

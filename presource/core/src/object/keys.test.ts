@@ -1,5 +1,5 @@
-import { describe, test, expect } from '@jest/globals';
-import { objectKeys } from './keys';
+import { describe, expect, test } from '@jest/globals';
+import { objectKeys } from '@presource/core';
 
 describe('Object Keys', () => {
   const example = {

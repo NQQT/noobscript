@@ -1,7 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { objectTransform } from './transform';
-import { objectScan } from './scan';
-import { isEqual } from '../is/equal';
+import { isEqual, objectScan, objectTransform } from '@presource/core';
 
 describe('objectTransform', () => {
   test('Simple transformation 1', () => {

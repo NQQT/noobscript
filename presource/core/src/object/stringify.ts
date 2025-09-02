@@ -1,4 +1,4 @@
-import { jsonConstant } from '../json/constant';
+import { jsonConstant } from '../json';
 
 // Stringify Object
 export const objectStringify = (object: { [key: string]: any }) => {

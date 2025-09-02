@@ -1,5 +1,5 @@
-import { describe, test, expect } from '@jest/globals';
-import { objectFill } from './fill';
+import { describe, expect, test } from '@jest/globals';
+import { objectFill } from '@presource/core';
 
 describe('Testing objectFill functionality', () => {
   test('Filling in an object', () => {

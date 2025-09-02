@@ -1,5 +1,5 @@
-import { describe, test, expect } from '@jest/globals';
-import { objectAlias } from './alias';
+import { describe, expect, test } from '@jest/globals';
+import { objectAlias } from '@presource/core';
 
 describe('Object Alias Test', () => {
   test('Object aliasing', () => {

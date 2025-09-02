@@ -1,5 +1,5 @@
-import { describe, test, expect } from '@jest/globals';
-import { objectCreate } from './create';
+import { describe, expect, test } from '@jest/globals';
+import { objectCreate } from '@presource/core';
 
 describe('Object Create Test', () => {
   test('Basic Object Creation with Primitive values', () => {

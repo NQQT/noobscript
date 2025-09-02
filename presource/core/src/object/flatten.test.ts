@@ -1,5 +1,5 @@
-import { describe, test, expect } from '@jest/globals';
-import { objectFlatten } from './flatten';
+import { describe, expect, test } from '@jest/globals';
+import { objectFlatten } from '@presource/core';
 
 describe('Object flatten', () => {
   test('Basic object flattening', () => {

@@ -4,10 +4,10 @@
  *
  */
 
-import { TRUE } from '../constants/primitive';
-import { instanceCreate } from '../instance/create';
-import { isInvalid } from '../is/invalid';
-import { proxyConstant } from '../proxy/constant';
+import { TRUE } from '../constants';
+import { instanceCreate } from '../instance';
+import { isInvalid } from '../is';
+import { proxyConstant } from '../proxy';
 
 type Arguments<T> = {
   // Long Hand notations

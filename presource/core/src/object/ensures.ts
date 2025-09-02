@@ -1,6 +1,6 @@
-import { arrayEach } from '../array/each';
-import { toString } from '../to/string';
-import { typeSwitch } from '../type/switch';
+import { arrayEach } from '../array';
+import { toString } from '../to';
+import { typeSwitch } from '../type';
 
 /** Making sure object is an object */
 export const objectEnsures = (unknown?: any): { [key: string]: any } =>

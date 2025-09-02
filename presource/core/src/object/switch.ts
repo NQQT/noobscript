@@ -1,4 +1,4 @@
-import { FALSE, TRUE } from '../constants/primitive';
+import { FALSE, TRUE } from '../constants';
 import { objectEach } from './each';
 import { objectHasKey } from './has';
 import { objectMap } from './map';

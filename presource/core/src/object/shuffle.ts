@@ -1,4 +1,4 @@
-import { arrayShuffle } from '../array/shuffle';
+import { arrayShuffle } from '../array';
 import { objectKeys } from './keys';
 
 // For Shuffling an Object

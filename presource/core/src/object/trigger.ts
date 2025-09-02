@@ -5,7 +5,7 @@
  *
  */
 
-import { isObject } from '../is/object';
+import { isObject } from '../is';
 import { objectEach } from './each';
 import { objectHasKey } from './has';
 import { objectUpdate } from './update';

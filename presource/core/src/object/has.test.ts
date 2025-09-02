@@ -1,5 +1,5 @@
-import { describe, test, expect } from '@jest/globals';
-import { objectHasKey } from './has';
+import { describe, expect, test } from '@jest/globals';
+import { objectHasKey } from '@presource/core';
 
 describe('Object Has', () => {
   const example = { a: 'apple', b: 'banana', c: 'cat', d: 'dog' };

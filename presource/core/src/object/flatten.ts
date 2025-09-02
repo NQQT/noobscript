@@ -1,4 +1,4 @@
-import { isObject } from '../is/object';
+import { isObject } from '../is';
 import { objectScan } from './scan';
 
 type Arguments = {

@@ -1,5 +1,5 @@
-import { UNDEFINED } from '../constants/primitive';
-import { isUndefined } from '../is/undefined';
+import { UNDEFINED } from '../constants';
+import { isUndefined } from '../is';
 import { objectAlias } from './alias';
 import { objectKeys } from './keys';
 

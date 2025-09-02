@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { objectTrigger } from './trigger';
+import { objectTrigger } from '@presource/core';
 
 describe('Object Trigger', () => {
   test('Basic trigger', () => {

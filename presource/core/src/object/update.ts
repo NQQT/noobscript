@@ -7,5 +7,6 @@ export const objectUpdate = (object: any, update: any) => {
     // Update or overwriting values
     object[k] = v;
   });
+  // Return the object for future chaining
   return object;
 };

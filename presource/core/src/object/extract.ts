@@ -4,10 +4,10 @@
  *
  */
 
-import { arrayEach } from '../array/each';
-import { UNDEFINED } from '../constants/primitive';
-import { isObject } from '../is/object';
-import { typeSwitch } from '../type/switch';
+import { arrayEach } from '../array';
+import { UNDEFINED } from '../constants';
+import { isObject } from '../is';
+import { typeSwitch } from '../type';
 
 // Object Extract Type format
 export type ObjectExtract = (object: { [key: string]: any }, extract: any) => any;

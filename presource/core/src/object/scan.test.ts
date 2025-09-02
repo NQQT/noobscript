@@ -1,6 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { isString } from '../is/string';
-import { objectScan } from './scan';
+import { isString, objectScan } from '@presource/core';
 
 describe('Object Scan', () => {
   test('Basic object scanning', () => {

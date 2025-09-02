@@ -1,6 +1,5 @@
-import { arrayCreate } from '../array/create';
-import { arrayEach } from '../array/each';
-import { typeSwitch } from '../type/switch';
+import { arrayCreate, arrayEach } from '../array';
+import { typeSwitch } from '../type';
 
 type Keys = number | string | any[];
 type Values =

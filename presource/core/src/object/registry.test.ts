@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { objectRegistry } from './registry';
+import { objectRegistry } from '@presource/core';
 
 // Testing Object Registry
 describe('Testing Object Registry', () => {

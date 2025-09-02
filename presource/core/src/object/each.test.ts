@@ -1,6 +1,6 @@
 import { describe, expect, test } from '@jest/globals';
 import { objectEach, objectEachAsync } from './each';
-import { scriptPause } from '../script/pause';
+import { scriptPause } from '@presource/core';
 
 describe('Object Each', () => {
   const example = {

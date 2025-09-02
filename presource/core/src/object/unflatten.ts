@@ -5,12 +5,10 @@
  *
  */
 
-import { arrayEach } from '../array/each';
-import { arrayEnsures } from '../array/ensures';
-import { isEqual } from '../is/equal';
-import { isUndefined } from '../is/undefined';
-import { toString } from '../to/string';
-import { typeSwitch } from '../type/switch';
+import { arrayEach, arrayEnsures } from '../array';
+import { isEqual, isUndefined } from '../is';
+import { toString } from '../to';
+import { typeSwitch } from '../type';
 import { objectEach } from './each';
 import { objectKeys } from './keys';
 import { objectMerge } from './merge';

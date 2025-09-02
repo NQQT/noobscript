@@ -1,5 +1,5 @@
 import { typeSwitch } from '../type/switch';
-import { isUndefined } from '../is/undefined';
+import { isUndefined } from '../is';
 import { objectUpdate } from './update';
 import { objectCreate } from './create';
 import { objectEach } from './each';

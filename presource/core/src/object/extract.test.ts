@@ -1,5 +1,5 @@
-import { describe, test, expect } from '@jest/globals';
-import { objectExtract } from './extract';
+import { describe, expect, test } from '@jest/globals';
+import { objectExtract } from '@presource/core';
 
 describe('Object value extraction', () => {
   // Creating an example to test

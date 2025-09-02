@@ -1,5 +1,5 @@
-import { describe, test, expect } from '@jest/globals';
-import { objectMerge } from './merge';
+import { describe, expect, test } from '@jest/globals';
+import { objectMerge } from '@presource/core';
 
 describe('objectMerge', () => {
   test('Merging with single level objects', () => {

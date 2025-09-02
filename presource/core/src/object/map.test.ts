@@ -1,5 +1,5 @@
-import { describe, test, expect } from '@jest/globals';
-import { objectMap } from './map';
+import { describe, expect, test } from '@jest/globals';
+import { objectMap } from '@presource/core';
 
 describe('Object Mapping Function (similiar to Array.map', () => {
   const example = {

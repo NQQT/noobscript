@@ -1,5 +1,5 @@
-import { describe, test, expect } from '@jest/globals';
-import { objectFilter } from './filter';
+import { describe, expect, test } from '@jest/globals';
+import { objectFilter } from '@presource/core';
 
 describe('Usage of objectFilter', () => {
   // Sample object
