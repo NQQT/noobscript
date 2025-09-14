@@ -1,5 +1,5 @@
-import { isInvalid } from '../../is/invalid';
-import { objectProxy } from '../../object/proxy';
+import { isInvalid } from '../../is';
+import { objectProxy } from '../../object';
 import { countFunction } from './methods/count';
 import { eachFunction } from './methods/each';
 import { getFunction } from './methods/get';

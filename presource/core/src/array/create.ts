@@ -1,6 +1,6 @@
-import { isUndefined } from '../is/undefined';
-import { UNDEFINED } from '../constants/primitive';
-import { typeSwitch } from '../type/switch';
+import { isUndefined } from '../is';
+import { UNDEFINED } from '../constants';
+import { typeSwitch } from '../type';
 
 type Arguments = {
   index: number;

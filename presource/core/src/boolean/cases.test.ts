@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { booleanCases } from './cases';
+import { booleanCases } from '@presource/core';
 
 describe('Testing BooleanEach', () => {
   // Boolean each is different than arrayEach or objectEach, as booleanEach is not against an object.

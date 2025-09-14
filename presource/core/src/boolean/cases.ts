@@ -1,7 +1,7 @@
-import { typeSwitch } from '../type/switch';
-import { objectEach } from '../object/each';
-import { isUndefined } from '../is/undefined';
-import { UNDEFINED } from '../constants/primitive';
+import { typeSwitch } from '../type';
+import { objectEach } from '../object';
+import { isUndefined } from '../is';
+import { UNDEFINED } from '../constants';
 
 type Cases = { [key: string]: any };
 type Argument<T> = { key: string; k: string; value: boolean; v: boolean; result: keyof T };

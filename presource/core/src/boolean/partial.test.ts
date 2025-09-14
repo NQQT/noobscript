@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { booleanPartialTrue, booleanPartialFalse } from './partial';
+import { booleanPartialFalse, booleanPartialTrue } from '@presource/core';
 
 describe('Testing booleanPartialTrue functionality', () => {
   test('Basic Usage', () => {

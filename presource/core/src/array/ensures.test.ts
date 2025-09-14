@@ -1,5 +1,5 @@
-import { describe, test, expect } from '@jest/globals';
-import { arrayEnsures } from './ensures';
+import { describe, expect, test } from '@jest/globals';
+import { arrayEnsures } from '@presource/core';
 
 describe('Array Ensures: Ensuring a variable is an array', () => {
   test('All output should be an array', () => {
