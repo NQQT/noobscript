@@ -10,6 +10,7 @@ describe('Basic jsonMerge Test', () => {
 
     // Standard Object Merging
     expect(jsonUpdate({ a: 1 }, { b: 2 })).toStrictEqual({ a: 1, b: 2 });
+
     // Standard Array Merging
     expect(jsonUpdate([{ a: 1 }], [{ b: 2 }])).toStrictEqual([{ a: 1, b: 2 }]);
 

@@ -1,8 +1,7 @@
 import { Params } from '..';
 import { arrayEach } from '../../each';
-import { typeSwitch } from '../../../type/switch';
-import { TRUE } from '../../../constants/primitive';
-import { isEqual } from '../../../is/equal';
+import { typeSwitch } from '../../../type';
+import { isEqual } from '../../../is';
 
 type Possible = string | boolean | number | null | undefined;
 type Arguments = {
@@ -35,11 +34,11 @@ export const selectFunction: SelectFunction = (params, request) => {
             boolean: () => B(value),
           });
           // If Result is True. Return thetrue value
-          if (result) return TRUE;
+          if (result) return true;
         });
       },
       // By Default. Return True
-      default: () => TRUE,
+      default: () => true,
     });
   });
 

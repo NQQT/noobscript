@@ -1,6 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { dataClone } from '../data';
-import { objectObserve } from '@presource/core';
+import { dataClone, objectObserve } from '@presource/core';
 
 describe('Object Observe', () => {
   test('Observation test for primitive', () => {

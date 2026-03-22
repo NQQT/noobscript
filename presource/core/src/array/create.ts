@@ -1,5 +1,4 @@
 import { isUndefined } from '../is';
-import { UNDEFINED } from '../constants';
 import { typeSwitch } from '../type';
 
 type Arguments = {
@@ -32,7 +31,7 @@ export const arrayCreate: ArrayCreate = (argument) => {
     },
     // If Number. Return an Array
     number: ({ v }) => {
-      while (v--) result.push(UNDEFINED);
+      while (v--) result.push(undefined);
     },
   });
 

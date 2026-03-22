@@ -4,7 +4,6 @@
  *
  */
 
-import { NULL } from '../constants/primitive';
 import { functionQueue } from '../function';
 import { objectMap, objectUpdate } from '../object';
 import { createPromise } from '../promise';
@@ -67,8 +66,8 @@ export const scriptChain: ScriptChain = (list) => {
       complete: () => {
         const { resolve } = promiseControl;
         // Clearing the Instance
-        relay = NULL;
-        queue = NULL;
+        relay = null;
+        queue = null;
         // Triggering Resolve
         resolve();
       },

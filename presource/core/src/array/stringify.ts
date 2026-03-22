@@ -1,4 +1,2 @@
-import { jsonConstant } from '../json';
-
 /** Simple Array Stringify for now */
-export const arrayStringify = (array: any[]) => jsonConstant().stringify(array);
+export const arrayStringify = (array: any[]) => JSON.stringify(array);

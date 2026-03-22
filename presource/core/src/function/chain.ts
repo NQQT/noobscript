@@ -1,4 +1,3 @@
-import { NULL } from '../constants';
 import { isEqual, isNull } from '../is';
 import { stringSwitch } from '../string';
 import { functionProxy } from './proxy';
@@ -30,15 +29,15 @@ export const functionChain: FunctionChain = (callback) => {
   // The Initial Index
   let index = 0;
   // The Key String
-  let key: null | string = NULL;
+  let key: null | string = null;
   // This is the pending caller.
-  let pending: any = NULL;
+  let pending: any = null;
 
   // This is to reset all the parameters
   const reset = () => {
     chain = [];
     index = 0;
-    key = NULL;
+    key = null;
   };
 
   // Building the Chain Function from the Function Proxy
@@ -68,7 +67,7 @@ export const functionChain: FunctionChain = (callback) => {
         // Passing the parameter
         const result = callback({ chain, index, key, params });
         // Clearing the Pending List
-        pending = NULL;
+        pending = null;
         // Return the Result or chainfunction for further chaining
         return result || chainFunction;
       },

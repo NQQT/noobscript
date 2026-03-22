@@ -1,5 +1,4 @@
 import { isUndefined } from '../is';
-import { UNDEFINED } from '../constants';
 import { objectAlias } from '../object';
 
 type Argument<T> = {
@@ -20,11 +19,11 @@ export type ArrayEachAsync = <T>(list: T[], callback: Callback<T>) => Promise<an
 
 const getParams = <T>(list: T[], callback: Callback<T>): any => {
   const params = {
-    value: UNDEFINED,
+    value: undefined,
     index: 0,
     length: list.length,
     callback,
-    result: UNDEFINED,
+    result: undefined,
   };
 
   // Return the Params

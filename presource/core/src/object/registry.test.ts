@@ -5,6 +5,7 @@ import { objectRegistry } from '@presource/core';
 describe('Testing Object Registry', () => {
   // Creating a standard registry to test
   const registry = objectRegistry();
+
   test('Basic get and set functionality', () => {
     // Register entry one has the value of "1";
     registry('one', 1);
@@ -45,7 +46,7 @@ describe('Handler Functions', () => {
     expect(
       // Expecting the return value to be 0
       registry(({ each }) => {
-        // Return the Each Value
+        // Return the value of each
         return each(({ key, index }) => {
           // If Key is found, then return the index
           if (key === 'one') return index;

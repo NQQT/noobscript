@@ -1,4 +1,4 @@
-import { objectUpdate } from './update';
+import { objectUpdate } from '@presource/core';
 
 describe('Object Update', () => {
   test('able to merge objects together', () => {

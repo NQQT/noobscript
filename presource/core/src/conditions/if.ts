@@ -1,6 +1,5 @@
-import { isBooleanTrue, isBooleanFalse } from '../is/boolean';
-import { isArray } from '../is/array';
-import { TRUE } from '../constants/primitive';
+import { isBooleanFalse, isBooleanTrue } from '../is';
+import { TRUE } from '../constants';
 
 /** For Boolean Check. If True. Trigger */
 export const ifTrue = <T>(value: any, callback: (data: { value: T }) => any = () => TRUE) => {

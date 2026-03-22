@@ -1,6 +1,5 @@
 /** A way to proxify a function */
 
-import { FALSE, NULL, TRUE } from '../constants';
 import { instanceCreate } from '../instance';
 import { isArray } from '../is';
 import { proxyConstant } from '../proxy';
@@ -20,17 +19,17 @@ type Callback = (args: Arguments) => any;
 
 // Constructing a Function Proxy
 export const functionProxy = (callback: Callback) => {
-  let currentKey: null | string = NULL;
+  let currentKey: null | string = null;
 
-  let throughGetQuery = FALSE;
+  let throughGetQuery = false;
   // Constructing the Stand in proxy function
   const proxyFunction = (...params: any[]) => {
     // Updating Key
-    const key = throughGetQuery ? currentKey : NULL;
+    const key = throughGetQuery ? currentKey : null;
     // Return the Callback
     const result = callback({ key, method: 'call', params });
     // Reset the switch
-    throughGetQuery = FALSE;
+    throughGetQuery = false;
     // Returning the Result From Callback
     return result;
   };
@@ -48,7 +47,7 @@ export const functionProxy = (callback: Callback) => {
     // Updating the current key
     currentKey = key;
     // Remember that it went through get Query
-    throughGetQuery = TRUE;
+    throughGetQuery = true;
     // Updating Previous key
     return callback({ key, method: 'get', params: [] }) || target;
   };

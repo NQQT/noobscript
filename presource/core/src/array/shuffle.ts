@@ -1,5 +1,3 @@
-import { MATH } from '../constants';
-
 // The Type object
 export type ArrayShuffle = <T>(original: T[]) => T[];
 
@@ -10,7 +8,7 @@ export const arrayShuffle: ArrayShuffle = (original) => {
   let index = array.length;
   let random;
   while (index !== 0) {
-    random = MATH.floor(MATH.random() * index);
+    random = Math.floor(Math.random() * index);
     index--;
     // Swapping Random Index
     [array[index], array[random]] = [array[random], array[index]];

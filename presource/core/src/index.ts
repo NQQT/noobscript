@@ -8,7 +8,6 @@ export * from './instance';
 export * from './is';
 export * from './json';
 export * from './loop';
-export * from './map';
 export * from './number';
 export * from './object';
 export * from './promise';

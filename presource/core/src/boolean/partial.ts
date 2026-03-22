@@ -1,6 +1,6 @@
-import { typeSwitch } from '../type/switch';
-import { objectKeys } from '../object/keys';
-import { FALSE, TRUE } from '../constants/primitive';
+import { typeSwitch } from '../type';
+import { objectKeys } from '../object';
+import { FALSE, TRUE } from '../constants';
 import { booleanCases } from './cases';
 
 // Any of the element to be true

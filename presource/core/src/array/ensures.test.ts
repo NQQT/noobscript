@@ -2,9 +2,10 @@ import { describe, expect, test } from '@jest/globals';
 import { arrayEnsures } from '@presource/core';
 
 describe('Array Ensures: Ensuring a variable is an array', () => {
-  test('All output should be an array', () => {
-    // If No thing passed, return array
+  test('all output from the method will returns an array', () => {
+    // If nothing is passed, return array
     expect(arrayEnsures()).toStrictEqual([]);
+
     // Same as if nothing is passed in the beginning.
     expect(arrayEnsures(undefined)).toStrictEqual([]);
 

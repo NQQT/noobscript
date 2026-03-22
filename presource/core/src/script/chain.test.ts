@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { scriptChain } from './chain';
+import { scriptChain } from '@presource/core';
 
 describe('Callback relay', () => {
   test('Basic relay usage', async () => {

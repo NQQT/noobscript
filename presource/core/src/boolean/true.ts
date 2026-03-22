@@ -1,5 +1,5 @@
 import { booleanCases } from './cases';
-import { FALSE, TRUE } from '../constants/primitive';
+import { FALSE, TRUE } from '../constants';
 
 // Will Return true if any condition is true
 export const booleanTrue = (cases: { [key: string]: any }) => {

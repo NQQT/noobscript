@@ -1,5 +1,5 @@
-import { describe, test, expect } from '@jest/globals';
-import { objectProxy } from './proxy';
+import { describe, expect, test } from '@jest/globals';
+import { objectProxy } from '@presource/core';
 
 describe('Object Proxy - Proxifying an Object', () => {
   test('Basic Object Spying', () => {
