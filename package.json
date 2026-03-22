@@ -1,8 +1,9 @@
 {
-  "name": "javascript",
+  "name": "noobscript",
   "version": "1.0.0",
   "main": "index.js",
   "private": true,
+  "description": "A typescript workspace for noob",
   "workspaces": [
     "common/*",
     "dependencies/*",
