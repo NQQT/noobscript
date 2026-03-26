@@ -1,7 +1,6 @@
-import { describe, expect, test } from '@jest/globals';
 import { arrayCreate } from '@presource/core';
 
-describe('Basic arrayCreate Usage', () => {
+describe('arrayCreate Requirement', () => {
   test('Creating an array with various inputs', () => {
     // Create a New Array
     expect(arrayCreate()).toStrictEqual([]);

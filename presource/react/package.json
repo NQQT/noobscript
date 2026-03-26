@@ -1,0 +1,11 @@
+{
+  "name": "@presource/react",
+  "version": "1.0.0",
+  "description": "React utility",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "NQQT",
+  "license": "ISC"
+}
