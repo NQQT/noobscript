@@ -1,0 +1,5 @@
+packages:
+  - 'common/*'
+  - 'dependencies/*'
+  - 'library/*'
+  - 'presource/*'

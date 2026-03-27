@@ -4,12 +4,7 @@
   "main": "index.js",
   "private": true,
   "description": "A typescript workspace for noob",
-  "workspaces": [
-    "common/*",
-    "dependencies/*",
-    "library/*",
-    "presource/*"
-  ],
+  "packageManager": "pnpm@10.33.0",
   "scripts": {
     "test": "jest",
     "lint": "tslint -p tsconfig.json"
