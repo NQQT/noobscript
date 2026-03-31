@@ -7,8 +7,5 @@
     "test": "jest"
   },
   "author": "NQQT",
-  "license": "ISC",
-  "dependencies": {
-    "@presource/core": "workspace:*"
-  }
+  "license": "ISC"
 }

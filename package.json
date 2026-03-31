@@ -4,11 +4,19 @@
   "main": "index.js",
   "private": true,
   "description": "A typescript workspace for noob",
-  "packageManager": "pnpm@10.33.0",
   "scripts": {
     "test": "jest",
-    "lint": "tslint -p tsconfig.json"
+    "lint": "tslint -p tsconfig.json",
+    "storybook": "storybook dev -p 6006",
+    "build": "storybook build",
+    "deploy": "storybook-to-ghpages"
   },
+  "workspaces": [
+    "common/*",
+    "dependencies/*",
+    "library/*",
+    "presource/*"
+  ],
   "dependencies": {
     "axios": "^1.6.3",
     "@expo/webpack-config": "^18.0.1",
