@@ -1,0 +1,16 @@
+[13:03:30.031] [INFO] storybook v10.3.3
+[13:03:31.528] [DEBUG] Getting package.json info for D:/Projects/typescript/noobscript/package.json...
+[13:03:31.833] [ERROR] Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'webpack5' imported from .\node_modules\storybook\dist\_node-chunks\chunk-GMFDJH6Z.js
+    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:268:9)
+    at packageResolve (node:internal/modules/esm/resolve:768:81)
+    at moduleResolve (node:internal/modules/esm/resolve:858:18)
+    at defaultResolve (node:internal/modules/esm/resolve:990:11)
+    at nextResolve (node:internal/modules/esm/hooks:748:28)
+    at Hooks.resolve (node:internal/modules/esm/hooks:240:30)
+    at handleMessage (node:internal/modules/esm/worker:201:24)
+    at checkForMessages (node:internal/modules/esm/worker:143:28)
+    at process.<anonymous> (node:internal/modules/esm/worker:162:5)
+    at process.emit (node:events:508:28)
+[13:03:31.837] [WARN] Broken build, fix the error above.
+You may need to refresh the browser.
+[13:03:46.102] [PROMPT] Would you like to send anonymous crash reports to improve Storybook and fix bugs faster? {"choice":false}
