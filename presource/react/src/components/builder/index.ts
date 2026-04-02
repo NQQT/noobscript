@@ -1,1 +1,2 @@
-export default {};
+export * from './functional';
+export * from './prototype';

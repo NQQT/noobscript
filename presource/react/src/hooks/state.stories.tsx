@@ -1,0 +1,30 @@
+import { Meta } from '@storybook/react';
+import React from 'react';
+import { HeadlessButton, HeadlessButtonProps, useStateHook } from '@presource/react';
+
+const meta: Meta = {
+    title: 'Presource/React/Hook/State Hook',
+    component: React.memo(() => {
+        // Starting the counter
+        const state = useStateHook({
+            counter: 0
+        });
+
+        const props: HeadlessButtonProps = {
+            label: `Counter: ${state().counter}`,
+            onClick: () => {
+                // Increasing the counter
+                state({
+                    counter: state().counter + 1
+                });
+            }
+        };
+
+        return <HeadlessButton {...props} />;
+    })
+};
+
+export default meta;
+
+// Storybook
+export const StateHook = {};

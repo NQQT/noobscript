@@ -1,8 +1,8 @@
 {
-  "name": "@library/storybook",
+  "name": "@presource/types",
   "version": "1.0.0",
-  "description": "Storybook Utilities",
-  "main": "index.ts",
+  "description": "Type utility helpers",
+  "main": "src/index.ts",
   "scripts": {
     "test": "jest"
   },

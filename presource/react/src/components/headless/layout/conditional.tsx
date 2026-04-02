@@ -11,5 +11,5 @@ export const ShowOnly = React.memo((props: ShowOnlyProps) => {
     if (!props.if) return null;
 
     // Otherwise, return the children
-    return props.children;
+    return <>{props.children}</>;
 });

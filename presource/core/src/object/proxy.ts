@@ -47,7 +47,7 @@ export const objectProxy = <T extends { [key: string]: any }>(item: T, triggers:
                 value,
                 object,
                 method,
-                // Short-hand Notations
+                // This is shorthanded notation
                 k: key,
                 v: value,
                 o: object,
