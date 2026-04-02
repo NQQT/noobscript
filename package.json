@@ -26,10 +26,9 @@
     "expo-status-bar": "~1.4.4"
   },
   "devDependencies": {
-    "@testing-library/react": "^14.1.2",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/react": "^16.3.2",
     "@types/jest": "^27.0.3",
-    "@types/react": "^17.0.39",
-    "@types/react-dom": "^17.0.9",
     "@vitejs/plugin-react": "^6.0.1",
     "gulp": "^4.0.2",
     "gulp-html-replace": "^1.6.2",

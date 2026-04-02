@@ -3,10 +3,18 @@ import { MaterialButton } from '@library/react';
 import { functionalComponent } from '@presource/react';
 import React from 'react';
 
-const StandardButton = functionalComponent(MaterialButton, {
-    label: 'Checking label',
+// You can build reactive button with functional component!
+const ReactiveButton = functionalComponent(MaterialButton, {
+    label: 'Click to Change Label',
+    // Use enclosed function to have access to this.
     onClick() {
-        this.label = 'Changed';
+        this.label = 'Label Changed';
+    },
+    onMouseEnter() {
+        this.label = 'Mouse entered';
+    },
+    onMouseLeave() {
+        this.label = 'Click to Change Label';
     }
 });
 
@@ -17,7 +25,7 @@ const meta: Meta = {
     component: React.memo(() => {
         return (
             <>
-                <StandardButton />
+                <ReactiveButton />
             </>
         );
     })

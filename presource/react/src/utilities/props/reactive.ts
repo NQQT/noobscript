@@ -6,8 +6,10 @@ export type PropsReactive = <T extends { [key: string]: any }>(input: T) => T;
 export const propsReactive: PropsReactive = (changeableProps) => {
     const [_, refresh] = useState({});
 
+    console.log('changed props', changeableProps);
     // ref always holds the latest props, never stale
     const propsRef = useRef(changeableProps);
+    console.log('propsrefs', propsRef.current);
 
     return objectProxy(propsRef.current, {
         get: ({ key }) => {
