@@ -1,4 +1,4 @@
-import { styleStructure } from '@presource/style';
+import { styleStructure } from './structure';
 
 describe('requirement of styleConvert', () => {
     it('should convert singular value correctly', () => {
@@ -7,7 +7,7 @@ describe('requirement of styleConvert', () => {
         });
 
         expect(styleStructure('2')).toStrictEqual({
-            xs: '1rem'
+            xs: '2'
         });
 
         expect(styleStructure('0')).toStrictEqual({

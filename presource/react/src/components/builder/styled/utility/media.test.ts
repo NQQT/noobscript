@@ -1,4 +1,4 @@
-import { styleMedia } from '@presource/style';
+import { styleMedia } from './media';
 
 describe('media conversion requirement', () => {
     it('should convert correctly', () => {
