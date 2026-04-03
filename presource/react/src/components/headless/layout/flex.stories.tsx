@@ -1,6 +1,7 @@
 import { Meta } from '@storybook/react';
 import { FlexColumn, FlexRow } from '@presource/react';
 import React from 'react';
+import { configureStoryControls } from '@library/test';
 
 // This is configuration
 const meta: Meta = {
@@ -19,6 +20,10 @@ const meta: Meta = {
 };
 
 export default meta;
+
+configureStoryControls(meta, {
+    system: false
+});
 
 // Storybook
 export const Flex = {};

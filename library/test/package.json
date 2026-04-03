@@ -1,0 +1,11 @@
+{
+  "name": "@library/test",
+  "version": "1.0.0",
+  "description": "Test library",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "NQQT",
+  "license": "ISC"
+}
