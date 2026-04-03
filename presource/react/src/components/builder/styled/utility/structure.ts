@@ -11,10 +11,11 @@ export const styleStructure = (input: any) => {
     return objectMap(correctStructure, (entry) => {
         return typeSwitch(entry.value, {
             // If it is string
-            string: ({ value, number: toNumber }) => {
-                // if it is not a number, simply returns it (could be 0px)
-                if (isNaN(+value)) return value;
-                return toNumber(value);
+            string: ({ value }) => {
+                // If the string represents zero, return 0
+                if (+value === 0 && !isNaN(+value)) return 0;
+                // Otherwise simply return the string as-is (e.g. '2', '0px')
+                return value;
             },
             // Number decoding
             number: ({ value }) => {
