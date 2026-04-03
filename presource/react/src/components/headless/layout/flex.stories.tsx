@@ -8,11 +8,11 @@ const meta: Meta = {
     // Setting the component
     component: React.memo(() => {
         return (
-            <FlexRow justify={'flex-start'}>
-                <FlexColumn>{1}</FlexColumn>
-                <FlexColumn>{2}</FlexColumn>
-                <FlexColumn>{3}</FlexColumn>
-                <FlexColumn>{4}</FlexColumn>
+            <FlexRow>
+                <FlexColumn isGrid>{1}</FlexColumn>
+                <FlexColumn isGrid>{2}</FlexColumn>
+                <FlexColumn isGrid>{3}</FlexColumn>
+                <FlexColumn isGrid>{4}</FlexColumn>
             </FlexRow>
         );
     })

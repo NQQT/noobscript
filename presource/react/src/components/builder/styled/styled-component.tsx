@@ -1,4 +1,5 @@
 import React from 'react';
+import { StandardBreakpoint } from './types';
 import { objectEach, stringSwitch, typeSwitch } from '@presource/core';
 import styled from '@emotion/styled';
 import { styleCombine, styleMedia, styleStructure } from './utility';
@@ -7,7 +8,24 @@ type PrimaryInput<T> = {
     [key in keyof React.CSSProperties]: React.CSSProperties[key] | 'custom' | ((input: T) => {});
 };
 
-export type StyledComponent = <T>(component: string | React.FC<T>, input: PrimaryInput<T>) => React.FC<T>;
+type StandardReactProps = React.HTMLAttributes<HTMLElement> & {
+    children?: React.ReactNode;
+};
+
+type BreakpointProps = {
+    [key in StandardBreakpoint]?: React.CSSProperties;
+};
+
+type Breakpoints<T = string | number> = T & {
+    [key in StandardBreakpoint]?: T;
+};
+
+type BuilderType<T> = StandardReactProps &
+    BreakpointProps & {
+        [key in keyof T]?: Breakpoints<T[key]>;
+    };
+
+export type StyledComponent = <T>(component: string | React.FC<T>, input: PrimaryInput<T>) => React.FC<BuilderType<T>>;
 
 // The styledComponent should return a React.FC<T>
 export const styledComponent: StyledComponent = (component: any, input) => {
@@ -68,5 +86,5 @@ export const styledComponent: StyledComponent = (component: any, input) => {
             ...defaultStyling,
             ...styleMedia(breakpoints, rest, styleCombine(style))
         };
-    });
+    }) as any;
 };
