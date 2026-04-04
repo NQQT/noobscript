@@ -1,4 +1,4 @@
-import { scriptPause } from './pause';
+import { scriptPause } from '@presource/core';
 
 describe('Pausing an async function', () => {
     // Using Jest fake timer

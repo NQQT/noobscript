@@ -6,12 +6,12 @@ import { proxyConstant } from '../proxy';
 
 // The callback arguments
 type Arguments = {
-  // The method that this function was called
-  method: 'call' | 'get' | 'set';
-  // The key that is currently called
-  key: null | string;
-  // Any parameter has been called
-  params: any[];
+    // The method that this function was called
+    method: 'call' | 'get' | 'set';
+    // The key that is currently called
+    key: null | string;
+    // Any parameter has been called
+    params: any[];
 };
 
 // The callback for proxy function
@@ -19,42 +19,42 @@ type Callback = (args: Arguments) => any;
 
 // Constructing a Function Proxy
 export const functionProxy = (callback: Callback) => {
-  let currentKey: null | string = null;
+    let currentKey: null | string = null;
 
-  let throughGetQuery = false;
-  // Constructing the Stand in proxy function
-  const proxyFunction = (...params: any[]) => {
-    // Updating Key
-    const key = throughGetQuery ? currentKey : null;
-    // Return the Callback
-    const result = callback({ key, method: 'call', params });
-    // Reset the switch
-    throughGetQuery = false;
-    // Returning the Result From Callback
-    return result;
-  };
+    let throughGetQuery = false;
+    // Constructing the Stand in proxy function
+    const proxyFunction = (...params: any[]) => {
+        // Updating Key
+        const key = throughGetQuery ? currentKey : null;
+        // Return the Callback
+        const result = callback({ key, method: 'call', params });
+        // Reset the switch
+        throughGetQuery = false;
+        // Returning the Result From Callback
+        return result;
+    };
 
-  // When Set Event is Triggered
-  const setFunction = (target: any, key: string, value: any) =>
-    callback({
-      key,
-      method: 'set',
-      params: isArray(value) ? value : [value],
+    // When Set Event is Triggered
+    const setFunction = (target: any, key: string, value: any) =>
+        callback({
+            key,
+            method: 'set',
+            params: isArray(value) ? value : [value]
+        });
+
+    // When Get Event is Triggered
+    const getFunction = (target: any, key: string) => {
+        // Updating the current key
+        currentKey = key;
+        // Remember that it went through get Query
+        throughGetQuery = true;
+        // Updating Previous key
+        return callback({ key, method: 'get', params: [] }) || target;
+    };
+
+    // Finally Return the Proxy Function
+    return instanceCreate(proxyConstant(), proxyFunction, {
+        set: setFunction,
+        get: getFunction
     });
-
-  // When Get Event is Triggered
-  const getFunction = (target: any, key: string) => {
-    // Updating the current key
-    currentKey = key;
-    // Remember that it went through get Query
-    throughGetQuery = true;
-    // Updating Previous key
-    return callback({ key, method: 'get', params: [] }) || target;
-  };
-
-  // Finally Return the Proxy Function
-  return instanceCreate(proxyConstant(), proxyFunction, {
-    set: setFunction,
-    get: getFunction,
-  });
 };

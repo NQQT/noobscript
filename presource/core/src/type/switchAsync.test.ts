@@ -1,4 +1,4 @@
-import { typeSwitchAsync } from './switchAsync';
+import { typeSwitchAsync } from '@presource/core';
 
 describe('Type Switch in Async format', () => {
     test('Value is returned correctly with undefined', async () => {

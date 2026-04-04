@@ -5,9 +5,9 @@
 
 // TODO Fix up these typescript issue.
 export const functionPipe = (...fns: any[]) => {
-  return (value: any, ...args: any[]) => {
-    return fns.reduce((v: any, f: any, i: any) => {
-      return i === 0 ? f(v, ...args) : f(v);
-    }, value);
-  };
+    return (value: any, ...args: any[]) => {
+        return fns.reduce((v: any, f: any, i: any) => {
+            return i === 0 ? f(v, ...args) : f(v);
+        }, value);
+    };
 };

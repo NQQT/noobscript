@@ -1,4 +1,4 @@
-import { stringIncludes } from './includes';
+import { stringIncludes } from '@presource/core';
 
 describe('String Includes Functionality', () => {
     // Why it is differnt now.

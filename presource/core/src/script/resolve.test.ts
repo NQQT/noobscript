@@ -1,4 +1,4 @@
-import { scriptResolve } from './resolve';
+import { scriptResolve } from '@presource/core';
 
 describe('Callback resolver', () => {
     test('wait until value is resolved', async () => {

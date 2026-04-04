@@ -1,4 +1,4 @@
-import { stringCapitalize } from './capitalize';
+import { stringCapitalize } from '@presource/core';
 
 describe('String Capitalisation', () => {
     test('it should capitalise first letter', () => {

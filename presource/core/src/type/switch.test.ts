@@ -1,4 +1,4 @@
-import { typeSwitch } from './switch';
+import { typeSwitch } from '@presource/core';
 
 describe('Type Switch Checking', () => {
     // Checking if Type is Correct

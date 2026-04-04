@@ -1,4 +1,4 @@
-import { stringSwitch, stringSwitchAsync } from './switch';
+import { stringSwitch, stringSwitchAsync } from '@presource/core';
 
 describe('String Switch Functionality', () => {
     test('Basic Switch Routing', () => {

@@ -1,4 +1,4 @@
-import { toString } from './string';
+import { toString } from '@presource/core';
 
 describe('js/to/toString', () => {
     test('Converting primitives to string', () => {
