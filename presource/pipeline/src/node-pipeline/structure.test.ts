@@ -1,8 +1,8 @@
-import { nodeStructure } from './structure';
+import { nodePipelineNode } from './structure';
 
 describe('how to use node structure', () => {
     it('should generate out a proper node structure', () => {
-        const structure = nodeStructure({
+        const structure = nodePipelineNode({
             id: 1
         });
 
@@ -13,13 +13,17 @@ describe('how to use node structure', () => {
             value: (({ name }: any) => `hello ${name}`).toString(),
             pos: [0, 0],
             size: [0, 0],
+            flags: {},
             inputs: {
                 name: {
-                    value: ''
+                    value: null
                 }
             },
             outputs: {
-                greeting: {}
+                greeting: {
+                    value: null,
+                    links: []
+                }
             }
         });
     });

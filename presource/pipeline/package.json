@@ -1,0 +1,11 @@
+{
+  "name": "@presource/pipeline",
+  "version": "1.0.0",
+  "description": "Presource pipeline library. For building complex pipelines",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "NQQT",
+  "license": "ISC"
+}
