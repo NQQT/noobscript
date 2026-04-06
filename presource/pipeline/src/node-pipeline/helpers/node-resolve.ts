@@ -1,24 +1,28 @@
 // For Resolve Node within the pipeline
-import { objectEach, objectMap } from '@presource/core';
-import { NodePipeline } from '../type';
+import { isObject, objectEach, objectMap } from '@presource/core';
+import { NodePipeline } from '../types';
 
 export function nodePipelineHelperResolve(this: NodePipeline) {
-    const mapping = this;
-    const completed = objectMap(mapping, () => false);
-    const status = {};
+    const pipeline = this;
+    const completed = objectMap(pipeline, () => false);
+    const status = {
+        // Count
+        count: Object.keys(pipeline).length,
+        completed: 0
+    };
 
     // For resolving
     const resolve = (nodeId: number | string) => {
-        const node = mapping[nodeId];
+        const node = pipeline[nodeId];
 
         const params: any = {};
         for (const key of Object.keys(node.inputs)) {
             const inputData = node.inputs[key];
-            const { link } = inputData;
+            const { isLink } = inputData;
             let value = inputData.value;
-            if (link) {
-                const linkedNode = mapping[link];
-                value = linkedNode.outputs[key].value;
+            if (isLink) {
+                const linkedNode = pipeline[value];
+                value = linkedNode.outputs[key];
             }
 
             // Return invalid resolve
@@ -28,23 +32,49 @@ export function nodePipelineHelperResolve(this: NodePipeline) {
             params[key] = value;
         }
 
-        // tslint:disable-next-line:no-eval
-        const func = eval(`(${node.value})`);
+        // Updating the outputs with the params
+        node.outputs = { ...params };
 
-        const result = func(params);
+        // Resolve the value
+        if (node.type === 'script' && node.value) {
+            // tslint:disable-next-line:no-eval
+            const func = eval(`(${node.value})`);
+            const result = func(params);
 
-        // Updating the outputs configuration
-        objectEach(node.outputs, ({ key, value: data }) => {
-            data.value = result[key];
-        });
+            // Result is invalid. It should be an object return
+            if (!isObject(result)) {
+                return false;
+            }
+
+            // Updating the outputs
+            objectEach(result, ({ key, value }) => {
+                node.outputs[key] = value;
+            });
+        }
+
+        // Configured that this is completed
+        completed[nodeId] = true;
+        // Increased complete count
+        status.completed++;
     };
 
-    // Scanning completed
-    objectEach(completed, ({ key, value: done }) => {
-        if (!done) {
-            resolve(key);
-        }
-    });
+    let completedSofar = -1;
 
+    // Infinite loop to resolve all nodes
+    while (1) {
+        // If nothing changes then break
+        if (completedSofar === status.completed) {
+            break;
+        }
+        // Scanning completed
+        objectEach(completed, ({ key, value: done }) => {
+            // Attemping to resolve
+            if (!done) resolve(key);
+        });
+        // Updating the completed
+        completedSofar = status.completed;
+    }
+
+    // Return self
     return this;
 }

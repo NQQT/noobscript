@@ -1,12 +1,12 @@
-import { nodePipeline } from '../index';
-import { nodePipelineNode } from '../structure';
+import { nodePipeline } from '@presource/pipeline';
+import { nodePipelineEntry } from '../entry';
 
 describe('appending into the pipeline', () => {
     it('should able to append through method', () => {
         const mapping = nodePipeline();
-        const node1 = nodePipelineNode({ id: 1 });
-        const node2 = nodePipelineNode({ id: 2 });
-        const node3 = nodePipelineNode({ id: 3 });
+        const node1 = nodePipelineEntry({ id: 1 });
+        const node2 = nodePipelineEntry({ id: 2 });
+        const node3 = nodePipelineEntry({ id: 3 });
         mapping.append(node1, node2, node3);
 
         expect(mapping).toStrictEqual({
