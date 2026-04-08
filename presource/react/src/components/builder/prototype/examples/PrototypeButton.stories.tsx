@@ -1,12 +1,12 @@
 import { Meta } from '@storybook/react';
 import { fn } from 'storybook/test';
-import { materialButton } from '@library/react';
+import { button } from '@react/material';
 
 // This is configuration
 const meta: Meta = {
     title: 'Presource/React/Components/Prototype/Prototype Button',
     // Setting the component
-    component: materialButton(),
+    component: button(),
     args: {
         onClick: fn()
     }

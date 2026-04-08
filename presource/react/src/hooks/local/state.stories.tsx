@@ -1,6 +1,7 @@
 import { Meta } from '@storybook/react';
 import React from 'react';
-import { HeadlessButton, HeadlessButtonProps, useStateHook } from '@presource/react';
+import { HeadlessButton, HeadlessButtonProps } from '@react/headless';
+import { useStateHook } from '@presource/react';
 
 const meta: Meta = {
     title: 'Presource/React/Hook/State Hook',

@@ -1,9 +1,10 @@
 import React from 'react';
-import { prototypeComponent } from '../../builder';
+import { prototypeComponent } from '@presource/react';
 
 export type HeadlessButtonProps = React.ComponentPropsWithoutRef<'button'> & {
     label: string;
 };
+
 // This is a standard headless button
 export const HeadlessButton = React.memo((props: HeadlessButtonProps) => {
     const { label, ...rest } = props;

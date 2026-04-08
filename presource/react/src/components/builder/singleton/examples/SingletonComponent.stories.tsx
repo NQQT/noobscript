@@ -1,10 +1,10 @@
 import { Meta } from '@storybook/react';
-import { MaterialButton } from '@library/react';
+import { Button } from '@react/material';
 import { singletonComponent } from '@presource/react';
 import React from 'react';
 
 // You can build reactive button with functional component!
-const singletonButton = singletonComponent(MaterialButton, {
+const singletonButton = singletonComponent(Button, {
     label: 'SingletonButton',
     onClick: () => {
         singletonButton({

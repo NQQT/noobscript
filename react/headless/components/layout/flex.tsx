@@ -1,5 +1,5 @@
 import React from 'react';
-import { styledDivComponent } from '../../builder';
+import { styledDivComponent } from '@presource/react';
 
 export type FlexColumnProps = {
     justify: React.CSSProperties['justifyContent'];

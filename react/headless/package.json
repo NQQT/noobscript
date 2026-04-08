@@ -1,0 +1,11 @@
+{
+  "name": "@react/headless",
+  "version": "1.0.0",
+  "description": "React Headless UI",
+  "main": "index.ts",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "NQQT",
+  "license": "ISC"
+}

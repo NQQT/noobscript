@@ -1,12 +1,12 @@
 import { Meta } from '@storybook/react';
-import { materialButton } from '@library/react';
 import { functionalComponent } from '@presource/react';
+import { button } from '@react/material';
 
 // This is configuration
 const meta: Meta = {
     title: 'Presource/React/Components/Functional/Functional Button',
     // Setting the component
-    component: functionalComponent(materialButton(), (props) => {
+    component: functionalComponent(button(), (props) => {
         return {
             ...props,
             // Onclick re-triggers the label

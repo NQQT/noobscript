@@ -1,0 +1,14 @@
+{
+  "name": "@library/workflow",
+  "version": "1.0.0",
+  "description": "Workflow library",
+  "main": "index.ts",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "NQQT",
+  "license": "ISC",
+  "dependencies": {
+    "reactflow": "^11.11.4"
+  }
+}

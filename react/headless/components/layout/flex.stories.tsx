@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/react';
-import { FlexColumn, FlexRow } from '@presource/react';
+import { FlexColumn, FlexRow } from '@react/headless';
 import React from 'react';
 import { configureStoryControls } from '@library/test';
 

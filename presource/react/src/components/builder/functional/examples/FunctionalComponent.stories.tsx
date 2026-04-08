@@ -1,10 +1,10 @@
 import { Meta } from '@storybook/react';
-import { MaterialButton } from '@library/react';
+import { Button } from '@react/material';
 import { functionalComponent } from '@presource/react';
 import React from 'react';
 
 // You can build reactive button with functional component!
-const ReactiveButton = functionalComponent(MaterialButton, {
+const ReactiveButton = functionalComponent(Button, {
     label: 'Click to Change Label',
     // Use enclosed function to have access to this.
     onClick() {
