@@ -15,6 +15,7 @@ export type FunctionOptions = <Options extends CallbackFunction>(
     parent?: FunctionOptions
 ) => Handler<Options>;
 
+// Function options allows group of function to be extended
 export const functionOptions: FunctionOptions = (options, parents?: FunctionOptions) => {
     const handler = ((input?: CallbackFunction) => {
         return typeSwitch(input, {
@@ -43,7 +44,7 @@ export const functionOptions: FunctionOptions = (options, parents?: FunctionOpti
                 return currentMethod;
             }
 
-            const parentMethod = parent?.[key as any];
+            const parentMethod = (parents as any)?.[key];
             if (parentMethod) {
                 return parentMethod;
             }
