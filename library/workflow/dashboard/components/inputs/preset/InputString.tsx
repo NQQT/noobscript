@@ -8,11 +8,11 @@ export type InputTextFieldProps = {
     onChange: (value: string) => void;
 };
 
-export const InputText = React.memo((props: InputTextFieldProps) => {
+export const InputString = React.memo((props: InputTextFieldProps) => {
     const { label, value, onChange } = props;
 
     return (
-        <FlexRow>
+        <FlexRow justify={'space-between'}>
             <FlexColumn>{label}</FlexColumn>
             <FlexColumn>
                 <InputTextField value={value} />

@@ -7,7 +7,8 @@ pipeline.append(
     pipeline.create({
         values: {
             name: 'John',
-            age: '39'
+            age: '39',
+            disabled: false
         }
     })
 );

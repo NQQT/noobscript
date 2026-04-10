@@ -4,6 +4,7 @@ import { ExpandMore } from '@mui/icons-material';
 import { FlexColumn } from '@react/headless';
 import { nodeComponent } from '../../utils';
 import { Handle, Position } from 'reactflow';
+import { AutoInput } from '../inputs';
 
 // Standard Nodes displays everything, giving the most complex controls
 export const StandardNode = nodeComponent(({ node }) => {
@@ -26,7 +27,8 @@ export const StandardNode = nodeComponent(({ node }) => {
                 <FlexColumn>
                     {properties.map((key) => {
                         return (
-                            <Paper sx={{ position: 'relative' }}>
+                            <Paper key={key} sx={{ position: 'relative', padding: '0px 5px' }}>
+                                <AutoInput label={key} property={node.properties[key]} />
                                 <Handle type="target" position={Position.Left} id={key} />
                                 <Handle type="source" position={Position.Right} id={key} />
                             </Paper>

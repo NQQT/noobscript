@@ -1,3 +1,18 @@
+export type NodePipelineEntryProperty = {
+    // The value of the property
+    value: any;
+    // Property type. Can be string, number. Default will auto resolve
+    // There are many more type than just "string", "number", "boolean"
+    // These are determined by the node controls
+    type?: string;
+    linkedNode?: {
+        // The linked node id
+        id: number;
+        // If the name differ from the properties name
+        name?: string;
+    };
+};
+
 // This is the entry of the node pipeline
 export type NodePipelineEntry = {
     // The nodeId
@@ -17,20 +32,7 @@ export type NodePipelineEntry = {
     };
     properties: {
         // Name of the property
-        [key: string]: {
-            // The value of the property
-            value: any;
-            // Property type. Can be string, number. Default will auto resolve
-            // There are many more type than just "string", "number", "boolean"
-            // These are determined by the node controls
-            type?: string;
-            linkedNode?: {
-                // The linked node id
-                id: number;
-                // If the name differ from the properties name
-                name?: string;
-            };
-        };
+        [key: string]: NodePipelineEntryProperty;
     };
 };
 

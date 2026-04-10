@@ -1,2 +1,2 @@
-export * from './InputBoolean';
-export * from './InputText';
+export * from './AutoInput';
+export * from './preset';
