@@ -7,7 +7,7 @@ describe('functionOptions requirements', () => {
         // TS7023: world implicitly has return type any because it does not have a return type annotation and is referenced directly or indirectly in one of its return expressions.
         world: async () => {
             // TS7022: value implicitly has type any because it does not have a type annotation and is referenced directly or indirectly in its own initializer.
-            const value = await example.get();
+            const value: string = await example.get();
             return `${value} world`;
         }
     });
