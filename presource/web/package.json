@@ -1,0 +1,11 @@
+{
+  "name": "@presource/web",
+  "version": "1.0.0",
+  "description": "Presource web tools",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "NQQT",
+  "license": "ISC"
+}

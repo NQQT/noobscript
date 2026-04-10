@@ -2,6 +2,7 @@ export * from './chain';
 export * from './control';
 export * from './curry';
 export * from './delay';
+export * from './options';
 export * from './pipe';
 export * from './proxy';
 export * from './queue';
