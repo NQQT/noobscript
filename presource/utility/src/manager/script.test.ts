@@ -24,7 +24,7 @@ describe('requirement for script manager', () => {
         });
     });
 
-    it('should execute script in sequence with conditional', () => {
+    it('should execute script in sequence with conditional', async () => {
         // Creating a script manager
         const script = scriptManager();
         const fruits: string[] = [];
@@ -47,7 +47,7 @@ describe('requirement for script manager', () => {
         });
     });
 
-    it('should execute script in sequence with conditional', () => {
+    it('should execute script in sequence with conditional', async () => {
         // Creating a script manager
         const script = scriptManager();
         const queue: string[] = [];
@@ -84,6 +84,43 @@ describe('requirement for script manager', () => {
         await waitFor(async () => {
             //  The queue is now updated
             expect(queue).toStrictEqual(['John', 'James', 'Sarah', 'Tom', 'Jack']);
+        });
+    });
+
+    it('should also execute when external interference happens', async () => {
+        const script = scriptManager();
+
+        const tasks: string[] = [];
+        script(async () => {
+            tasks.push('Cleaning');
+        });
+
+        script(async () => {
+            tasks.push('Groceries');
+        });
+
+        script(async () => {
+            if (!tasks.includes('Bank')) return false;
+            // Can't repair things if haven't gone to the bank.
+            tasks.push('Repair');
+        });
+
+        await waitFor(async () => {
+            expect(tasks).toStrictEqual(['Cleaning', 'Groceries']);
+        });
+
+        // Essentially do something else.
+        loopFor(100, () => {});
+
+        // External task. Someone else went to the bank instead
+        tasks.push('Bank');
+
+        // Essentially do something else.
+        loopFor(100, () => {});
+
+        await waitFor(async () => {
+            // Repair also happens, since script is constantly running in background, retrying task that has failed.
+            expect(tasks).toStrictEqual(['Cleaning', 'Groceries', 'Bank', 'Repair']);
         });
     });
 });
