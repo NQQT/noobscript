@@ -1,16 +1,8 @@
 import React from 'react';
-import { NodePipelineEntry } from '@presource/pipeline';
 import { Handle, Position } from 'reactflow';
+import { nodeComponent } from '../../utils';
 
-type WorkflowNodeProps = {
-    data: {
-        node: NodePipelineEntry;
-    };
-};
-export const PipelineNode = React.memo((props: WorkflowNodeProps) => {
-    const {
-        data: { node }
-    } = props;
+export const PipelineNode = nodeComponent(({ node }) => {
     const style = {
         padding: '10px 20px',
         border: '1px solid #ccc',

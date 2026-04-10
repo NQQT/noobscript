@@ -6,17 +6,18 @@ describe('resolving nodes all within nodePipeline', () => {
         const mapping = nodePipeline(
             nodePipelineEntry({
                 id: 1,
-                inputs: {
+                properties: {
                     name: {
-                        value: 'John',
-                        isLink: false
+                        value: 'John'
                     }
                 },
-                value: (({ name }: any) => {
-                    return {
-                        greeting: `Hello ${name}!`
-                    };
-                }).toString()
+                attributes: {
+                    script: (({ name }: any) => {
+                        return {
+                            greeting: `Hello ${name}!`
+                        };
+                    }).toString()
+                }
             })
         );
 
@@ -24,17 +25,15 @@ describe('resolving nodes all within nodePipeline', () => {
         mapping.resolve();
 
         // Expecting the outputs
-        expect(mapping[1].outputs['greeting']).toBe('Hello John!');
+        expect(mapping[1].properties['greeting'].value).toBe('Hello John!');
     });
 
     it('should resolve with chained node', () => {
         // Building the first node
         const node0 = nodePipelineEntry({
             id: 0,
-            //  When value is null
-            value: null,
             // Inputs is output. It simply passes through
-            inputs: {
+            properties: {
                 name: {
                     value: 'Jane'
                 }
@@ -43,27 +42,31 @@ describe('resolving nodes all within nodePipeline', () => {
         // Building second node
         const node1 = nodePipelineEntry({
             id: 1,
-            inputs: {
+            properties: {
                 name: {
-                    value: 0,
-                    isLink: true
+                    value: null,
+                    linkedNode: {
+                        id: 0
+                    }
                 }
             },
-            value: (({ name }: any) => {
-                return {
-                    greeting: `Hello ${name}!`
-                };
-            }).toString()
+            attributes: {
+                script: (({ name }: any) => {
+                    return {
+                        greeting: `Hello ${name}!`
+                    };
+                }).toString()
+            }
         });
 
         const pipeline = nodePipeline(node0, node1);
         // Resolve the mapping
         pipeline.resolve();
         // Expecting the outputs
-        expect(pipeline[1].outputs['greeting']).toBe('Hello Jane!');
+        expect(pipeline[1].properties.greeting.value).toBe('Hello Jane!');
     });
 
-    it('should resolves with complex layout', () => {
+    it('should resolves with complex layout', async () => {
         const pipeline = nodePipeline();
         const node0 = pipeline.create({
             values: {
@@ -71,11 +74,15 @@ describe('resolving nodes all within nodePipeline', () => {
             }
         });
 
+        pipeline.append(node0);
+
         const node1 = pipeline.create({
             values: {
                 age: '39'
             }
         });
+
+        pipeline.append(node1);
 
         const node2 = pipeline.create({
             values: {
@@ -87,7 +94,11 @@ describe('resolving nodes all within nodePipeline', () => {
             })
         });
 
-        pipeline.resolve();
-        expect(node2.outputs.bio).toBe('John is 39 year old');
+        pipeline.append(node2);
+
+        const resolved = await pipeline.resolve();
+        expect(resolved).toStrictEqual(true);
+
+        expect(node2.properties.bio.value).toBe('John is 39 year old');
     });
 });

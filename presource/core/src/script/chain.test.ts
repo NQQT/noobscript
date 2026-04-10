@@ -19,7 +19,7 @@ describe('Callback relay', () => {
         await relay.banana();
         expect(result).toStrictEqual(['apple', 'banana']);
 
-        // Triggering multiple
+        // Triggering multiple in chain
         await relay.cat().dog();
         expect(result).toStrictEqual(['apple', 'banana', 'cat', 'dog']);
     });

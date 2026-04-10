@@ -1,4 +1,4 @@
-import { NodePipeline, NodePipelineEntry, NodePipelineEntrySimple } from '../types';
+import { NodePipeline, NodePipelineEntrySimple } from '../types';
 import { isInvalid, isNumber, objectMap } from '@presource/core';
 
 // This is a faster way to create a node, using preset
@@ -10,26 +10,29 @@ export function nodePipelineHelperCreate(this: NodePipeline, nodeInput: NodePipe
         nodeInput.id = Object.keys(pipeline).length;
     }
 
-    const node: NodePipelineEntry = {
+    // Configuring Attributes
+    const attributes: any = {};
+    if (nodeInput.script) {
+        attributes.script = nodeInput.script.toString();
+    }
+
+    return {
         id: nodeInput.id,
         type: 'script',
+        name: 'simple node',
         // Script must be decoded
-        value: nodeInput.script ? nodeInput.script.toString() : null,
-        props: {},
         flags: {},
+        attributes,
         // Updating inputs
-        inputs: objectMap(nodeInput.values, ({ value }) => {
-            return {
-                value,
-                isLink: isNumber(value)
-            };
-        }),
-        outputs: {}
+        properties: objectMap(nodeInput.values, ({ value }) => {
+            if (isNumber(value)) {
+                return {
+                    linkedNode: {
+                        id: value
+                    }
+                };
+            }
+            return { value };
+        })
     };
-
-    // Appending the node
-    pipeline.append(node);
-
-    // Return the nodeId
-    return node;
 }

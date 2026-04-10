@@ -17,17 +17,15 @@ describe('how to use node create', () => {
         expect(pipeline).toStrictEqual({
             0: {
                 id: 0,
-                props: {},
+                name: 'simple node',
                 flags: {},
                 type: 'script',
-                value: null,
-                inputs: {
+                attributes: {},
+                properties: {
                     name: {
-                        value: 'Jack',
-                        isLink: false
+                        value: 'Jack'
                     }
-                },
-                outputs: {}
+                }
             }
         });
     });

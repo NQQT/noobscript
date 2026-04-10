@@ -3,7 +3,7 @@ import ReactFlow, { addEdge, Background, Controls, MiniMap, useEdgesState, useNo
 
 import 'reactflow/dist/style.css';
 import { NodePipeline } from '@presource/pipeline';
-import { PipelineNode } from './components';
+import { AutoNode, StandardNode } from './components';
 import { nodeDefinitions } from './utils/nodes';
 
 const initialNodes = [
@@ -18,7 +18,8 @@ export type WorkflowDashboardOverview = {
 };
 
 const nodeTypes = {
-    pipelineNode: PipelineNode
+    autoNode: AutoNode,
+    standardNode: StandardNode
 };
 
 export const WorkflowDashboardOverview = React.memo((props: WorkflowDashboardOverviewProps) => {

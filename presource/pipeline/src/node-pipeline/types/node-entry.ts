@@ -1,26 +1,36 @@
 // This is the entry of the node pipeline
 export type NodePipelineEntry = {
+    // The nodeId
     id: number;
-    // The type of node this is.
+    // The name of the node (for identification)
+    name: string;
+    // The type of node that this is
     type: 'script';
-    value: null | string;
-    props: {};
+    // Flag configuration
     flags: {
         [key: string]: boolean;
     };
-    // The input of this node.
-    inputs: {
-        [key: string]: {
-            // The value for this key
-            value: any;
-            // Whether this is a link to another node
-            isLink?: boolean;
-        };
-    };
-    // This is an output of a function
-    outputs: {
-        // The resolved value, stored in memory only?
+    // Attributes that determines the node entry
+    attributes: {
+        // Data can stored into attributes
         [key: string]: any;
+    };
+    properties: {
+        // Name of the property
+        [key: string]: {
+            // The value of the property
+            value: any;
+            // Property type. Can be string, number. Default will auto resolve
+            // There are many more type than just "string", "number", "boolean"
+            // These are determined by the node controls
+            type?: string;
+            linkedNode?: {
+                // The linked node id
+                id: number;
+                // If the name differ from the properties name
+                name?: string;
+            };
+        };
     };
 };
 

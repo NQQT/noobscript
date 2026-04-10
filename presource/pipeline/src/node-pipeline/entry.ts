@@ -5,26 +5,23 @@ import { NodePipelineEntry } from './types';
 export const nodePipelineEntry = (inputStructure?: Partial<NodePipelineEntry>) => {
     const defaultStructure: NodePipelineEntry = {
         id: 0,
+        name: 'node',
         type: 'script',
         // Script is for execution
-        value: (({ name }: any) => ({ greeting: `hello ${name}` })).toString(),
         // Properties of the nodes
-        props: {
+        attributes: {
             // Position of the node on the screen
-            pos: [0, 0],
+            position: { x: 0, y: 0 },
             // The size of the node on the screen
-            size: [0, 0]
+            size: { x: 0, y: 0 },
+            script: (({ name }: any) => ({ greeting: `hello ${name}` })).toString()
         },
         // Flags are slightly different, as it only accepts booleans
         flags: {},
-        inputs: {
+        properties: {
             name: {
-                value: 'John',
-                isLink: false
+                value: 'John'
             }
-        },
-        outputs: {
-            // Any output
         }
     };
 

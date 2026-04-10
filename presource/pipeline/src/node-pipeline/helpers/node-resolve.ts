@@ -1,8 +1,16 @@
 // For Resolve Node within the pipeline
-import { isObject, objectEach, objectMap } from '@presource/core';
+import { isObject, isUndefined, objectEach, objectMap } from '@presource/core';
 import { NodePipeline } from '../types';
 
-export function nodePipelineHelperResolve(this: NodePipeline) {
+type Callbacks = {
+    // Continue processing or not
+    continue: () => boolean;
+    onError: () => boolean;
+    onSuccess: () => boolean;
+};
+
+// This is to resolve the pipeline
+export async function nodePipelineHelperResolve(this: NodePipeline, callbacks: Callbacks) {
     const pipeline = this;
     const completed = objectMap(pipeline, () => false);
     const status = {
@@ -15,41 +23,50 @@ export function nodePipelineHelperResolve(this: NodePipeline) {
     const resolve = (nodeId: number | string) => {
         const node = pipeline[nodeId];
 
-        const params: any = {};
-        for (const key of Object.keys(node.inputs)) {
-            const inputData = node.inputs[key];
-            const { isLink } = inputData;
+        for (const key of Object.keys(node.properties)) {
+            const inputData = node.properties[key];
+            const { linkedNode } = inputData;
             let value = inputData.value;
-            if (isLink) {
-                const linkedNode = pipeline[value];
-                value = linkedNode.outputs[key];
+            if (!isUndefined(linkedNode)) {
+                const linkedNodeEntry = pipeline[linkedNode.id];
+                value = linkedNodeEntry.properties[key].value;
             }
 
             // Return invalid resolve
             if (value === null) {
                 return false;
             }
-            params[key] = value;
+
+            // Storing the value into node
+            node.properties[key] = {
+                value
+            };
         }
 
-        // Updating the outputs with the params
-        node.outputs = { ...params };
-
         // Resolve the value
-        if (node.type === 'script' && node.value) {
-            // tslint:disable-next-line:no-eval
-            const func = eval(`(${node.value})`);
-            const result = func(params);
+        if (node.type === 'script') {
+            const { script } = node.attributes;
+            if (script) {
+                // tslint:disable-next-line:no-eval
+                const func = eval(`(${script})`);
+                const params = objectMap(node.properties, ({ value: { value } }) => {
+                    return value;
+                });
+                const result = func(params);
 
-            // Result is invalid. It should be an object return
-            if (!isObject(result)) {
-                return false;
+                // Result is invalid. It should be an object return
+                if (!isObject(result)) {
+                    return false;
+                }
+
+                // Updating the outputs
+                objectEach(result, ({ key, value }) => {
+                    // Updating the properties
+                    node.properties[key] = {
+                        value
+                    };
+                });
             }
-
-            // Updating the outputs
-            objectEach(result, ({ key, value }) => {
-                node.outputs[key] = value;
-            });
         }
 
         // Configured that this is completed
@@ -76,5 +93,5 @@ export function nodePipelineHelperResolve(this: NodePipeline) {
     }
 
     // Return self
-    return this;
+    return true;
 }

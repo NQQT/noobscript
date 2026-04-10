@@ -1,20 +1,20 @@
 import { Meta } from '@storybook/react';
-import { InputTextField } from '@react/material';
+import { InputSwitch } from '@react/material';
 import { configureStoryControls } from '@library/test';
 
 // This is configuration
 const meta: Meta = {
-    title: 'React/Material/Components/Input/Text Field',
+    title: 'React/Material/Components/Input/Switch',
     // Setting the component
-    component: InputTextField
+    component: InputSwitch
 };
 
 export default meta;
 
 configureStoryControls(meta, {
     label: '',
-    variant: ['standard', 'outlined']
+    value: false
 });
 
 // Storybook
-export const TextField = {};
+export const Switch = {};

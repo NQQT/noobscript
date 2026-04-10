@@ -5,6 +5,6 @@ export type NodePipeline = {
 } & {
     append: (...entries: NodePipelineEntry[]) => NodePipeline;
     create: (input: NodePipelineEntrySimple) => NodePipelineEntry;
-    resolve: () => NodePipeline;
+    resolve: () => Promise<boolean>;
     validate: () => string[];
 };

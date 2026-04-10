@@ -16,7 +16,8 @@ export const nodeDefinitions = (pipeline: NodePipeline) => {
             id: id.toString(),
             // Defining the position
             position: { x: pos[0], y: pos[1] },
-            type: 'pipelineNode',
+            // TODO Depending on the property defined, the node type is defined here
+            type: 'autoNode',
             data: {
                 //  Just pass the entire entry in, really
                 node: entry

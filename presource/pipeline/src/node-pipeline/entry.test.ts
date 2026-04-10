@@ -11,18 +11,17 @@ describe('how to use node structure', () => {
             type: 'script',
             // Script is for execution
             value: (({ name }: any) => ({ greeting: `hello ${name}` })).toString(),
-            props: {
-                pos: [0, 0],
-                size: [0, 0]
+            attributes: {
+                position: { x: 0, y: 0 },
+                size: { x: 0, y: 0 }
             },
             flags: {},
-            inputs: {
+            properties: {
                 name: {
                     value: 'John',
                     isLink: false
                 }
-            },
-            outputs: {}
+            }
         });
     });
 });
