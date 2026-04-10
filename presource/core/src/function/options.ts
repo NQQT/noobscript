@@ -6,7 +6,7 @@ type Handler<Options> = Options & {
     <NewOptions extends CallbackFunction>(newOptions: NewOptions): Handler<Options & NewOptions>;
     (): {
         reset: () => void;
-        update: () => void;
+        update: (newOptions: CallbackFunction) => void;
     };
 };
 
