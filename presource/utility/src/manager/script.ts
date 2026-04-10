@@ -4,25 +4,49 @@ type Callback = () => Promise<boolean | void>;
 
 export type ScriptManager = (config?: Config) => {
     (script: Callback): void;
-    // Kill the process
     kill: () => void;
 };
 
-// Script manager
 export const scriptManager: ScriptManager = (config = {}) => {
-    // TODO Maybe add a tracking here, ensuring all the script are executed correctly
+    type ScriptEntry = { index: number; callback: Callback };
+
+    let insertionCounter = 0;
+    const queue: ScriptEntry[] = [];
+    let killed = false;
+    let isRunning = false;
+
+    const runNext = async () => {
+        if (isRunning || killed || queue.length === 0) return;
+        isRunning = true;
+
+        const entry = queue.shift()!;
+        const result = await entry.callback();
+
+        if (result === false) {
+            queue.push(entry);
+        }
+
+        isRunning = false;
+
+        // Schedule the next script only if queue still has items
+        if (queue.length > 0 && !killed) {
+            setTimeout(runNext, 0);
+        }
+    };
 
     const handler = (script: Callback) => {
-        //  TODO Base on the .test requirement, script should executed async
-        //   if script returns false, it should retry until successfully
-        //   Do not use while loop. It must be event driven
+        if (killed) return;
+        queue.push({ index: insertionCounter++, callback: script });
+        // Only kick off if not already running
+        if (!isRunning) setTimeout(runNext, 0);
     };
 
     Object.assign(handler, {
         kill: () => {
-            // TODO Kill the script manager
-            //  Once kill, adding any script to handler will not run
-            //  It should kill all the currently running script
+            killed = true;
+            queue.length = 0;
         }
     });
+
+    return handler as ReturnType<ScriptManager>;
 };

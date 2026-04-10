@@ -1,4 +1,4 @@
-import { scriptManager } from './script';
+import { scriptManager } from '@presource/utility';
 import { loopFor } from '@presource/core';
 import { waitFor } from '@testing-library/react';
 
@@ -72,7 +72,7 @@ describe('requirement for script manager', () => {
         });
 
         await waitFor(async () => {
-            expect(queue).toStrictEqual(['John', 'James', 'Sarah']);
+            expect(queue).toStrictEqual(['John', 'Sarah', 'James']);
         });
 
         // Tom comes later
@@ -83,7 +83,7 @@ describe('requirement for script manager', () => {
 
         await waitFor(async () => {
             //  The queue is now updated
-            expect(queue).toStrictEqual(['John', 'James', 'Sarah', 'Tom', 'Jack']);
+            expect(queue).toStrictEqual(['John', 'Sarah', 'James', 'Tom', 'Jack']);
         });
     });
 
