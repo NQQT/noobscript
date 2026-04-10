@@ -83,6 +83,7 @@ export const scriptAsync: ScriptAsync = (configs = {}) => {
                     }
                 } else {
                     // TODO Should retry until successful
+                    //  Avoid while loop, as this code should be optimised and event-driven as possible.
                 }
 
                 // After each task settles, check if everything is done

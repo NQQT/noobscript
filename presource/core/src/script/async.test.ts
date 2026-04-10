@@ -30,6 +30,7 @@ describe('script async requirement', () => {
         expect(animals).toStrictEqual(['cat', 'mouse', 'dog']);
     });
 
+    // TODO This task fails. It gets timed out due to not all task is processed.
     it('should execute every function until completion', async () => {
         const script = scriptAsync();
         const fruits: string[] = [];
