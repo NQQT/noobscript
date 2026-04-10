@@ -55,20 +55,33 @@ export const scriptAsync: ScriptAsync = (configs = {}) => {
                 notifyDrained = resolve;
             });
 
+            // Track how many tasks are actively running (not yet settled)
+            let running = 0;
+
+            const checkDrained = () => {
+                if (killed) return;
+                if (running === 0 && getRemainingTaskPending(tasks) === 0) {
+                    notifyDrained();
+                }
+            };
+
             const runTask = async (task: Task): Promise<void> => {
                 if (killed || !task.flags.pending) return;
 
+                running++;
                 const success = await task.callback();
+                running--;
+
                 if (killed) return;
 
                 // success can either be true or undefined (which inferred as success)
                 if (success !== false) {
                     task.flags.pending = false;
                     task.flags.completed = true;
+                    task.counter.retries = 0;
 
                     // This defines whether the entire task list should continue or not
                     // The user can terminate the entire process
-
                     let keepGoing = true;
 
                     // if shouldContinue function is defined.
@@ -82,14 +95,17 @@ export const scriptAsync: ScriptAsync = (configs = {}) => {
                         return;
                     }
                 } else {
-                    // TODO Should retry until successful
-                    //  Avoid while loop, as this code should be optimised and event-driven as possible.
+                    // Retry: reschedule this task after other pending tasks have had a chance to run
+                    task.counter.retries++;
+                    // Yield to the event loop so other tasks can progress before we retry
+                    await new Promise<void>((resolve) => setTimeout(resolve, 0));
+                    if (!killed) {
+                        runTask(task); // fire-and-forget retry
+                    }
+                    return;
                 }
 
-                // After each task settles, check if everything is done
-                if (getRemainingTaskPending(tasks) === 0) {
-                    notifyDrained();
-                }
+                checkDrained();
             };
 
             // Kick off all currently pending tasks
@@ -106,10 +122,6 @@ export const scriptAsync: ScriptAsync = (configs = {}) => {
 
             kickoff();
             await drained;
-
-            if (!killed) {
-                //
-            }
         }
     };
 

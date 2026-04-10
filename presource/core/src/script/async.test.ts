@@ -30,7 +30,6 @@ describe('script async requirement', () => {
         expect(animals).toStrictEqual(['cat', 'mouse', 'dog']);
     });
 
-    // TODO This task fails. It gets timed out due to not all task is processed.
     it('should execute every function until completion', async () => {
         const script = scriptAsync();
         const fruits: string[] = [];
@@ -56,5 +55,45 @@ describe('script async requirement', () => {
 
         // Expect this order
         expect(fruits).toStrictEqual(['apple', 'banana', 'pear']);
+    });
+
+    it('should execute all tasks in a complex chain of event', async () => {
+        const script = scriptAsync();
+        const queue: string[] = [];
+
+        script.append(async () => {
+            queue.push('John');
+        });
+
+        script.append(async () => {
+            if (!queue.includes('Jane')) return false;
+            // Jack is waiting for Jane to queue first
+            queue.push('Jack');
+        });
+
+        script.append(async () => {
+            if (!queue.includes('Jack')) return false;
+            // Tom is waiting for Jack
+            queue.push('Tom');
+        });
+
+        script.append(async () => {
+            if (!queue.includes('Sarah')) return false;
+            // Jane is waiting for Sarah
+            queue.push('Jane');
+        });
+
+        script.append(async () => {
+            queue.push('Tina');
+        });
+
+        script.append(async () => {
+            queue.push('Sarah');
+        });
+
+        await script.process();
+
+        // This is the order
+        expect(queue).toStrictEqual(['John', 'Tina', 'Sarah', 'Jane', 'Jack', 'Tom']);
     });
 });

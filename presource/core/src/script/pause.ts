@@ -1,10 +1,10 @@
 import { functionDelay } from '../function';
-import { createPromise } from '../promise';
+import { promiseCreate } from '../promise';
 
 /** Wait for something to happen */
 export const scriptPause = (time: number) => {
     const control: any = {};
-    const promise = createPromise(control);
+    const promise = promiseCreate(control);
     functionDelay(() => {
         control.resolve();
     }, time);

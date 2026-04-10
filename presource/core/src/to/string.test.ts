@@ -19,7 +19,7 @@ describe('js/to/toString', () => {
         expect(toString({ a: 1, b: 2, c: 3 })).toBe('{"a":1,"b":2,"c":3}');
 
         // Function Testing using arrow function
-        expect(toString(() => {})).toBe('function () { }');
+        expect(toString(() => {})).toBe('() => { }');
         // Old Function Format
         const test = function () {};
         expect(toString(test)).toBe('function () { }');
