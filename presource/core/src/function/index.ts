@@ -1,4 +1,5 @@
 export * from './chain';
+export * from './control';
 export * from './curry';
 export * from './delay';
 export * from './pipe';
