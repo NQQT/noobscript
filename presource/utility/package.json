@@ -1,7 +1,7 @@
 {
-  "name": "@presource/pipeline",
+  "name": "@presource/utility",
   "version": "1.0.0",
-  "description": "Presource pipeline library, for building complex workflow",
+  "description": "Presource utility for complex cases",
   "main": "src/index.ts",
   "scripts": {
     "test": "jest"

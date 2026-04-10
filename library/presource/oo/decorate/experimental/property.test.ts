@@ -1,4 +1,4 @@
-import { isEqual } from '../../../js/is/equal';
+import { isEqual } from '@presource/core';
 import { experimentalPropertyDecorator } from './property';
 
 describe('Experimental Property Decorator', () => {
