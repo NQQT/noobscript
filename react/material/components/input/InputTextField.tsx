@@ -5,11 +5,12 @@ import { prototypeComponent } from '@presource/react';
 
 export type InputTextFieldProps = {
     label?: string;
+    value?: string;
     variant?: 'standard' | 'outlined';
 };
 
 export const InputTextField = React.memo((props: InputTextFieldProps) => {
-    const { label, variant } = props;
+    const { label, variant, value } = props;
 
     // Base on the requirement, the input component is different
     const InputComponent = stringSwitch(variant, {
@@ -20,7 +21,7 @@ export const InputTextField = React.memo((props: InputTextFieldProps) => {
     return (
         <FormControl>
             {label ? <InputLabel id={'label'}>{label}</InputLabel> : null}
-            <InputComponent />
+            <InputComponent value={value} />
         </FormControl>
     );
 });

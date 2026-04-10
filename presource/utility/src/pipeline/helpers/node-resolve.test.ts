@@ -1,4 +1,4 @@
-import { nodePipeline } from '@presource/pipeline';
+import { nodePipeline } from '@presource/utility';
 import { nodePipelineEntry } from '../entry';
 
 describe('resolving nodes all within nodePipeline', () => {

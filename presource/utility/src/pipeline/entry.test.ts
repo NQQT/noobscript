@@ -1,4 +1,4 @@
-import { nodePipelineEntry } from '@presource/pipeline';
+import { nodePipelineEntry } from '@presource/utility';
 
 describe('how to use node structure', () => {
     it('should generate out a proper node structure', () => {
@@ -8,18 +8,17 @@ describe('how to use node structure', () => {
 
         expect(structure).toEqual({
             id: 1,
+            name: 'node',
             type: 'script',
-            // Script is for execution
-            value: (({ name }: any) => ({ greeting: `hello ${name}` })).toString(),
             attributes: {
                 position: { x: 0, y: 0 },
-                size: { x: 0, y: 0 }
+                size: { x: 0, y: 0 },
+                script: (({ name }: any) => ({ greeting: `hello ${name}` })).toString()
             },
             flags: {},
             properties: {
                 name: {
-                    value: 'John',
-                    isLink: false
+                    value: 'John'
                 }
             }
         });

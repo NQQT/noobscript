@@ -1,21 +1,24 @@
 // This to decode the node definitinos
-import { NodePipeline } from '@presource/pipeline';
+import { NodePipeline } from '@presource/utility';
 import { objectEach } from '@presource/core';
+import { Node } from 'reactflow';
 
 export const nodeDefinitions = (pipeline: NodePipeline) => {
     //  The definition to be returened
-    const definitions = [];
-    objectEach(pipeline, ({ value: entry }) => {
-        const { id, props } = entry;
+    const definitions: Node[] = [];
 
-        const pos = props.pos || [0, 0];
+    // Scannign through the pipeline and generate out the necessary node
+    objectEach(pipeline, ({ value: entry }) => {
+        const { id, attributes, properties } = entry;
+
+        const position = attributes.pos || { x: 0, y: 0 };
 
         // Setting the definitions
         definitions.push({
             // id must be a string
             id: id.toString(),
             // Defining the position
-            position: { x: pos[0], y: pos[1] },
+            position,
             // TODO Depending on the property defined, the node type is defined here
             type: 'autoNode',
             data: {

@@ -1,4 +1,4 @@
-import { nodePipeline } from '@presource/pipeline';
+import { nodePipeline } from '@presource/utility';
 import { nodePipelineEntry } from '../entry';
 
 describe('appending into the pipeline', () => {

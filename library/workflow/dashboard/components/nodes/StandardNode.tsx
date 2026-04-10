@@ -5,6 +5,7 @@ import { FlexColumn } from '@react/headless';
 import { nodeComponent } from '../../utils';
 import { Handle, Position } from 'reactflow';
 
+// Standard Nodes displays everything, giving the most complex controls
 export const StandardNode = nodeComponent(({ node }) => {
     const cardHeaderProps: CardHeaderProps = {
         title: 'Standard Node',
@@ -16,27 +17,17 @@ export const StandardNode = nodeComponent(({ node }) => {
         )
     };
 
-    console.log('the nodes', node);
-
-    const inputs = Object.keys(node.inputs);
-    const outputs = Object.keys(node.outputs);
+    const properties = Object.keys(node.properties);
 
     return (
         <Card sx={{ minWidth: 450 }}>
             <CardHeader {...cardHeaderProps} />
             <CardContent>
                 <FlexColumn>
-                    {inputs.map((key) => {
+                    {properties.map((key) => {
                         return (
                             <Paper sx={{ position: 'relative' }}>
                                 <Handle type="target" position={Position.Left} id={key} />
-                            </Paper>
-                        );
-                    })}
-
-                    {outputs.map((key) => {
-                        return (
-                            <Paper sx={{ position: 'relative' }}>
                                 <Handle type="source" position={Position.Right} id={key} />
                             </Paper>
                         );

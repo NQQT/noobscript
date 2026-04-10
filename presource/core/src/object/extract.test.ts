@@ -26,7 +26,6 @@ describe('objectExtract test and requirements', () => {
         expect(objectExtract(example, ['fruits.apple.color', 'animals.cat.color'])).toStrictEqual(['red', 'brown']);
     });
 
-    // TODO This requirement is not met
     test('should access array when array key is provided', () => {
         // Accessing with array indexes
         expect(objectExtract(example, 'lists.fruits[0]')).toStrictEqual('apple');

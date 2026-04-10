@@ -1,4 +1,4 @@
-import { nodePipeline } from '@presource/pipeline';
+import { nodePipeline } from '@presource/utility';
 
 describe('how to use node create', () => {
     it('should able to create a new node in the pipeline', () => {
@@ -37,6 +37,9 @@ describe('how to use node create', () => {
                 name: 'Jack'
             }
         });
+
+        pipeline.append(node0);
+
         const node1 = pipeline.create({
             values: {
                 name: 'John'
@@ -44,7 +47,7 @@ describe('how to use node create', () => {
         });
 
         // Appending the node
-        pipeline.append(node0, node1);
+        pipeline.append(node1);
 
         expect(pipeline).toStrictEqual({
             0: node0,

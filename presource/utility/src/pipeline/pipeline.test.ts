@@ -1,4 +1,4 @@
-import { nodePipeline, nodePipelineEntry } from '@presource/pipeline';
+import { nodePipeline, nodePipelineEntry } from '@presource/utility';
 
 describe('nodeMapping requirements', () => {
     it('should returns a mapping', () => {

@@ -2,22 +2,18 @@ import React, { useCallback } from 'react';
 import ReactFlow, { addEdge, Background, Controls, MiniMap, useEdgesState, useNodesState } from 'reactflow';
 
 import 'reactflow/dist/style.css';
-import { NodePipeline } from '@presource/pipeline';
+import { NodePipeline } from '@presource/utility';
 import { AutoNode, StandardNode } from './components';
-import { nodeDefinitions } from './utils/nodes';
-
-const initialNodes = [
-    { id: '1', position: { x: 0, y: 0 }, data: { label: '1' } },
-    { id: '2', position: { x: 0, y: 100 }, data: { label: '2' } }
-];
+import { nodeDefinitions } from './utils';
 
 const initialEdges = [{ id: 'e1-2', source: '1', target: '2' }];
 
-export type WorkflowDashboardOverview = {
+export type WorkflowDashboardOverviewProps = {
     pipeline: NodePipeline;
 };
 
 const nodeTypes = {
+    // Automatic Node
     autoNode: AutoNode,
     standardNode: StandardNode
 };

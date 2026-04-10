@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/react';
 import { WorkflowDashboardOverview } from '@library/workflow';
-import { nodePipeline } from '@presource/pipeline';
+import { nodePipeline } from '@presource/utility';
 
 const pipeline = nodePipeline();
 pipeline.append(
