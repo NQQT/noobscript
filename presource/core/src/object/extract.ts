@@ -11,30 +11,52 @@ import { typeSwitch } from '../type';
 // Object Extract Type format
 export type ObjectExtract = (object: { [key: string]: any }, extract: any) => any;
 
+/** Parses a single path segment which may include array index notation, e.g. "fruits[0]" or "nested[0]" */
+const parseSegment = (pointer: any, segment: string): any => {
+    // Match a key and any number of bracket indexes, e.g. "fruits[0][1]"
+    const bracketPattern = /^([^\[]*)((?:\[\d+\])*)$/;
+    const match = segment.match(bracketPattern);
+
+    if (!match) return UNDEFINED;
+
+    const [, key, indexes] = match;
+
+    // Access the key first (if present)
+    let value = key ? (isObject(pointer) ? pointer?.[key] : UNDEFINED) : pointer;
+
+    // Then step through each [index] in order
+    if (indexes) {
+        const indexMatches = indexes.match(/\d+/g) ?? [];
+        for (const idx of indexMatches) {
+            if (value === UNDEFINED || value === undefined) return UNDEFINED;
+            value = Array.isArray(value) ? value[Number(idx)] : UNDEFINED;
+        }
+    }
+
+    return value ?? UNDEFINED;
+};
+
 /** For extracting anything within an object */
 export const objectExtract: ObjectExtract = (object: any, extract: any) => {
-    // Depending on what value extract is, the result chould be different
+    // Depending on what value extract is, the result could be different
     const result: any = typeSwitch(extract, {
         number: () => {
-            // What do number extract exactly?
             // !Not sure what to do with number yet
             return UNDEFINED;
         },
         // If String. Use Drilling path. If only single path, better to use direct access!
         string: ({ v }) => {
             let pointer = object;
-            // TODO Issue here is the v (value), for example: "fruits.apple", access path fruit then apple
-            //  However, based on the requirement, it is also possible to access through indexes, so the "key" could be lists[0]
-            v.split('.').forEach((key) => {
-                pointer = isObject(pointer) ? pointer?.[key] : UNDEFINED;
+            // Split on "." then parse each segment for bracket notation
+            v.split('.').forEach((segment: string) => {
+                pointer = parseSegment(pointer, segment);
             });
 
-            // Returning the value. Could be undefeined
             return pointer;
         },
         array: ({ v, S, N, A }) => {
             // if array, accessing multiple instances
-            return v.map((value) => {
+            return v.map((value: any) => {
                 return typeSwitch(value, {
                     number: () => N(value),
                     string: () => S(value),
