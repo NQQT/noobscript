@@ -29,11 +29,11 @@ describe('objectExtract test and requirements', () => {
     // TODO This requirement is not met
     test('should access array when array key is provided', () => {
         // Accessing with array indexes
-        expect(objectExtract(example, 'list.fruits[0]')).toStrictEqual('apple');
+        expect(objectExtract(example, 'lists.fruits[0]')).toStrictEqual('apple');
         //  Access the d
-        expect(objectExtract(example, 'list.nested[0]')).toStrictEqual({
+        expect(objectExtract(example, 'lists.nested[0]')).toStrictEqual({
             parents: ['John', 'Jane']
         });
-        expect(objectExtract(example, 'list.nested[0].parents[0]')).toStrictEqual('John');
+        expect(objectExtract(example, 'lists.nested[0].parents[0]')).toStrictEqual('John');
     });
 });
