@@ -4,7 +4,6 @@
  *
  */
 
-import { arrayEach } from '../array';
 import { UNDEFINED } from '../constants';
 import { isObject } from '../is';
 import { typeSwitch } from '../type';
@@ -14,34 +13,37 @@ export type ObjectExtract = (object: { [key: string]: any }, extract: any) => an
 
 /** For extracting anything within an object */
 export const objectExtract: ObjectExtract = (object: any, extract: any) => {
-  // Depending on what value extract is, the result chould be different
-  const result: any = typeSwitch(extract, {
-    number: () => {
-      // What do number extract exactly?
-      // !Not sure what to do with number yet
-      return UNDEFINED;
-    },
-    // If String. Use Drilling path. If only single path, better to use direct access!
-    string: ({ v }) => {
-      let pointer = object;
-      arrayEach(v.split('.'), ({ value }) => {
-        pointer = isObject(pointer) ? pointer?.[value] : UNDEFINED;
-      });
-      // Returning the value. Could be undefeined
-      return pointer;
-    },
-    array: ({ v, S, N, A }) => {
-      // if array, accessing multiple instances
-      return v.map((value) => {
-        return typeSwitch(value, {
-          number: () => N(value),
-          string: () => S(value),
-          array: () => A(value),
-          default: () => UNDEFINED,
-        });
-      });
-    },
-  });
+    // Depending on what value extract is, the result chould be different
+    const result: any = typeSwitch(extract, {
+        number: () => {
+            // What do number extract exactly?
+            // !Not sure what to do with number yet
+            return UNDEFINED;
+        },
+        // If String. Use Drilling path. If only single path, better to use direct access!
+        string: ({ v }) => {
+            let pointer = object;
+            // TODO Issue here is the v (value), for example: "fruits.apple", access path fruit then apple
+            //  However, based on the requirement, it is also possible to access through indexes, so the "key" could be lists[0]
+            v.split('.').forEach((key) => {
+                pointer = isObject(pointer) ? pointer?.[key] : UNDEFINED;
+            });
 
-  return result;
+            // Returning the value. Could be undefeined
+            return pointer;
+        },
+        array: ({ v, S, N, A }) => {
+            // if array, accessing multiple instances
+            return v.map((value) => {
+                return typeSwitch(value, {
+                    number: () => N(value),
+                    string: () => S(value),
+                    array: () => A(value),
+                    default: () => UNDEFINED
+                });
+            });
+        }
+    });
+
+    return result;
 };
