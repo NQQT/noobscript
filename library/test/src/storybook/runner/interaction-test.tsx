@@ -1,6 +1,6 @@
 import { isFunction, objectEach } from '@presource/core';
 import { composeStory } from '@storybook/react';
-import { render } from '@testing-library/react';
+import { act, render } from '@testing-library/react';
 import React from 'react';
 
 export type InteractionTestRunner = <T extends { [key: string]: any }>(meta: any, input: T) => void;
@@ -22,9 +22,12 @@ export const interactionTestRunner: InteractionTestRunner = (meta, list) => {
                 // Render the component
                 render(<Component {...args} />);
 
-                const playFunction = Component.play;
+                const playFunction = Component.play!;
                 if (isFunction(playFunction)) {
-                    await playFunction({ canvasElement: document, args });
+                    await act(async () => {
+                        // Interaction might be happening inside act
+                        await playFunction({ canvasElement: document as any, args });
+                    });
                 }
             });
         });
