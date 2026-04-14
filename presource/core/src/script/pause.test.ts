@@ -2,7 +2,7 @@ import { scriptPause } from '@presource/core';
 
 describe('Pausing an async function', () => {
     // Using Jest fake timer
-    jest.useFakeTimers();
+    vi.useFakeTimers();
 
     // Testing if function is delayed correctly
     test('Script paused correctly', () => {
@@ -15,8 +15,8 @@ describe('Pausing an async function', () => {
         })();
 
         expect(count).toBe(0);
-        jest.advanceTimersByTime(5000);
+        vi.advanceTimersByTime(5000);
         expect(count).toBe(0);
-        jest.runAllTimers();
+        vi.runAllTimers();
     });
 });

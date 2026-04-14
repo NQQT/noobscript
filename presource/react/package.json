@@ -4,7 +4,7 @@
   "description": "React utility",
   "main": "src/index.ts",
   "scripts": {
-    "test": "jest"
+    "test": "vitest run"
   },
   "author": "NQQT",
   "license": "ISC",

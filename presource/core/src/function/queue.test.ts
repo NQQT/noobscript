@@ -2,7 +2,7 @@ import { functionQueue } from '@presource/core';
 
 describe('How to use Function Queue - ability to queue function in a list', () => {
     // We will need to simulate some fate timer first.
-    jest.useFakeTimers();
+    vi.useFakeTimers();
 
     it('can be used to queue a function, running it later', () => {
         // Creating a Function Queue
@@ -12,7 +12,7 @@ describe('How to use Function Queue - ability to queue function in a list', () =
             result.push(1);
         });
         // Run All Timer
-        jest.runAllTimers();
+        vi.runAllTimers();
         // Checking the Result to be Equal
         expect(result).toStrictEqual([1]);
     });
@@ -34,7 +34,7 @@ describe('How to use Function Queue - ability to queue function in a list', () =
             result.push(3);
         });
 
-        jest.runAllTimers();
+        vi.runAllTimers();
         expect(result).toStrictEqual([1, 2, 3]);
     });
 
@@ -71,7 +71,7 @@ describe('How to use Function Queue - ability to queue function in a list', () =
         });
 
         // Executing all timer
-        jest.runAllTimers();
+        vi.runAllTimers();
         // Expecting Result in Order of Processing
         expect(result).toStrictEqual([1, 1.1, 1.2, 2, 2.1, 2.2]);
     });
@@ -97,7 +97,7 @@ describe('How to use Function Queue - ability to queue function in a list', () =
         });
 
         // This is to execute everything.
-        jest.runAllTimers();
+        vi.runAllTimers();
         // And we expect the result to be as such
         expect(result).toStrictEqual(['apple', 'banana', 'done']);
 

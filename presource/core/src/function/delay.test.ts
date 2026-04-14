@@ -2,7 +2,7 @@ import { functionDelay } from '@presource/core';
 
 describe('Delaying Function', () => {
     // Using Jest fake timer
-    jest.useFakeTimers();
+    vi.useFakeTimers();
 
     // Testing if function is delayed correctly
     test('Function Delayed Correctly', () => {
@@ -11,6 +11,6 @@ describe('Delaying Function', () => {
         functionDelay(() => {
             expect(true).toBe(true);
         });
-        jest.runOnlyPendingTimers();
+        vi.runOnlyPendingTimers();
     });
 });

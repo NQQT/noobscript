@@ -9,7 +9,7 @@
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
     "storybook:deploy": "storybook-to-ghpages",
-    "test": "npm run lint && npm jest",
+    "test": "vitest run",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json"
   },

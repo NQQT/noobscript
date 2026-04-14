@@ -19,7 +19,8 @@
       "es2015.collection"
     ],
     "types": [
-      "*"
+      "*",
+      "vitest/globals"
     ]
   },
   "exclude": [
