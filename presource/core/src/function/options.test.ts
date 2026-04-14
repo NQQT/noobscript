@@ -31,6 +31,7 @@ describe('functionOptions requirements', () => {
     });
 
     it('should be allowed to be extendable with newer method', async () => {
+        // Function Options allows extending previous configured options
         const extendedExample = example({
             type: async () => 'human'
         });
@@ -39,6 +40,7 @@ describe('functionOptions requirements', () => {
         expect(await extendedExample.world()).toBe('hello world!');
         expect(await extendedExample.type()).toBe('human');
 
+        // You can extend it further
         const futherExtended = extendedExample({
             planet: async () => true
         });
