@@ -1,6 +1,7 @@
 import { Meta } from '@storybook/react';
 import { functionalComponent } from '@presource/react';
 import { button } from '@react/material';
+import { $dom, asTestStory } from '@library/test';
 
 // This is configuration
 const meta: Meta = {
@@ -22,4 +23,7 @@ const meta: Meta = {
 export default meta;
 
 // Storybook
-export const FunctionalButton = {};
+export const FunctionalButton = asTestStory(async () => {
+    // Click the button (it should exist)
+    await $dom.button('Material Button').click();
+});

@@ -1,6 +1,7 @@
 import { functionControl } from '@presource/core';
 import { within } from 'storybook/test';
 import { $memory } from './memory';
+import { Screen } from '@testing-library/react';
 
 // Global $screen control
 export const $screen = functionControl(({ key }) => {

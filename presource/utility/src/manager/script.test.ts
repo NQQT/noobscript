@@ -2,6 +2,7 @@ import { scriptManager } from '@presource/utility';
 import { loopFor } from '@presource/core';
 import { waitFor } from '@testing-library/react';
 
+// Script managers continues to execute in the background
 describe('requirement for script manager', () => {
     it('should execute script in sequence', async () => {
         // Creating a script manager
