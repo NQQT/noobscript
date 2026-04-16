@@ -16,18 +16,13 @@ export type RestServiceRequestHeader = {
     [key: string]: string | undefined;
 };
 
-export type RestServiceRequestBody = {
-    [key: string]: string | number | boolean | RestServiceRequestBody;
-};
-
 export type RestServiceResponseBody = {
     [key: string]: string | number | boolean | RestServiceResponseBody;
 };
 
 export type RestServiceConfig = {
     header?: RestServiceRequestHeader;
-    request?: RestServiceRequestBody; // Used for JSON payloads
-    body?: BodyInit; // Used for raw payloads (binary, text, FormData, etc.)
+    body?: Record<string, unknown> | BodyInit; // Accepts JSON objects, strings, FormData, Blob, etc.
 };
 
 // For Implementing Rest Service Configuration
@@ -35,7 +30,7 @@ export abstract class RestService {
     protected abstract host: string;
 
     async get(endpoint: string, input?: RestServiceConfig): Promise<RestServiceResponseBody> {
-        const url = this.buildUrl(endpoint, input?.request);
+        const url = this.buildUrl(endpoint, input?.body);
         const response = await fetch(url, {
             method: 'GET',
             headers: this.buildHeaders(input?.header)
@@ -47,13 +42,13 @@ export abstract class RestService {
         const response = await fetch(`${this.host}${endpoint}`, {
             method: 'POST',
             headers: this.buildHeaders(input?.header),
-            body: input?.body ?? (input?.request ? JSON.stringify(input.request) : undefined)
+            body: this.buildBody(input?.body)
         });
         return this.handleResponse(response);
     }
 
     async delete(endpoint: string, input?: RestServiceConfig): Promise<RestServiceResponseBody> {
-        const url = this.buildUrl(endpoint, input?.request);
+        const url = this.buildUrl(endpoint, input?.body);
         const response = await fetch(url, {
             method: 'DELETE',
             headers: this.buildHeaders(input?.header)
@@ -65,7 +60,7 @@ export abstract class RestService {
         const response = await fetch(`${this.host}${endpoint}`, {
             method: 'PATCH',
             headers: this.buildHeaders(input?.header),
-            body: input?.body ?? (input?.request ? JSON.stringify(input.request) : undefined)
+            body: this.buildBody(input?.body)
         });
         return this.handleResponse(response);
     }
@@ -74,7 +69,7 @@ export abstract class RestService {
         const response = await fetch(`${this.host}${endpoint}`, {
             method: 'PUT',
             headers: this.buildHeaders(input?.header),
-            body: input?.body ?? (input?.request ? JSON.stringify(input.request) : undefined)
+            body: this.buildBody(input?.body)
         });
         return this.handleResponse(response);
     }
@@ -87,11 +82,35 @@ export abstract class RestService {
         };
     }
 
-    private buildUrl(endpoint: string, params?: RestServiceRequestBody): string {
+    private buildBody(body?: Record<string, unknown> | BodyInit): BodyInit | undefined {
+        if (body === undefined) return undefined;
+        if (
+            typeof body === 'string' ||
+            body instanceof FormData ||
+            body instanceof Blob ||
+            body instanceof URLSearchParams ||
+            body instanceof ArrayBuffer ||
+            ArrayBuffer.isView(body)
+        ) {
+            return body as BodyInit;
+        }
+        // Plain object — serialize to JSON
+        return JSON.stringify(body);
+    }
+
+    private buildUrl(endpoint: string, body?: Record<string, unknown> | BodyInit): string {
         const url = new URL(`${this.host}${endpoint}`);
-        if (params) {
-            Object.entries(params).forEach(([key, value]) => {
-                if (typeof value !== 'object') {
+        if (
+            body &&
+            typeof body === 'object' &&
+            !(body instanceof FormData) &&
+            !(body instanceof Blob) &&
+            !(body instanceof URLSearchParams) &&
+            !(body instanceof ArrayBuffer) &&
+            !ArrayBuffer.isView(body)
+        ) {
+            Object.entries(body as Record<string, unknown>).forEach(([key, value]) => {
+                if (typeof value !== 'object' && value !== undefined) {
                     url.searchParams.append(key, String(value));
                 }
             });
@@ -107,7 +126,6 @@ export abstract class RestService {
         if (contentType.includes('application/json')) {
             return response.json() as Promise<RestServiceResponseBody>;
         }
-        // Return raw text wrapped so the shape matches RestServiceResponseBody
         const text = await response.text();
         return { data: text };
     }
