@@ -17,6 +17,10 @@ describe('filebin requirement', () => {
         expect(uploadResponse.file.filename, filename);
     });
 
+    it('should returns the file listing', async () => {
+        const list = await filebin.list();
+    });
+
     it('should able to retrieve the content', async () => {
         // Download the file — real HTTP GET from filebin.net
         const downloaded = await filebin.download(filename);

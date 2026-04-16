@@ -13,6 +13,10 @@ export class Filebin extends RestService {
         this.host = `${this.host}/${bin}/`;
     }
 
+    async list() {
+        return this.get('');
+    }
+
     /**
      * Uploads file content to the configured Filebin bin.
      * @param data - The raw file content as a string.
@@ -35,7 +39,12 @@ export class Filebin extends RestService {
      * @returns The raw file content as a string (wrapped in { data: '...' }).
      */
     async download(filename: string): Promise<string> {
-        const response = await this.get(filename);
+        const response = await this.get(filename, {
+            header: {
+                Cookie: 'verified=2024-05-24',
+                Accept: '*/*'
+            }
+        });
         return response.data as string;
     }
 }
