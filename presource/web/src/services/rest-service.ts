@@ -1,6 +1,11 @@
 // Standard HTTP request headers
 export type RestServiceRequestHeader = {
-    'Content-Type'?: 'application/json' | 'application/x-www-form-urlencoded' | 'multipart/form-data' | 'text/plain';
+    'Content-Type'?:
+        | 'application/json'
+        | 'application/x-www-form-urlencoded'
+        | 'multipart/form-data'
+        | 'text/plain'
+        | 'application/octet-stream';
     Accept?: string;
     Authorization?: string;
     'Accept-Language'?: string;
@@ -8,7 +13,7 @@ export type RestServiceRequestHeader = {
     'Cache-Control'?: 'no-cache' | 'no-store' | 'max-age=0' | 'must-revalidate';
     'X-Request-ID'?: string;
     'X-Correlation-ID'?: string;
-    [key: string]: string | undefined; // Allow custom/non-standard headers
+    [key: string]: string | undefined;
 };
 
 export type RestServiceRequestBody = {
@@ -21,7 +26,8 @@ export type RestServiceResponseBody = {
 
 export type RestServiceConfig = {
     header?: RestServiceRequestHeader;
-    request?: RestServiceRequestBody;
+    request?: RestServiceRequestBody; // Used for JSON payloads
+    body?: BodyInit; // Used for raw payloads (binary, text, FormData, etc.)
 };
 
 // For Implementing Rest Service Configuration
@@ -41,7 +47,7 @@ export abstract class RestService {
         const response = await fetch(`${this.host}${endpoint}`, {
             method: 'POST',
             headers: this.buildHeaders(input?.header),
-            body: input?.request ? JSON.stringify(input.request) : undefined
+            body: input?.body ?? (input?.request ? JSON.stringify(input.request) : undefined)
         });
         return this.handleResponse(response);
     }
@@ -59,7 +65,7 @@ export abstract class RestService {
         const response = await fetch(`${this.host}${endpoint}`, {
             method: 'PATCH',
             headers: this.buildHeaders(input?.header),
-            body: input?.request ? JSON.stringify(input.request) : undefined
+            body: input?.body ?? (input?.request ? JSON.stringify(input.request) : undefined)
         });
         return this.handleResponse(response);
     }
@@ -68,7 +74,7 @@ export abstract class RestService {
         const response = await fetch(`${this.host}${endpoint}`, {
             method: 'PUT',
             headers: this.buildHeaders(input?.header),
-            body: input?.request ? JSON.stringify(input.request) : undefined
+            body: input?.body ?? (input?.request ? JSON.stringify(input.request) : undefined)
         });
         return this.handleResponse(response);
     }
@@ -97,6 +103,12 @@ export abstract class RestService {
         if (!response.ok) {
             throw new Error(`HTTP error: ${response.status} ${response.statusText}`);
         }
-        return response.json() as Promise<RestServiceResponseBody>;
+        const contentType = response.headers.get('Content-Type') ?? '';
+        if (contentType.includes('application/json')) {
+            return response.json() as Promise<RestServiceResponseBody>;
+        }
+        // Return raw text wrapped so the shape matches RestServiceResponseBody
+        const text = await response.text();
+        return { data: text };
     }
 }
