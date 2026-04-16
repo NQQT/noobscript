@@ -1,4 +1,4 @@
-import { RestService, RestServiceResponseBody } from '../rest-service';
+import { RestService, RestServiceResponseBody } from './classes';
 
 type Config = {
     bin: string;
