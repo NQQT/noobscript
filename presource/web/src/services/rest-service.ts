@@ -16,9 +16,7 @@ export type RestServiceRequestHeader = {
     [key: string]: string | undefined;
 };
 
-export type RestServiceResponseBody = {
-    [key: string]: string | number | boolean | RestServiceResponseBody;
-};
+export type RestServiceResponseBody = any;
 
 export type RestServiceConfig = {
     header?: RestServiceRequestHeader;
