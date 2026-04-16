@@ -10,7 +10,7 @@ export class Filebin extends RestService {
     constructor(config: Config) {
         super();
         const { bin } = config;
-        this.host = `${this.host}/${bin}`;
+        this.host = `${this.host}/${bin}/`;
     }
 
     /**
