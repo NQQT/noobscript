@@ -4,6 +4,16 @@ type Config = {
     bin: string;
 };
 
+export type FileBinFile = {};
+
+const asFileBinFile = (content: any) => {
+    return {
+        filename: content.filename,
+        filesize: content.bytes,
+        checksum: content.sha256
+    } as FileBinFile;
+};
+
 export class Filebin extends RestService {
     host = 'https://filebin.net';
 
@@ -14,7 +24,10 @@ export class Filebin extends RestService {
     }
 
     async list() {
-        return this.get('');
+        const result = await this.get('');
+        return result.files.map((file: any) => {
+            return asFileBinFile(file);
+        });
     }
 
     /**
@@ -24,13 +37,15 @@ export class Filebin extends RestService {
      * @returns The Filebin response confirming the upload.
      */
     async upload(data: string, filename: string): Promise<RestServiceResponseBody> {
-        return this.post(filename, {
+        const content = await this.post(filename, {
             header: {
                 'Content-Type': 'application/octet-stream',
                 filename
             },
             body: data
         });
+
+        return asFileBinFile(content.file);
     }
 
     /**
