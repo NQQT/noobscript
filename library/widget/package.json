@@ -1,0 +1,11 @@
+{
+  "name": "@library/widget",
+  "version": "1.0.0",
+  "description": "React Widget Library",
+  "main": "index.ts",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "author": "NQQT",
+  "license": "ISC"
+}

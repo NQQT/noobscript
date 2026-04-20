@@ -7,21 +7,27 @@ export type InputTextFieldProps = {
     label?: string;
     value?: string;
     variant?: 'standard' | 'outlined';
+    onChange?: (value: string) => void;
 };
-
 export const InputTextField = React.memo((props: InputTextFieldProps) => {
-    const { label, variant, value } = props;
+    const { label, variant, value, onChange } = props;
 
-    // Base on the requirement, the input component is different
     const InputComponent = stringSwitch(variant, {
         outlined: () => OutlinedInput,
         default: () => Input
     });
 
+    const inputComponentProps = {
+        value,
+        onChange: (event: any) => {
+            onChange?.(event.target.value);
+        }
+    };
+
     return (
-        <FormControl>
+        <FormControl sx={{ width: '100%' }}>
             {label ? <InputLabel id={'label'}>{label}</InputLabel> : null}
-            <InputComponent value={value} />
+            <InputComponent {...inputComponentProps} />
         </FormControl>
     );
 });

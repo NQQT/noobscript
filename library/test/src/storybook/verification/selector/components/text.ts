@@ -1,5 +1,6 @@
 import { functionOptions, typeSwitch } from '@presource/core';
 import { $screen } from '../../constant';
+import { expect } from 'storybook/test';
 
 export const documentText = (fragment: string | RegExp) => {
     return functionOptions({
@@ -17,6 +18,10 @@ export const documentText = (fragment: string | RegExp) => {
 
             // Return the first element found
             return list[0];
+        },
+        async isValid() {
+            const element = await this.element();
+            await expect(element).toBeValid();
         }
     });
 };

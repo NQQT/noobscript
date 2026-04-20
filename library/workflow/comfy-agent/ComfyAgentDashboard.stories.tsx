@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/react';
 import { ComfyAgentDashboard } from './ComfyAgentDashboard';
+import { asTestStory } from '@library/test';
 
 // This is configuration
 const meta: Meta = {
@@ -11,4 +12,6 @@ const meta: Meta = {
 export default meta;
 
 // Storybook
-export const AgentDashboard = {};
+export const AgentDashboard = asTestStory(async () => {
+    // TODO Add Test Later
+});

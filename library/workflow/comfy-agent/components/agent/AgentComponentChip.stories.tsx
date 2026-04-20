@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/react';
 import { AgentComponent } from '@library/workflow';
-import { asTestStory, configureStoryControls } from '@library/test';
+import { $expect, asTestStory, configureStoryControls } from '@library/test';
 
 // This is configuration
 const meta: Meta = {
@@ -20,5 +20,7 @@ configureStoryControls(meta, {
 
 // Storybook
 export const AgentChip = asTestStory(async () => {
-    // Add test
+    await $expect.snapshot({
+        text: ['downloading files', 999]
+    });
 });
