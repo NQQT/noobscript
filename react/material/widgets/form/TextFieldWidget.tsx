@@ -28,6 +28,7 @@ export const TextFieldWidget = React.memo((props: TextFieldWidgetProps) => {
 
     const inputFieldProps: InputTextFieldProps = {
         value: inputValue(),
+        variant: 'outlined',
         onChange: (value) => {
             // Updating the value
             inputValue(value);
