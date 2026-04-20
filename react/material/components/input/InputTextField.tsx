@@ -8,9 +8,10 @@ export type InputTextFieldProps = {
     value?: string;
     variant?: 'standard' | 'outlined';
     onChange?: (value: string) => void;
+    onEnter?: () => void;
 };
 export const InputTextField = React.memo((props: InputTextFieldProps) => {
-    const { label, variant, value, onChange } = props;
+    const { label, variant, value, onChange, onEnter } = props;
 
     const InputComponent = stringSwitch(variant, {
         outlined: () => OutlinedInput,
@@ -21,6 +22,11 @@ export const InputTextField = React.memo((props: InputTextFieldProps) => {
         value,
         onChange: (event: any) => {
             onChange?.(event.target.value);
+        },
+        onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => {
+            if (event.key === 'Enter') {
+                onEnter?.();
+            }
         }
     };
 

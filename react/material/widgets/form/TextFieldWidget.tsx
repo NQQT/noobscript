@@ -1,16 +1,21 @@
 import React from 'react';
 import { WidgetPropsType } from '../type';
 import { FlexColumn, FlexRow } from '@react/headless';
-import { Button, ButtonProps, prototypeInputTextField } from '../../components';
-import { useReferenceHook } from '@presource/react';
+import { Button, ButtonProps, InputTextFieldProps, prototypeInputTextField } from '../../components';
+import { useStateHook } from '@presource/react';
 
 export type TextFieldWidgetProps = WidgetPropsType & {
     // Any additional type
 };
 
+const InputTextField = prototypeInputTextField({
+    label: 'Text'
+});
+
 export const TextFieldWidget = React.memo((props: TextFieldWidgetProps) => {
+    // Data Props
     const { data } = props;
-    const inputValue = useReferenceHook(data?.value);
+    const inputValue = useStateHook(data?.value);
 
     const buttonProps: ButtonProps = {
         label: 'Submit',
@@ -21,18 +26,22 @@ export const TextFieldWidget = React.memo((props: TextFieldWidgetProps) => {
         }
     };
 
-    const InputTextField = prototypeInputTextField({
-        label: 'Text',
+    const inputFieldProps: InputTextFieldProps = {
+        value: inputValue(),
         onChange: (value) => {
             // Updating the value
             inputValue(value);
+        },
+        onEnter: () => {
+            // Updating the data value with reference value
+            data.value = inputValue();
         }
-    });
+    };
 
     return (
         <FlexColumn>
             <FlexRow>
-                <InputTextField />
+                <InputTextField {...inputFieldProps} />
             </FlexRow>
             <FlexRow justify={'flex-end'}>
                 <Button {...buttonProps} />
