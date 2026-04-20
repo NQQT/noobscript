@@ -24,9 +24,10 @@ export const configureStoryControls: ConfigureStoryControls = (meta, controls = 
     const fullControls = convertToStandardFormat(controls);
     const storybookControls = convertToStorybookFormat(fullControls);
 
-    const argTypes = objectMerge((meta.argTypes ||= {}), storybookControls);
+    meta.argTypes = objectMerge((meta.argTypes ||= {}), storybookControls);
+    const { argTypes } = meta;
 
-    const args = objectMap(argTypes, ({ value }) => {
+    const args = objectMap(argTypes as typeof storybookControls, ({ value }) => {
         return value.default;
     });
 

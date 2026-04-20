@@ -26,7 +26,7 @@ export const interactionTestRunner: InteractionTestRunner = (meta, list) => {
                 if (isFunction(playFunction)) {
                     await act(async () => {
                         // Interaction might be happening inside act
-                        await playFunction({ canvasElement: document as any, args });
+                        await playFunction({ canvasElement: document.body, args });
                     });
                 }
             });

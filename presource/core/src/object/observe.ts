@@ -41,13 +41,15 @@ export const objectObserve: ObjectObserve = (item, callback, chain = { depth: 0,
     // Return the Proxy Object
     return objectProxy(item, {
         // Get Observer
-        get: ({ k, v, m }) => {
+        get: ({ o, k, v, m }) => {
+            const isValueDefined = !isUndefined(v);
+
             const { depth } = chain;
             const path = [...chain.path];
             // Adding Key into Path
             path.push(k);
             // If v is not defined, setting to an object
-            const nested = isUndefined(v) ? {} : v;
+            const nested = isValueDefined ? v : {};
             // This is the curent value
             const current = item[k];
             // Updating Object with Nested
@@ -66,8 +68,15 @@ export const objectObserve: ObjectObserve = (item, callback, chain = { depth: 0,
                     p: 'path'
                 })
             );
+            const updatedValue = o[k];
+
             // Return another proxied object for recursion
-            return isObject(nested) ? objectObserve(nested, callback, { depth: depth + 1, path }) : nested;
+            return isObject(updatedValue)
+                ? objectObserve(updatedValue, callback, {
+                      depth: depth + 1,
+                      path
+                  })
+                : updatedValue;
         },
 
         // Set observer

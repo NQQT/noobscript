@@ -31,7 +31,8 @@ export abstract class RestService {
         const url = this.buildUrl(endpoint, input?.body);
         const response = await fetch(url, {
             method: 'GET',
-            headers: this.buildHeaders(input?.header)
+            headers: this.buildHeaders(input?.header),
+            credentials: 'include'
         });
         return this.handleResponse(response);
     }
@@ -74,7 +75,7 @@ export abstract class RestService {
 
     private buildHeaders(header?: RestServiceRequestHeader): HeadersInit {
         return {
-            'Content-Type': 'application/json',
+            // 'Content-Type': 'application/json',
             Accept: 'application/json',
             ...header
         };

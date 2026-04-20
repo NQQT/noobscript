@@ -10,56 +10,59 @@ const asFileBinFile = (content: any) => {
     return {
         filename: content.filename,
         filesize: content.bytes,
-        checksum: content.sha256
+        checksum: content.sha256,
+        updated: content.updated_at
     } as FileBinFile;
 };
 
 export class Filebin extends RestService {
-    host = 'https://filebin.net';
+    protected host = 'http://localhost:3000';
+    private bin: string;
+    private proxyBase = 'https://filebin.net';
 
     constructor(config: Config) {
         super();
-        const { bin } = config;
-        this.host = `${this.host}/${bin}/`;
+        this.bin = config.bin;
     }
+
+    // Override buildUrl to inject X-Proxy-Target header approach,
 
     async list() {
-        const result = await this.get('');
-        return result.files.map((file: any) => {
-            return asFileBinFile(file);
+        const result = await fetch(this.fileBinUrl(''), {
+            headers: { Accept: 'application/json' },
+            credentials: 'include'
         });
+        const json = await result.json();
+        return json.files.map((file: any) => asFileBinFile(file));
     }
 
-    /**
-     * Uploads file content to the configured Filebin bin.
-     * @param data - The raw file content as a string.
-     * @param filename - The name to give the file on Filebin.
-     * @returns The Filebin response confirming the upload.
-     */
     async upload(data: string, filename: string): Promise<RestServiceResponseBody> {
-        const content = await this.post(filename, {
-            header: {
+        const result = await fetch(this.fileBinUrl(filename), {
+            method: 'POST',
+            headers: {
                 'Content-Type': 'application/octet-stream',
-                filename
+                Accept: 'application/json'
             },
-            body: data
+            body: data,
+            credentials: 'include'
         });
-
-        return asFileBinFile(content.file);
+        const json = await result.json();
+        return asFileBinFile(json.file);
     }
 
-    /**
-     * Downloads a file from the configured Filebin bin.
-     * @param filename - The name of the file to retrieve.
-     * @returns The raw file content as a string (wrapped in { data: '...' }).
-     */
     async download(filename: string): Promise<string> {
-        const response = await this.get(filename, {
-            header: {
-                Cookie: 'verified=2024-05-24',
-                Accept: '*/*'
-            }
+        const result = await fetch(this.fileBinUrl(filename), {
+            headers: {
+                Accept: '*/*',
+                Cookie: 'verified=2024-05-24'
+            },
+            credentials: 'include'
         });
-        return response.data as string;
+        return result.text();
+    }
+
+    // OR just construct URLs correctly:
+    private fileBinUrl(path: string): string {
+        return `${this.host}/?url=${encodeURIComponent(`${this.proxyBase}/${this.bin}/${path}`)}`;
     }
 }
