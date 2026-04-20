@@ -22,8 +22,6 @@ const meta: Meta = {
             }
         };
 
-        console.log('the props:', props);
-
         return <HeadlessButton {...props} />;
     })
 };

@@ -1,9 +1,7 @@
-import meta, { StateHook } from './state.stories';
-import { interactionTestRunner } from '@library/test';
-// import userEvent from '@testing-library/user-event';
+import { storybookTestRunner } from '@library/test';
+import * as stories from './state.stories';
+import { describe } from 'vitest';
 
 describe('React StateHook Interaction Test', () => {
-    interactionTestRunner(meta, {
-        StateHook
-    });
+    storybookTestRunner(stories);
 });

@@ -2,31 +2,25 @@ import { Meta } from '@storybook/react';
 import { $dom, asTestStory } from '@library/test';
 import React from 'react';
 import { Button } from '@react/material';
-import { reactContextStore } from '@presource/react';
 import { FlexRow } from '@react/headless';
+import { reactContextStore } from './store';
 
-// This is configuration
+const reactStore = reactContextStore({
+    counter: 0
+});
+
+// This is configurations
 const meta: Meta = {
     title: 'Presource/React/Context/Context Store',
     // Setting the component
     component: React.memo(() => {
-        const reactStore = React.useMemo(
-            () =>
-                reactContextStore({
-                    counter: 0
-                }),
-            []
-        );
         // Demonstration of the context store
         const { counter } = reactStore();
-
-        console.log('re-rendered');
         return (
             <FlexRow wrap={'wrap'}>
                 <Button
                     label={`Counter: ${counter}`}
                     onClick={() => {
-                        console.log('clicked');
                         reactStore.counter++;
                     }}
                 />

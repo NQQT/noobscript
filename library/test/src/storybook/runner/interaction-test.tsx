@@ -1,35 +1,18 @@
-import { isFunction, objectEach } from '@presource/core';
-import { composeStory } from '@storybook/react';
-import { act, render } from '@testing-library/react';
-import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import { composeStories } from '@storybook/react';
 
-export type InteractionTestRunner = <T extends { [key: string]: any }>(meta: any, input: T) => void;
+// A properly typed CSF module shape
+type StoriesModule = {
+    default: Meta<any>;
+    [key: string]: StoryObj<any> | Meta<any>;
+};
 
-// For running interaction test within jest environment
-export const interactionTestRunner: InteractionTestRunner = (meta, list) => {
-    objectEach(list, ({ key, value }) => {
-        // Building the component
-        const Component = composeStory(value, meta);
+export const storybookTestRunner = (stories: StoriesModule) => {
+    const composed = composeStories(stories);
 
-        // Setting the story name correctly
-        const storyName = key.toString();
-
-        // Describing the interaction test
-        describe(storyName, () => {
-            // Standard interaction test
-            it('should passes interaction test', async () => {
-                const { args } = Component;
-                // Render the component
-                const { container } = render(<Component {...args} />);
-
-                const playFunction = Component.play!;
-                if (isFunction(playFunction)) {
-                    await act(async () => {
-                        // Interaction might be happening inside act
-                        await playFunction({ canvasElement: container, args });
-                    });
-                }
-            });
+    Object.entries(composed).forEach(([name, Story]) => {
+        it(`${name} interaction test should pass`, async () => {
+            await Story.run();
         });
     });
 };

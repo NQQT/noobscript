@@ -1,8 +1,6 @@
-import meta, { FunctionalButton } from './FunctionalButton.stories';
-import { interactionTestRunner } from '@library/test';
+import * as stories from './FunctionalButton.stories';
+import { storybookTestRunner } from '@library/test';
 
 describe('FunctionalButton Interaction Test', () => {
-    interactionTestRunner(meta, {
-        FunctionalButton
-    });
+    storybookTestRunner(stories);
 });
