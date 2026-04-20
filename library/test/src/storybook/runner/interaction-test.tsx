@@ -20,13 +20,13 @@ export const interactionTestRunner: InteractionTestRunner = (meta, list) => {
             it('should passes interaction test', async () => {
                 const { args } = Component;
                 // Render the component
-                render(<Component {...args} />);
+                const { container } = render(<Component {...args} />);
 
                 const playFunction = Component.play!;
                 if (isFunction(playFunction)) {
                     await act(async () => {
                         // Interaction might be happening inside act
-                        await playFunction({ canvasElement: document.body, args });
+                        await playFunction({ canvasElement: container, args });
                     });
                 }
             });
