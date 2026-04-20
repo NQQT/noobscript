@@ -2,6 +2,7 @@ import { Meta } from '@storybook/react';
 import React from 'react';
 import { HeadlessButton, HeadlessButtonProps } from '@react/headless';
 import { useStateHook } from '@presource/react';
+import { $dom, asTestStory } from '@library/test';
 
 const meta: Meta = {
     title: 'Presource/React/Hook/State Hook',
@@ -21,6 +22,8 @@ const meta: Meta = {
             }
         };
 
+        console.log('the props:', props);
+
         return <HeadlessButton {...props} />;
     })
 };
@@ -28,4 +31,8 @@ const meta: Meta = {
 export default meta;
 
 // Storybook
-export const StateHook = {};
+export const StateHook = asTestStory(async () => {
+    await $dom.button('Counter: 0').click();
+    await $dom.button('Counter: 1').click();
+    await $dom.button('Counter: 2').click();
+});
