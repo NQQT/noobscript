@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/react';
-import { configureStoryControls } from '@library/test';
-import { TabContent } from './TabContent';
+import { asTestStory, configureStoryControls } from '@library/test';
+import { TabContent as MaterialTabContent } from './TabContent';
 import React from 'react';
 import { objectCreate } from '@presource/core';
 
@@ -12,7 +12,7 @@ const meta: Meta = {
         const props = {
             content: objectCreate(count, ({ value }) => <>{`Content for ${value}`}</>)
         };
-        return <TabContent {...props} />;
+        return <MaterialTabContent {...props} />;
     })
 };
 
@@ -23,4 +23,6 @@ configureStoryControls(meta, {
 });
 
 // Storybook
-export const Switch = {};
+export const TabContent = asTestStory(async () => {
+    // TODO
+});

@@ -4,20 +4,19 @@ import { Tab, Tabs, TabsProps } from '@mui/material';
 import { useStateHook } from '@presource/react';
 
 export type TabContentProps = {
+    index?: number;
     content: {
         [key: string]: React.ReactNode;
     };
 };
 
 export const TabContent = React.memo((props: TabContentProps) => {
-    const { content } = props;
-    console.log('the props', props);
-    const tabIndex = useStateHook(0);
+    const { content, index } = props;
+    const tabIndex = useStateHook(index || 0);
     const value = tabIndex();
     const tabsProps: TabsProps = {
         value,
         onChange: (_, newValue: number) => {
-            console.log('clicked', newValue);
             tabIndex(newValue);
         }
     };
