@@ -17,7 +17,6 @@ export const TabContent = React.memo((props: TabContentProps) => {
     const tabsProps: TabsProps = {
         value,
         onChange: (_, newValue: number) => {
-            console.log('the value', value);
             tabIndex(newValue);
         }
     };

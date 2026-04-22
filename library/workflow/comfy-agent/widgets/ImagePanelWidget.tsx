@@ -11,7 +11,7 @@ const refreshGallery = signalState({});
 const checkImageStash = async (data: ImagePanelWidgetProps['data']) => {
     const { bin } = data;
     const filebin = new Filebin({ bin: `${bin}_stash` });
-    const list = await filebin.list();
+    const list = (await filebin.list()) || [];
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < list.length; i++) {
         // Extracting files
@@ -35,7 +35,7 @@ const checkImageStash = async (data: ImagePanelWidgetProps['data']) => {
     }
 
     setTimeout(() => {
-        checkImageStash();
+        checkImageStash(data);
     }, 0);
 };
 

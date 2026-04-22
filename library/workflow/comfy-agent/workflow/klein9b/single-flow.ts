@@ -1,6 +1,6 @@
-import { jsonEditor } from '@presource/utility';
+import { comfyJson } from '@presource/utility';
 
-export const klein9bSingleFlow = jsonEditor({
+export const klein9bSingleFlow = comfyJson({
     '7862': {
         inputs: {
             images: ['7860:65', 0]
@@ -27,7 +27,7 @@ export const klein9bSingleFlow = jsonEditor({
         },
         class_type: 'CLIPTextEncode',
         _meta: {
-            title: 'CLIP Text Encode (Positive Prompt)'
+            title: 'Positive Prompt'
         }
     },
     '7860:82': {
@@ -144,3 +144,6 @@ export const klein9bSingleFlow = jsonEditor({
         }
     }
 });
+
+// Configuring that text option is editable
+klein9bSingleFlow('Positive Prompt').option('text');

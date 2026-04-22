@@ -9,8 +9,9 @@ export type ThreeColumnDashboardProps = {
 
 const MIN_COL_WIDTH = 120;
 const DIVIDER_WIDTH = 6;
+const DIVIDER_COUNT = 2;
 
-function useDrag(onDrag: (delta: number) => void, containerRef: React.RefObject<HTMLDivElement>) {
+function useDrag(onDrag: (delta: number) => void) {
     const dragging = useRef(false);
     const lastX = useRef(0);
 
@@ -46,53 +47,62 @@ export const ThreeColumnDashboard = React.memo((props: ThreeColumnDashboardProps
     const { leftColumn, middleColumn, rightColumn } = props;
     const containerRef = useRef<HTMLDivElement>(null);
 
-    // Column widths as fractions (0–1), left + middle + right = 1
-    const [leftPct, setLeftPct] = useState(0.25);
-    const [rightPct, setRightPct] = useState(0.25);
-    // middlePct = 1 - leftPct - rightPct
+    // Column widths in pixels
+    const [leftWidth, setLeftWidth] = useState<number | null>(null);
+    const [rightWidth, setRightWidth] = useState<number | null>(null);
 
-    const getContainerWidth = () => (containerRef.current ? containerRef.current.offsetWidth - DIVIDER_WIDTH * 2 : 800);
+    // Initialize pixel widths from container on first render
+    const getInitialWidths = useCallback(() => {
+        if (!containerRef.current) return;
+        if (leftWidth !== null) return; // already initialized
+        const total = containerRef.current.offsetWidth - DIVIDER_WIDTH * DIVIDER_COUNT;
+        setLeftWidth(Math.floor(total * 0.25));
+        setRightWidth(Math.floor(total * 0.25));
+    }, [leftWidth]);
 
-    // Drag the divider between left and middle
+    useEffect(() => {
+        getInitialWidths();
+    }, [getInitialWidths]);
+
+    const getAvailableWidth = () =>
+        containerRef.current ? containerRef.current.offsetWidth - DIVIDER_WIDTH * DIVIDER_COUNT : 800;
+
     const onDragLeft = useCallback(
         (delta: number) => {
-            const total = getContainerWidth();
-            setLeftPct((prev) => {
-                const middlePct = 1 - prev - rightPct;
-                const newLeft = Math.max(
-                    MIN_COL_WIDTH / total,
-                    Math.min(prev + delta / total, 1 - rightPct - MIN_COL_WIDTH / total)
-                );
-                const newMiddle = 1 - newLeft - rightPct;
-                if (newMiddle * total < MIN_COL_WIDTH) return prev;
+            const total = getAvailableWidth();
+            setLeftWidth((prev) => {
+                const lw = prev ?? Math.floor(total * 0.25);
+                const rw = rightWidth ?? Math.floor(total * 0.25);
+                const newLeft = Math.max(MIN_COL_WIDTH, Math.min(lw + delta, total - rw - MIN_COL_WIDTH));
+                const newMiddle = total - newLeft - rw;
+                if (newMiddle < MIN_COL_WIDTH) return lw;
                 return newLeft;
             });
         },
-        [rightPct]
+        [rightWidth]
     );
 
-    // Drag the divider between middle and right
     const onDragRight = useCallback(
         (delta: number) => {
-            const total = getContainerWidth();
-            setRightPct((prev) => {
-                const middlePct = 1 - leftPct - prev;
-                const newRight = Math.max(
-                    MIN_COL_WIDTH / total,
-                    Math.min(prev - delta / total, 1 - leftPct - MIN_COL_WIDTH / total)
-                );
-                const newMiddle = 1 - leftPct - newRight;
-                if (newMiddle * total < MIN_COL_WIDTH) return prev;
+            const total = getAvailableWidth();
+            setRightWidth((prev) => {
+                const rw = prev ?? Math.floor(total * 0.25);
+                const lw = leftWidth ?? Math.floor(total * 0.25);
+                const newRight = Math.max(MIN_COL_WIDTH, Math.min(rw - delta, total - lw - MIN_COL_WIDTH));
+                const newMiddle = total - lw - newRight;
+                if (newMiddle < MIN_COL_WIDTH) return rw;
                 return newRight;
             });
         },
-        [leftPct]
+        [leftWidth]
     );
 
-    const leftDrag = useDrag(onDragLeft, containerRef);
-    const rightDrag = useDrag(onDragRight, containerRef);
+    const leftDrag = useDrag(onDragLeft);
+    const rightDrag = useDrag(onDragRight);
 
-    const middlePct = 1 - leftPct - rightPct;
+    const total = getAvailableWidth();
+    const lw = leftWidth ?? Math.floor(total * 0.25);
+    const rw = rightWidth ?? Math.floor(total * 0.25);
 
     return (
         <Box
@@ -125,13 +135,13 @@ export const ThreeColumnDashboard = React.memo((props: ThreeColumnDashboardProps
                     minHeight: 0
                 }}
             >
-                {/* Left column */}
+                {/* Left column — fixed pixel width */}
                 <Box
                     sx={{
-                        width: `${leftPct * 100}%`,
+                        width: lw,
                         minWidth: MIN_COL_WIDTH,
-                        overflow: 'auto',
-                        flexShrink: 0
+                        flexShrink: 0,
+                        overflow: 'auto'
                     }}
                 >
                     <Paper square elevation={0} sx={{ height: '100%', borderRight: 1, borderColor: 'divider' }}>
@@ -154,14 +164,13 @@ export const ThreeColumnDashboard = React.memo((props: ThreeColumnDashboardProps
                     }}
                 />
 
-                {/* Middle column */}
+                {/* Middle column — flex: 1 fills remaining space naturally */}
                 <Box
                     sx={{
-                        width: `${middlePct * 100}%`,
+                        flex: 1,
                         minWidth: MIN_COL_WIDTH,
-                        overflow: 'auto',
-                        flexShrink: 0,
-                        flexGrow: 1
+                        overflow: 'auto'
+                        // No explicit width — it stretches to fill whatever's left
                     }}
                 >
                     <Paper square elevation={0} sx={{ height: '100%' }}>
@@ -184,13 +193,13 @@ export const ThreeColumnDashboard = React.memo((props: ThreeColumnDashboardProps
                     }}
                 />
 
-                {/* Right column */}
+                {/* Right column — fixed pixel width */}
                 <Box
                     sx={{
-                        width: `${rightPct * 100}%`,
+                        width: rw,
                         minWidth: MIN_COL_WIDTH,
-                        overflow: 'auto',
-                        flexShrink: 0
+                        flexShrink: 0,
+                        overflow: 'auto'
                     }}
                 >
                     <Paper square elevation={0} sx={{ height: '100%', borderLeft: 1, borderColor: 'divider' }}>

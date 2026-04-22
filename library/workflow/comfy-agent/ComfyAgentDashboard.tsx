@@ -1,9 +1,9 @@
 import React from 'react';
-import { FullScreen } from '@react/headless';
 import { ThreeColumnDashboard } from '@react/material';
 import { AgentPanelWidget, ImagePanelWidget, WorkflowPanelWidget } from './widgets';
 import { reactContextStore } from '@presource/react';
 import { klein9bSingleFlow } from './workflow';
+import { FullScreen } from '@react/headless';
 
 const store = reactContextStore({
     data: {

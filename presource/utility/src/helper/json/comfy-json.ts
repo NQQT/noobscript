@@ -15,6 +15,15 @@ export type ComfyJson = (input: string | object) => {
         inputs: (name: string, value: any) => void;
         option: (key: string, option?: Option) => void;
     };
+    string: () => string;
+    configs: () => {
+        // The key is the name of the node itself
+        [key: string]: {
+            // the reference ot the input
+            inputs: { [key: string]: any };
+            options: { [key: string]: Option };
+        };
+    };
 };
 
 // For building a comfyJson
@@ -52,8 +61,19 @@ export const comfyJson: ComfyJson = (input: any) => {
     };
 
     Object.assign(handler, {
-        string: () => {
-            return JSON.stringify(input);
+        string: () => JSON.stringify(input),
+        configs: () => {
+            const result: any = {};
+            objectEach(input, ({ value: data }) => {
+                if (data._meta.options) {
+                    // Adding to the configuration
+                    result[data._meta.title] = {
+                        inputs: data.inputs,
+                        options: data._meta.options
+                    };
+                }
+            });
+            return result;
         }
     });
 
