@@ -1,6 +1,6 @@
-import { Filebin, parseComfyAgentStatuses } from '@presource/web';
+import { Filebin } from '@presource/web';
 
-describe.skip('filebin requirement', () => {
+describe('filebin requirement', () => {
     const filebin = new Filebin({ bin: 'kaggle_test' });
     const content = {
         '7862': {
@@ -24,7 +24,7 @@ describe.skip('filebin requirement', () => {
         },
         '7860:74': {
             inputs: {
-                text: 'A beautiful landscape with mountains with a beautiful girl in bikini',
+                text: 'A young girl, 5-year-old, looking directly at the viewer',
                 clip: ['7860:71', 0]
             },
             class_type: 'CLIPTextEncode',
@@ -85,7 +85,7 @@ describe.skip('filebin requirement', () => {
         },
         '7860:7832': {
             inputs: {
-                seed: 216120287770459
+                seed: -1
             },
             class_type: 'Seed (rgthree)',
             _meta: {
@@ -147,7 +147,7 @@ describe.skip('filebin requirement', () => {
         }
     };
 
-    it.only('test', { timeout: 20000 }, async () => {
+    it('test', { timeout: 20000 }, async () => {
         const newbin = new Filebin({ bin: 'kaggle_test_stash' });
         console.log(await newbin.download('20260418_134327_0.shard'));
     });
@@ -156,15 +156,16 @@ describe.skip('filebin requirement', () => {
         // await filebin.delete('workflow.json');
         // Upload the file — real HTTP POST to filebin.net
         await filebin.upload(
+            'workflow.json',
             JSON.stringify({
+                stash: '22April',
                 data: content
-            }),
-            'workflow2.json'
+            })
         );
     });
 
-    it('should look up agents', async () => {
-        const filebin = new Filebin({ bin: 'kaggle_test_agent' });
-        console.log(parseComfyAgentStatuses(await filebin.list()));
+    it.only('should look up agents', async () => {
+        const filebin = new Filebin({ bin: 'kaggle_test_stash' });
+        await filebin.upload('test', '');
     });
 });

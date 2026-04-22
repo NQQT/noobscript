@@ -36,7 +36,7 @@ export class Filebin extends RestService {
         return json.files.map((file: any) => asFileBinFile(file));
     }
 
-    async upload(data: string, filename: string): Promise<RestServiceResponseBody> {
+    async upload(filename: string, data: string): Promise<RestServiceResponseBody> {
         const result = await fetch(this.fileBinUrl(filename), {
             method: 'POST',
             headers: {

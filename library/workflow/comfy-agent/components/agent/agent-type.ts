@@ -4,7 +4,7 @@ export type AgentComponentProps = {
     name: string;
     label: string;
     // The status of the agent
-    status: 'active' | 'inactive';
+    status: 'active' | 'inactive' | 'attention' | 'error';
     // How long does this task been running for
     duration: number;
 };

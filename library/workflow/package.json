@@ -4,7 +4,8 @@
   "description": "Workflow library",
   "main": "index.ts",
   "scripts": {
-    "test": "vitest run"
+    "test": "vitest run",
+    "proxy": "node proxy.js"
   },
   "author": "NQQT",
   "license": "ISC",

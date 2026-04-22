@@ -9,7 +9,7 @@ describe('filebin requirement', () => {
 
     it('should upload a file to filebin and retrieve its content', async () => {
         // Upload the file — real HTTP POST to filebin.net
-        const uploadResponse = await filebin.upload(content, filename);
+        const uploadResponse = await filebin.upload(filename, content);
 
         // Ensuring the file uploaded
         expect(uploadResponse).toStrictEqual({

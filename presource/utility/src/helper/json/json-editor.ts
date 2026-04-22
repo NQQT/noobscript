@@ -8,6 +8,7 @@ type Options = {
 export type JsonEditor = (input: string | object) => {
     (): { [key: string]: any };
     assign: (key: string, options: Options) => void;
+    string: () => string;
 };
 
 // The Json Editor
@@ -29,6 +30,9 @@ export const jsonEditor: JsonEditor = (input) => {
         // Assign Configuration
         assign: (name: string, option: any) => {
             memory.options[name] = option;
+        },
+        string: () => {
+            return JSON.stringify(memory);
         }
     });
 

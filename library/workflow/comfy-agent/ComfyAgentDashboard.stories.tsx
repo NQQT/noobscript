@@ -12,6 +12,6 @@ const meta: Meta = {
 export default meta;
 
 // Storybook
-export const AgentDashboard = asTestStory(async () => {
+export const Dashboard = asTestStory(async () => {
     // TODO Add Test Later
 });

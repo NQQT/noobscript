@@ -1,7 +1,10 @@
 import { isInvalid, objectExtract, objectObserve, stringSwitch } from '@presource/core';
 import { useEffect, useState } from 'react';
 
-export type ReactContextStore = <T>() => T & {
+export type ReactContextStore = <T extends { [key: string]: any }>(
+    input: T
+) => T & {
+    (): T;
     (option: 'state'): {
         refresh: () => void;
     };
@@ -19,7 +22,7 @@ export const reactContextStore: ReactContextStore = (initialState = {} as any) =
     const stateStore = { ...initialState };
 
     const getCurrentState = () => {
-        return stateStore;
+        return stateStore as any;
     };
 
     // List of all components that need to be refreshed

@@ -14,13 +14,13 @@ export default meta;
 configureStoryControls(meta, {
     name: 'James',
     label: 'downloading files...',
-    status: ['active', 'inactive', 'error'],
+    status: ['active', 'inactive', 'attention', 'error'],
     duration: 999
 });
 
 // Storybook
 export const AgentChip = asTestStory(async () => {
     await $expect.snapshot({
-        text: ['downloading files', 999]
+        text: ['downloading files', '999']
     });
 });

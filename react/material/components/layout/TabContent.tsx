@@ -17,6 +17,7 @@ export const TabContent = React.memo((props: TabContentProps) => {
     const tabsProps: TabsProps = {
         value,
         onChange: (_, newValue: number) => {
+            console.log('the value', value);
             tabIndex(newValue);
         }
     };
@@ -33,7 +34,7 @@ export const TabContent = React.memo((props: TabContentProps) => {
             {keys.map((label, key) => {
                 return (
                     <TabPanel value={value} index={key}>
-                        {content[key]}
+                        {content[label]}
                     </TabPanel>
                 );
             })}

@@ -10,7 +10,7 @@ export const AgentComponent = React.memo((props: AgentComponentProps) => {
     const theme = useTheme();
 
     const chipProps: ChipProps = {
-        label,
+        label: label || 'no idea...',
         variant: 'outlined'
     };
 
@@ -21,7 +21,10 @@ export const AgentComponent = React.memo((props: AgentComponentProps) => {
         inactive: () => {
             chipProps.color = 'primary';
         },
-        error: () => {
+        attention: () => {
+            chipProps.color = 'warning';
+        },
+        default: () => {
             chipProps.color = 'error';
         }
     });

@@ -27,7 +27,7 @@ export const ImageBox = React.memo((props: ImageBoxProps) => {
     const { source, text, width, height } = props;
     const cleanWidth = width || 720;
     const cleanHeight = height || 720;
-    const effectiveWidth = 200;
+    const effectiveWidth = 400;
     const effectiveHeight = cleanHeight * (effectiveWidth / cleanWidth);
 
     const boxSx = {
