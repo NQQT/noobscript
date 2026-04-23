@@ -1,15 +1,12 @@
 import React from 'react';
-import { Button, InputTextArea, InputTextAreaProps, TabContent } from '@react/material';
+import { Button, ButtonProps, InputTextArea, InputTextAreaProps, TabContent } from '@react/material';
 import { FlexColumn, FlexRow } from '@react/headless';
-import { comfyJson } from '@presource/utility';
 import { useStateHook } from '@presource/react';
 import { Filebin } from '@presource/web';
+import { ComfyAgentDashboardStore } from '../context';
 
 export type WorkflowPanelWidgetProps = {
-    data: {
-        bin: string;
-        workflow: ReturnType<typeof comfyJson>;
-    };
+    data: ComfyAgentDashboardStore['data'];
 };
 
 export const WorkflowPanelWidget = React.memo((props: WorkflowPanelWidgetProps) => {
@@ -27,7 +24,7 @@ export const WorkflowPanelWidget = React.memo((props: WorkflowPanelWidgetProps) 
 
 const GraphicEditor = React.memo((props: WorkflowPanelWidgetProps) => {
     const {
-        data: { workflow, bin }
+        data: { workflow }
     } = props;
 
     const configs = workflow.configs();
@@ -55,20 +52,39 @@ const GraphicEditor = React.memo((props: WorkflowPanelWidgetProps) => {
                 })}
             </FlexColumn>
             <FlexRow justify={'flex-end'}>
-                <Button
-                    variant={'contained'}
-                    color={'primary'}
-                    label={'Submit'}
-                    onClick={() => {
-                        // When clicked, this should submit to the server
-                        const filebin = new Filebin({ bin });
-                        // Submitting the file
-                        filebin.upload('workflow.json', workflow.string());
-                    }}
-                />
+                <SubmitButton {...props} />
             </FlexRow>
         </FlexColumn>
     );
+});
+
+const SubmitButton = React.memo((props: WorkflowPanelWidgetProps) => {
+    const {
+        data: { bin, workflow }
+    } = props;
+    const disabled = useStateHook(false);
+
+    const buttonProps: ButtonProps = {
+        variant: 'contained',
+        color: 'primary',
+        label: 'submit',
+        disabled: disabled(),
+        onClick: () => {
+            // Building new stashId
+            const newStashId = Date.now();
+            disabled(true);
+            // When clicked, this should submit to the server
+            const filebin = new Filebin({ bin });
+            // Submitting the file
+            filebin.upload(`workflow_${newStashId}.json`, workflow.string()).then(() => {
+                disabled(false);
+                // Update a new stash
+                props.data.stashId = newStashId.toString();
+            });
+        }
+    };
+
+    return <Button {...buttonProps} />;
 });
 
 type EditorProps = {

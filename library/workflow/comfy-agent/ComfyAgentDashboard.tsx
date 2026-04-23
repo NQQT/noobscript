@@ -1,20 +1,12 @@
 import React from 'react';
 import { ThreeColumnDashboard } from '@react/material';
 import { AgentPanelWidget, ImagePanelWidget, WorkflowPanelWidget } from './widgets';
-import { reactContextStore } from '@presource/react';
-import { klein9bSingleFlow } from './workflow';
 import { FullScreen } from '@react/headless';
-
-const store = reactContextStore({
-    data: {
-        bin: 'kaggle_test',
-        workflow: klein9bSingleFlow
-    }
-});
+import { comfyAgentDashboardStore } from './context';
 
 export const ComfyAgentDashboard = React.memo(() => {
     // Extracting out the data
-    const { data } = store();
+    const { data } = comfyAgentDashboardStore();
 
     // Passing Data through the props
     const props = {

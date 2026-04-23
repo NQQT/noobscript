@@ -4,13 +4,18 @@ import { FlexRow } from '@react/headless';
 import { signalState } from '@presource/react';
 import { ImageBox } from '@react/material';
 import { Filebin } from '@presource/web';
+import { ComfyAgentDashboardStore } from '../context';
 
 const images: any = {};
 const refreshGallery = signalState({});
 
+export type ImagePanelWidgetProps = {
+    data: ComfyAgentDashboardStore['data'];
+};
+
 const checkImageStash = async (data: ImagePanelWidgetProps['data']) => {
-    const { bin } = data;
-    const filebin = new Filebin({ bin: `${bin}_stash` });
+    const { bin, stashId } = data;
+    const filebin = new Filebin({ bin: `${bin}_${stashId}` });
     const list = (await filebin.list()) || [];
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < list.length; i++) {
@@ -37,12 +42,6 @@ const checkImageStash = async (data: ImagePanelWidgetProps['data']) => {
     setTimeout(() => {
         checkImageStash(data);
     }, 0);
-};
-
-export type ImagePanelWidgetProps = {
-    data: {
-        bin: string;
-    };
 };
 
 export const ImagePanelWidget = React.memo((props: ImagePanelWidgetProps) => {
