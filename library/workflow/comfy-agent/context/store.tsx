@@ -12,8 +12,9 @@ export type ComfyAgentDashboardStore = {
 
 export const comfyAgentDashboardStore = reactContextStore<ComfyAgentDashboardStore>({
     data: {
+        // Will change to today's date always for random job
         bin: 'random_job_42',
-        stashId: 'temporary',
+        stashId: '1776957040281',
         workflow: klein9bSingleFlow
     }
 });

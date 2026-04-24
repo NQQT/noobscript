@@ -27,7 +27,7 @@ export const ImageBox = React.memo((props: ImageBoxProps) => {
     const { source, text, width, height } = props;
     const cleanWidth = width || 720;
     const cleanHeight = height || 720;
-    const effectiveWidth = 400;
+    const effectiveWidth = 200;
     const effectiveHeight = cleanHeight * (effectiveWidth / cleanWidth);
 
     const boxSx = {
@@ -68,12 +68,21 @@ const ImageBoxLoading = React.memo((props) => {
     return <CircularProgress aria-label="Loading…" sx={{ width: '100%', height: '100%' }} />;
 });
 
-// When image is loaded
 const ImageBoxLoaded = React.memo((props: ImageBoxProps) => {
     const { source } = props;
+
+    const handleClick = () => {
+        if (!source) return;
+        const win = window.open();
+        if (win) {
+            win.document.write(`<img src="${source}" style="max-width:100%;display:block;margin:auto;" />`);
+            win.document.close();
+        }
+    };
+
     return (
         <FlexRow>
-            <img src={source} alt={''} width={'100%'} height={'100%'} />
+            <img src={source} alt="" width="100%" height="100%" onClick={handleClick} style={{ cursor: 'zoom-in' }} />
         </FlexRow>
     );
 });

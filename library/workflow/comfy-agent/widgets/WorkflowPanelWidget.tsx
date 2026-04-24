@@ -75,8 +75,13 @@ const SubmitButton = React.memo((props: WorkflowPanelWidgetProps) => {
             disabled(true);
             // When clicked, this should submit to the server
             const filebin = new Filebin({ bin });
+
+            const json = {
+                data: workflow()
+            };
+
             // Submitting the file
-            filebin.upload(`workflow_${newStashId}.json`, workflow.string()).then(() => {
+            filebin.upload(`workflow_${newStashId}.json`, JSON.stringify(json)).then(() => {
                 disabled(false);
                 // Update a new stash
                 props.data.stashId = newStashId.toString();

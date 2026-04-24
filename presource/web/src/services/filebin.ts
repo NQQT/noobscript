@@ -11,6 +11,7 @@ const asFileBinFile = (content: any) => {
         filename: content.filename,
         filesize: content.bytes,
         checksum: content.sha256,
+        created: content.created_at,
         updated: content.updated_at
     } as FileBinFile;
 };
@@ -32,8 +33,14 @@ export class Filebin extends RestService {
             headers: { Accept: 'application/json' },
             credentials: 'include'
         });
-        const json = await result.json();
-        return json.files.map((file: any) => asFileBinFile(file));
+
+        try {
+            const json = await result.json();
+            return json.files.map((file: any) => asFileBinFile(file));
+        } catch (ex) {
+            // Empty
+            return [];
+        }
     }
 
     async upload(filename: string, data: string): Promise<RestServiceResponseBody> {

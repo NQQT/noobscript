@@ -16,9 +16,10 @@ const repeatingCall = (data: AgentPanelWidgetProps['data']) => {
         agents(result);
         // Repeat the call
 
+        // Repeat for every 1 second
         setTimeout(() => {
             repeatingCall(data);
-        }, 0);
+        }, 5000);
     });
 };
 
