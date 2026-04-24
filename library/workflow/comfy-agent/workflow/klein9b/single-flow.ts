@@ -1,7 +1,8 @@
 import { comfyJson } from '@presource/utility';
+import { ClownsharKSamplerScheduler } from '@presource/structure';
 
 export const klein9bSingleFlow = comfyJson({
-    '1': {
+    '2': {
         inputs: {
             eta: 0.5,
             sampler_name: 'linear/euler',
@@ -30,7 +31,7 @@ export const klein9bSingleFlow = comfyJson({
         _meta: { title: 'Save Image' }
     },
     '7860:65': {
-        inputs: { samples: ['1', 0], vae: ['7860:72', 0] },
+        inputs: { samples: ['2', 0], vae: ['7860:72', 0] },
         class_type: 'VAEDecode',
         _meta: { title: 'VAE Decode' }
     },
@@ -66,17 +67,17 @@ export const klein9bSingleFlow = comfyJson({
             lora_3: { on: true, lora: 'Flux2Klein9b_Unchained_v2.safetensors', strength: 0.4 },
             lora_4: { on: true, lora: 'Flux2Klein9b_SNOFS_v1_2.safetensors', strength: 0.6 },
             '➕ Add Lora': '',
-            model: ['7860:7861', 0]
+            model: ['1', 0]
         },
         class_type: 'Power Lora Loader (rgthree)',
-        _meta: { title: 'Power Lora Loader (rgthree)' }
+        _meta: { title: 'Power Lora Loader' }
     },
     '7860:66': {
         inputs: { width: 1024, height: 1024, batch_size: 1 },
         class_type: 'EmptyFlux2LatentImage',
         _meta: { title: 'Empty Flux 2 Latent' }
     },
-    '7860:7861': {
+    '1': {
         inputs: { unet_name: 'Flux-2-Klein-9B-KV-Q8_0.gguf' },
         class_type: 'UnetLoaderGGUF',
         _meta: { title: 'Unet Loader (GGUF)' }
@@ -86,11 +87,7 @@ export const klein9bSingleFlow = comfyJson({
 // Sampler Configuration
 
 klein9bSingleFlow('ClownsharKSampler').option('sampler_name');
-klein9bSingleFlow('ClownsharKSampler').option('scheduler', {
-    type: 'select',
-    // TODO: I want a list of ClownShark Sampler
-    options: ['beta57']
-});
+klein9bSingleFlow('ClownsharKSampler').option('scheduler', ClownsharKSamplerScheduler);
 
 // Configuring that text option is editable
 klein9bSingleFlow('Positive Prompt').option('text');

@@ -1,0 +1,11 @@
+{
+  "name": "@library/cloud",
+  "version": "1.0.0",
+  "description": "Library for cloud controls",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "author": "NQQT",
+  "license": "ISC"
+}

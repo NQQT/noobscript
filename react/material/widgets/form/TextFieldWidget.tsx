@@ -1,6 +1,5 @@
 import React from 'react';
-import { WidgetPropsType } from '../type';
-import { FlexColumn, FlexRow } from '@react/headless';
+import { FlexColumn, FlexRow, WidgetPropsType } from '@react/headless';
 import { Button, ButtonProps, InputTextFieldProps, prototypeInputTextField } from '../../components';
 import { useStateHook } from '@presource/react';
 

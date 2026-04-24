@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, ButtonProps, InputTextArea, InputTextAreaProps, TabContent } from '@react/material';
 import { FlexColumn, FlexRow } from '@react/headless';
 import { useStateHook } from '@presource/react';
-import { Filebin } from '@presource/web';
+import { Filebin } from '@library/cloud';
 import { ComfyAgentDashboardStore } from '../context';
 
 export type WorkflowPanelWidgetProps = {

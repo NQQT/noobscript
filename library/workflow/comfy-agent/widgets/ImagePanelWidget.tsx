@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
-import { AgentPanelWidget } from './AgentPanelWidget';
 import { FlexRow } from '@react/headless';
 import { signalState } from '@presource/react';
 import { ImageBox } from '@react/material';
-import { Filebin } from '@presource/web';
+import { Filebin } from '@library/cloud';
 import { ComfyAgentDashboardStore } from '../context';
 
 const images: any = {};

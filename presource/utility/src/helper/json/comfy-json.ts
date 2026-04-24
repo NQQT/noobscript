@@ -1,10 +1,12 @@
 // The Comfy Json results
-import { isString, isUndefined, objectEach } from '@presource/core';
+import { isString, isUndefined, objectEach, typeSwitch } from '@presource/core';
 
-type Option = {
-    type: 'select' | 'radio' | 'boolean' | 'string' | 'number';
-    options?: string[];
-};
+type Option =
+    | {
+          type: 'select' | 'radio' | 'boolean' | 'string' | 'number';
+          options?: string[];
+      }
+    | string[];
 
 export type ComfyJson = (input: string | object) => {
     // Returns the json data
@@ -48,12 +50,24 @@ export const comfyJson: ComfyJson = (input: any) => {
             option: (key: string, option?: Option) => {
                 objectEach(input, ({ value: data }) => {
                     if (data._meta?.title === select) {
+                        // Ensuring options exists
                         data._meta.options ||= {};
 
                         // Stashing options in meta
-                        data._meta.options[key] = option || {
-                            type: 'text'
-                        };
+                        data._meta.options[key] = typeSwitch(option, {
+                            // By default, object should just pass through
+                            object: ({ value }) => value,
+                            // If it is a string array, then convert to object, pass through object method above
+                            array: ({ value, object }) =>
+                                object({
+                                    type: 'select',
+                                    options: value
+                                }),
+                            // If not match anything, let's assume it is a text format
+                            default: () => ({
+                                type: 'text'
+                            })
+                        });
                     }
                 });
             }

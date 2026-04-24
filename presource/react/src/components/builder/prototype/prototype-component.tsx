@@ -1,6 +1,6 @@
 import { objectEach } from '@presource/core';
 import React from 'react';
-import { ReactiveComponentProps } from '@presource/types';
+import { ReactiveComponentProps } from '@presource/structure';
 
 // Prototype Component is designed for fast prototyping
 // That is, its default props should be set at the get go for easy usage.

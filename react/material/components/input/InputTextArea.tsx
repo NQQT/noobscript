@@ -15,7 +15,7 @@ export type InputTextAreaProps = {
 export const InputTextArea = React.memo((props: InputTextAreaProps) => {
     const { label, variant, value, rows, maxRows, onChange } = props;
 
-    const InputComponent = stringSwitch(variant, {
+    const InputComponent = stringSwitch(variant || 'outlined', {
         outlined: () => OutlinedInput,
         default: () => Input
     });

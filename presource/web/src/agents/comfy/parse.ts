@@ -1,7 +1,5 @@
 interface StatusFile {
     filename: string;
-    filesize: number;
-    checksum: string;
     updated: string;
 }
 

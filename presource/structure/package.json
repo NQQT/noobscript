@@ -1,0 +1,11 @@
+{
+  "name": "@presource/structure",
+  "version": "1.0.0",
+  "description": "Enforce build and type structures",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "author": "NQQT",
+  "license": "ISC"
+}

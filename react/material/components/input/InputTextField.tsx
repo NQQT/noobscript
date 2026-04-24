@@ -13,7 +13,7 @@ export type InputTextFieldProps = {
 export const InputTextField = React.memo((props: InputTextFieldProps) => {
     const { label, variant, value, onChange, onEnter } = props;
 
-    const InputComponent = stringSwitch(variant, {
+    const InputComponent = stringSwitch(variant || 'outlined', {
         outlined: () => OutlinedInput,
         default: () => Input
     });

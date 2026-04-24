@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { FlexColumn, FlexRow } from '@react/headless';
 import { AgentComponent } from '../components';
 import { signalState } from '@presource/react';
-import { Filebin, parseComfyAgentStatuses } from '@presource/web';
+import { Filebin } from '@library/cloud';
+import { parseComfyAgentStatuses } from '@presource/web';
 
 // Creating a signal
 const agents = signalState({} as ReturnType<typeof parseComfyAgentStatuses>);
