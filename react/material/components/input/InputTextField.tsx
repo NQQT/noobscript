@@ -1,25 +1,18 @@
 import React from 'react';
-import { FormControl, Input, InputLabel, OutlinedInput } from '@mui/material';
-import { stringSwitch } from '@presource/core';
+import { TextField, TextFieldProps } from '@mui/material';
 import { prototypeComponent } from '@presource/react';
 
-export type InputTextFieldProps = {
-    label?: string;
-    value?: string;
-    variant?: 'standard' | 'outlined';
+export type InputTextFieldProps = Omit<TextFieldProps, 'onChange', 'onEnter'> & {
     onChange?: (value: string) => void;
     onEnter?: () => void;
 };
 export const InputTextField = React.memo((props: InputTextFieldProps) => {
-    const { label, variant, value, onChange, onEnter } = props;
+    const { variant, onChange, onEnter, ...rest } = props;
 
-    const InputComponent = stringSwitch(variant || 'outlined', {
-        outlined: () => OutlinedInput,
-        default: () => Input
-    });
-
-    const inputComponentProps = {
-        value,
+    const textFieldProps: TextFieldProps = {
+        ...rest,
+        variant: variant || 'outlined',
+        fullWidth: true,
         onChange: (event: any) => {
             onChange?.(event.target.value);
         },
@@ -30,12 +23,7 @@ export const InputTextField = React.memo((props: InputTextFieldProps) => {
         }
     };
 
-    return (
-        <FormControl sx={{ width: '100%' }}>
-            {label ? <InputLabel id={'label'}>{label}</InputLabel> : null}
-            <InputComponent {...inputComponentProps} />
-        </FormControl>
-    );
+    return <TextField {...textFieldProps} />;
 });
 
 export const prototypeInputTextField = prototypeComponent(InputTextField, {

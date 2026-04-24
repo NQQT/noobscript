@@ -12,7 +12,7 @@ const meta: Meta = {
 export default meta;
 
 configureStoryControls(meta, {
-    label: '',
+    label: 'Input text field',
     variant: ['standard', 'outlined']
 });
 

@@ -1,7 +1,8 @@
 import React from 'react';
 import { WidgetPropsType } from '@react/headless';
-import { InputTextAreaProps, InputTextField } from '../../components';
+import { InputTextAreaProps } from '../../components';
 import { useStateHook } from '@presource/react';
+import { InputTextField } from '@react/material';
 
 export type DataNumberFieldProps = WidgetPropsType & {
     label: string;

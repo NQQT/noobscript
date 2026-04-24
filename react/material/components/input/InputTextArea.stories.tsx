@@ -12,7 +12,8 @@ const meta: Meta = {
 export default meta;
 
 configureStoryControls(meta, {
-    label: 'Input Text Area'
+    label: 'Input Text Area',
+    rows: 5
 });
 
 // Storybook

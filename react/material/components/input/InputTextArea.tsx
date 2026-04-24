@@ -1,41 +1,19 @@
 import React from 'react';
-import { FormControl, Input, InputLabel, OutlinedInput } from '@mui/material';
-import { stringSwitch } from '@presource/core';
 import { prototypeComponent } from '@presource/react';
+import { InputTextField, InputTextFieldProps } from './InputTextField';
 
-export type InputTextAreaProps = {
-    label?: string;
-    value?: string;
-    variant?: 'standard' | 'outlined';
-    rows?: number;
-    maxRows?: number;
-    onChange?: (value: string) => void;
-};
+export type InputTextAreaProps = InputTextFieldProps;
 
 export const InputTextArea = React.memo((props: InputTextAreaProps) => {
-    const { label, variant, value, rows, maxRows, onChange } = props;
+    const { rows, ...rest } = props;
 
-    const InputComponent = stringSwitch(variant || 'outlined', {
-        outlined: () => OutlinedInput,
-        default: () => Input
-    });
-
-    const inputComponentProps = {
-        value,
+    const inputTextFieldProps: InputTextFieldProps = {
+        ...rest,
         multiline: true,
-        rows: maxRows ? undefined : rows,
-        maxRows: maxRows ?? rows,
-        onChange: (event: any) => {
-            onChange?.(event.target.value);
-        }
+        maxRows: rows
     };
 
-    return (
-        <FormControl sx={{ width: '100%' }}>
-            {label ? <InputLabel id={'label'}>{label}</InputLabel> : null}
-            <InputComponent {...inputComponentProps} />
-        </FormControl>
-    );
+    return <InputTextField {...inputTextFieldProps} />;
 });
 
 export const prototypeInputTextArea = prototypeComponent(InputTextArea, {
